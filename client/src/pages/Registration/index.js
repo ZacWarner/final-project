@@ -5,23 +5,25 @@ import NewUserForm from '../../components/NewUserForm';
 
 
 
-class NewUserForm extends Component{
-    User(){
-    email= props.email,
-    firstName= props.firstName,
-    lastName= props.lastName,
-    userName= props.userName,
-    password= props.password,
-    city= props.city,
-    state= props.state
+class NewUser extends Component{
+    state = {
+    email: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
+    password: "",
+    city: "",
+    stateProvince: ""
     }
-}
 
-function NewUserForm(props){
+render() {
     return(
         <div>
         <Navbar />
-        <NewUserForm />
+        <NewUserForm details={this.state}/>
         </div>
     )
-}
+    }
+};
+
+export default NewUser
