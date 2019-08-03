@@ -1,4 +1,7 @@
 import React from 'react';
+import '../styles/variables';
+
+
 
 function NewUserForm(props) {
     return (
@@ -7,14 +10,15 @@ function NewUserForm(props) {
                 <div className="form-row">
                     <div className="col-md-4 mb-3">
                         <label for="validationTooltip01">First name</label>
-                        <input type="text" className="form-control" id="validationTooltip01" placeholder="First name" value={this.state.firstname} required></input>
+                        <input type="text" className="form-control" id="validationTooltip01" placeholder="First name" value={props.firstname} required></input>
+
                         <div class="valid-tooltip">
                             Looks good!
       </div>
                     </div>
                     <div className="col-md-4 mb-3">
                         <label for="validationTooltip02">Last name</label>
-                        <input type="text" className="form-control" id="validationTooltip02" placeholder="Last name" value={this.state.lastname} required></input>
+                        <input type="text" className="form-control" id="validationTooltip02" placeholder="Last name" value={props.lastname} required></input>
                         <div className="valid-tooltip">
                             Looks good!
       </div>
@@ -23,37 +27,45 @@ function NewUserForm(props) {
                         <label for="validationTooltipUsername">Username</label>
                         <div className="input-group">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="validationTooltipUsernamePrepend">@{this.state.username}</span>
+                                <span className="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                             </div>
-                            <input type="text" className="form-control" id="validationTooltipUsername"  placeholder="Username" value={this.state.username} aria-describedby="validationTooltipUsernamePrepend" required></input>
+                            <input type="text" className="form-control" id="validationTooltipUsername" placeholder="Username" value={props.username} aria-describedby="validationTooltipUsernamePrepend" required></input>
                             <div className="invalid-tooltip">
                                 Please choose a unique and valid username.
         </div>
                         </div>
                     </div>
-                    <div className="custom-control custom-checkbox">
-                        <p>Will you be managing projects?</p>
-                        <input type="checkbox" className="custom-control-input" id="customCheck1"></input>
-                        <label className="custom-control-label" for="customCheck1">Yes</label>
+                    <div class="form-group row">
+                        <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+                        <div className="col-sm-10">
+                            <input type="email" className="form-control" id="inputEmail3" placeholder="Email" value={props.email}></input>
+                        </div>
                     </div>
+                    <div className="form-group row">
+                        <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
+                        <div className="col-sm-10">
+                            <input type="password" className="form-control" id="inputPassword" placeholder="Password" value={props.password}></input>
+                        </div>
+                    </div>
+
                 </div>
                 <div className="form-row">
                     <div className="col-md-6 mb-3">
                         <label for="validationTooltip03">City</label>
-                        <input type="text" className="form-control" id="validationTooltip03" placeholder="City" value= {this.state.city} required></input>
+                        <input type="text" className="form-control" id="validationTooltip03" placeholder="City" value={props.city} required></input>
                         <div className="invalid-tooltip">
                             Please provide a valid city.
       </div>
                     </div>
                     <div className="col-md-3 mb-3">
                         <label for="validationTooltip04">State</label>
-                        <input type="text" class="form-control" id="validationTooltip04" placeholder="State" value={this.state.state} required></input>
+                        <input type="text" class="form-control" id="validationTooltip04" placeholder="State" value={props.state} required></input>
                         <div className="invalid-tooltip">
                             Please provide a valid state.
       </div>
                     </div>
                 </div>
-                <button className="btn btn-primary" type="submit">Submit</button>
+                <button className="btn btn-primary" type="submit" onClick={props.submit}>Submit</button>
             </form>
         </div>
     )
