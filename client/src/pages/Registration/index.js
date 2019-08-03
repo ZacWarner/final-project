@@ -5,7 +5,7 @@ import NewUserForm from '../../components/NewUserForm';
 
 
 
-class NewUser extends Component{
+class User extends Component{
     state = {
     email: "",
     firstName: "",
@@ -26,4 +26,4 @@ render() {
     }
 };
 
-export default NewUser
+export default User
