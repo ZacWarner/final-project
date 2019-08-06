@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 import '../styles/variables.scss';
+import '../styles/newuserform.scss';
 
 export default class Example extends React.Component {
   render() {
