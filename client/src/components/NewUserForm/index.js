@@ -1,54 +1,79 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
-import '../styles/variables.scss';
-import '../styles/newuserform.scss';
-
-
-//<Input value={this.state.email}/>
-// <Input onChange={this.functionname}/>
-// ternary: ? true = valid JSX : false = invalid JSX
-
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import '../styles/newuserform';
 
 export default class Example extends React.Component {
   render() {
     return (
       <Form>
-       <FormGroup>
-          <Label for="exampleEmail">Input without validation</Label>
-          <Input value={this.state.email}/>
-          <FormFeedback>You will not be able to see this</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
+        <Row form>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="First Name">First Name</Label>
+              <Input type="text" name="First Name" placeholder="with a placeholder" />
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="Last Name">Last Name</Label>
+              <Input type="text" name="Last Name" placeholder="password placeholder" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <FormGroup>
+            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+            <Input placeholder="username" />
+          </FormGroup>
+          <br />
+        </Row>
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="exampleEmail">Email</Label>
+              <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <FormGroup>
+          <Label for="exampleAddress">Address</Label>
+          <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St" />
         </FormGroup>
         <FormGroup>
-          <Label for="exampleEmail">Valid input</Label>
-          <Input valid />
-          <FormFeedback valid>Sweet! that name is available</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
+          <Label for="exampleAddress2">Address 2</Label>
+          <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" />
         </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Invalid input</Label>
-          <Input invalid />
-          <FormFeedback>Oh noes! that name is already taken</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="exampleCity">City</Label>
+              <Input type="text" name="city" id="exampleCity" />
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="exampleState">State</Label>
+              <Input type="text" name="state" id="exampleState" />
+            </FormGroup>
+          </Col>
+          <Col md={2}>
+            <FormGroup>
+              <Label for="exampleZip">Zip</Label>
+              <Input type="text" name="zip" id="exampleZip" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <FormGroup check>
+          <Input type="checkbox" name="check" id="exampleCheck" />
+          <Label for="exampleCheck" check>Check me out</Label>
         </FormGroup>
-        <FormGroup>
-          <Label for="exampleEmail">Input without validation</Label>
-          <Input />
-          <FormFeedback tooltip>You will not be able to see this</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleEmail">Valid input</Label>
-          <Input valid />
-          <FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Invalid input</Label>
-          <Input invalid />
-          <FormFeedback tooltip>Oh noes! that name is already taken</FormFeedback>
-          <FormText>Example help text that remains unchanged.</FormText>
-        </FormGroup>
+        <Button>Sign in</Button>
       </Form>
     );
   }
