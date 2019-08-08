@@ -3,13 +3,19 @@ import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstra
 import '../styles/variables.scss';
 import '../styles/newuserform.scss';
 
+
+//<Input value={this.state.email}/>
+// <Input onChange={this.functionname}/>
+// ternary: ? true = valid JSX : false = invalid JSX
+
+
 export default class Example extends React.Component {
   render() {
     return (
       <Form>
        <FormGroup>
           <Label for="exampleEmail">Input without validation</Label>
-          <Input />
+          <Input value={this.state.email}/>
           <FormFeedback>You will not be able to see this</FormFeedback>
           <FormText>Example help text that remains unchanged.</FormText>
         </FormGroup>
