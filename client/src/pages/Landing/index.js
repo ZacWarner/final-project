@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
+import {
+    Jumbotron,
+    Container,
+
+} from 'reactstrap';
 
 
 class Landing extends Component {
@@ -14,9 +19,13 @@ class Landing extends Component {
         return (
             <>
                 <Navbar />
-                <div>
-                    <h1>Our website</h1>
-                </div>
+                <Jumbotron>
+                    <Container className="text-center">
+                        <h1 className="display-3">Regulate</h1>
+                        <a href="/signup" className="btn btn-primary m-3">Sign Up</a>
+                        <a href="/login" className="btn btn-primary m-3">Login</a>
+                    </Container>
+                </Jumbotron>
             </>
         )
     }
