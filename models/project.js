@@ -6,13 +6,15 @@ const projectSchema = new Schema({
     proj_owner: { type: String, required: true },
     proj_description: String,
     due_date: Date,
+    proj_complete: { type: Boolean, default: false },
     modules: [
         {
             mod_name: { type: String, required: true },
             mod_description: String,
             mod_due: Date,
             developer: String,
-            parent: String
+            parent: String,
+            complete: { type: Boolean, default: false }
         }
     ]
 });
