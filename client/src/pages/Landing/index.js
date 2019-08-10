@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
+import Chat from '../../components/Chat';
 import {
     Jumbotron,
     Container,
@@ -26,6 +27,8 @@ class Landing extends Component {
                         <a href="/login" className="btn btn-primary m-3">Login</a>
                     </Container>
                 </Jumbotron>
+                <Chat></Chat>
+
             </>
         )
     }
