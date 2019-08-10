@@ -8,8 +8,8 @@ class ProjPhase extends Component {
         this.ref = createRef();
     }
     componentDidMount() {
-        // var colors = { green: '#4DC87F', lightGreen: '#D9F0E3' };
-        var colors = { blue: '#3994b6', lightBlue: '#D9F0E3' };
+        var colors = { green: '#4DC87F', lightGreen: '#D9F0E3' };
+        // var colors = { blue: '#3994b6', lightBlue: '#D9F0E3' };
         var width = 560, height = 150, offset = 48;
 
         var dimensions = '' + 0 + ' ' + 0 + ' ' + width + ' ' + height;
@@ -29,14 +29,14 @@ class ProjPhase extends Component {
             .style('pointer-events', 'none');
 
         progressBar.append('rect') //progressBackground
-            .attr('fill', colors.lightBlue)
+            .attr('fill', colors.lightGreen)
             .attr('height', 8)
             .attr('width', width - offset * 2)
             .attr('rx', 4)
             .attr('ry', 4);
 
         var progress = progressBar.append('rect')
-            .attr('fill', colors.blue)
+            .attr('fill', colors.green)
             .attr('height', 8)
             .attr('width', 0)
             .attr('rx', 4)
@@ -58,7 +58,7 @@ class ProjPhase extends Component {
             .attr('cy', 4)
             .attr('r', 45)
             .attr('fill', '#FFFFFF')
-            .attr('stroke', colors.lightBlue)
+            .attr('stroke', colors.lightGreen)
             .attr('stroke-width', 6)
 
         progressBar.selectAll('text')
@@ -86,7 +86,7 @@ class ProjPhase extends Component {
 
             progress.transition()
                 .duration(1000)
-                .attr('fill', colors.blue)
+                .attr('fill', colors.green)
                 .attr('width', function () {
                     var index = steps.indexOf(step_);
                     return (index) * stepWidth;
@@ -96,13 +96,13 @@ class ProjPhase extends Component {
 
                 if (i <= steps.indexOf(step_)) {
 
-                    d3.select('#step_' + i).attr('fill', colors.blue).attr('stroke', colors.blue);
+                    d3.select('#step_' + i).attr('fill', colors.green).attr('stroke', colors.green);
                     d3.select('#label_' + i).attr('fill', '#FFFFFF');
 
 
                 } else {
 
-                    d3.select('#step_' + i).attr('fill', '#FFFFFF').attr('stroke', colors.lightBlue);
+                    d3.select('#step_' + i).attr('fill', '#FFFFFF').attr('stroke', colors.lightGreen);
                     d3.select('#label_' + i).attr('fill', '#000000');
 
                 }
