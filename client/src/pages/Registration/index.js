@@ -18,13 +18,13 @@ class Signup extends Component {
         stateProvince: ""
     }
 
-render() {
-    return(
-        <div className="page-body">
-        <Navbar />
-        <RegForm details={this.state}/>
-        </div>
-    )
+    render() {
+        return (
+            <div className="page-body">
+                <Navbar />
+                <RegForm details={this.state} />
+            </div>
+        )
     }
 };
 
