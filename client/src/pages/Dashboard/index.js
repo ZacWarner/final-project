@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import Navbar from '../../components/Navbar';     
+import Navbar from '../../components/Navbar';
 import Pie from '../../components/Dashboard/Pie';
 import Tree from '../../components/Dashboard/Tree';
 import Projphase from '../../components/Dashboard/Stepprogress';
 import Projsummary from '../../components/Dashboard/Projsummary';
+import Moduleprogress from '../../components/Dashboard/Moduleprogress';
 
 class Dashboard extends Component {
 
@@ -24,7 +25,7 @@ class Dashboard extends Component {
                 <Container>
                     <Row>
                         <Col md="3">
-                            <Projsummary/>
+                            <Projsummary />
                         </Col>
                         <Col>
                             <Projphase />
@@ -45,7 +46,7 @@ class Dashboard extends Component {
                         </Col>
                         <Col className="text-center">
                             <h5>Module Progress</h5>
-                            <p><i>Table with module name, owner, due date and progress</i></p>
+                            <Moduleprogress />
                         </Col>
                     </Row>
                 </Container>
