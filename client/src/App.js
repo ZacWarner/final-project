@@ -10,6 +10,9 @@ import AboutUs from './pages/AboutUs';
 import './App.scss';
 
 class App extends Component {
+
+
+
   render() {
     return (
       <Router>
@@ -19,7 +22,7 @@ class App extends Component {
           {/* <Route exact path='/login' component={Login} /> */}
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/dashboard/:id' component={Dashboard} />
-          <Route exact path='/AboutUs' component={AboutUs}/>
+          <Route exact path='/AboutUs' component={AboutUs} />
         </div>
       </Router>
     );
