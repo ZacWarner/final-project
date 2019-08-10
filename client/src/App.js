@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import RegForm from './components/NewUserForm';
 
 
 function App() {

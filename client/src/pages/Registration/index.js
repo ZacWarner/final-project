@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Navbar from '../../components/Navbar';
-import NewUserForm from '../../components/NewUserForm';
+import RegForm from '../../components/NewUserForm';
 
 
 
@@ -20,7 +20,7 @@ render() {
     return(
         <div>
         <Navbar />
-        <NewUserForm details={this.state}/>
+        <RegForm details={this.state}/>
         </div>
     )
     }
