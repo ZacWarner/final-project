@@ -27,7 +27,7 @@ class Landing extends Component {
                         <a href="/login" className="btn btn-primary m-3">Login</a>
                     </Container>
                 </Jumbotron>
-                <Chat></Chat>
+                {/* <Chat></Chat> */}
 
             </>
         )
