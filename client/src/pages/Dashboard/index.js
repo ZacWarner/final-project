@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/Navbar';     
 import Pie from '../../components/Dashboard/Pie';
 import Tree from '../../components/Dashboard/Tree';
 import Projphase from '../../components/Dashboard/Stepprogress';
@@ -43,8 +43,9 @@ class Dashboard extends Component {
                         <Col>
                             <Tree data={this.state.treeData} />
                         </Col>
-                        <Col>
-                            <h5 className="text-center">Module Progress</h5>
+                        <Col className="text-center">
+                            <h5>Module Progress</h5>
+                            <p><i>Table with module name, owner, due date and progress</i></p>
                         </Col>
                     </Row>
                 </Container>
