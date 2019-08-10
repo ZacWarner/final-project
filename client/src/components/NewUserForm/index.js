@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import '../styles/newuserform';
-import '../styles/variables';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 export default class RegForm extends React.Component {
@@ -25,7 +23,7 @@ export default class RegForm extends React.Component {
         </Row>
         <Row>
           <FormGroup>
-            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+            {/* <InputGroupAddon addonType="prepend">@</InputGroupAddon> */}
             <Input placeholder="username" />
           </FormGroup>
           <br />
