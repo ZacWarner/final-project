@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import Signup from './pages/Registration';
 import Dashboard from './pages/Dashboard';
 import AboutUs from './pages/AboutUs';
+import Project from './pages/CreateProject';
 
 import './App.scss';
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/dashboard/:id' component={Dashboard} />
           <Route exact path='/AboutUs' component={AboutUs}/>
+          <Route exact path='/createProject' component={Project}/>
         </div>
       </Router>
     );
