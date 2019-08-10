@@ -1,6 +1,7 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-import '../../../styles/dashboard/pie.scss';
+// import '../../../styles/dashboard/pie.scss';
+import '../../styles/dashboard/pie.scss';
 
 class PieClass extends Component {
     constructor(props) {
