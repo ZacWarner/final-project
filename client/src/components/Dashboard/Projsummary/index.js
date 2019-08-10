@@ -19,7 +19,7 @@ class Projsummary extends Component {
                     <CardText>
                         <p>Start Date: ***</p>
                         <p>End Date: ***</p>
-                        <p>Overall Status: **%</p>
+                        <p>Overall Status: ** %</p>
                     </CardText>
                 </CardBody>
             </Card>
