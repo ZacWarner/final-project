@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
+import '../../components/styles/registrationPage.scss';
 
 
 
@@ -17,23 +18,13 @@ class Signup extends Component {
         stateProvince: ""
     }
 
-<<<<<<< HEAD
 render() {
     return(
-        <div>
+        <div className="page-body">
         <Navbar />
         <RegForm details={this.state}/>
         </div>
     )
-=======
-    render() {
-        return (
-            <div>
-                <Navbar />
-                <NewUserForm details={this.state} />
-            </div>
-        )
->>>>>>> ba850862069a78fa4c954a49e7d0c04ddc923983
     }
 };
 
