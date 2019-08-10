@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RegForm from './components/NewUserForm';
 import Landing from './pages/Landing';
-import Profile from './pages/Profile';
-import Login from './pages/Login';
+// import Profile from './pages/Profile';
+// import Login from './pages/Login';
 import Signup from './pages/Registration';
 import Dashboard from './pages/Dashboard';
 
@@ -15,8 +15,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Landing} />
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/login' component={Login} />
+          {/* <Route exact path='/profile' component={Profile} /> */}
+          {/* <Route exact path='/login' component={Login} /> */}
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/dashboard/:id' component={Dashboard} />
         </div>
