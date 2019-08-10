@@ -220,7 +220,7 @@ class PieClass extends Component {
     render() {
         return (
             <div>
-                <h5>Task Deployment</h5>
+                <h5 className="text-center">Task Deployment</h5>
                 {/* <svg ref={this.ref} /> */}
                 <div ref={this.ref} />
             </div>

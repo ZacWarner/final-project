@@ -115,7 +115,7 @@ class ProjPhase extends Component {
     render() {
         return (
             <div>
-                <h5>Current Phase</h5>
+                <h5 className="text-center">Current Phase</h5>
                 <div ref={this.ref} />
             </div>
         );

@@ -23,13 +23,13 @@ class Dashboard extends Component {
                 <Navbar />
                 <Container>
                     <Row>
-                        <Col md="3" className='bordered'>
+                        <Col md="3">
                             <Projsummary/>
                         </Col>
-                        <Col className='bordered'>
+                        <Col>
                             <Projphase />
                         </Col>
-                        <Col md="3" className='bordered'>
+                        <Col md="3">
                             <Pie
                                 data={this.state.pieData}
                                 width={200}
@@ -40,11 +40,11 @@ class Dashboard extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col className='bordered'>
+                        <Col>
                             <Tree data={this.state.treeData} />
                         </Col>
-                        <Col className='bordered'>
-                            <h5>Module Progress</h5>
+                        <Col>
+                            <h5 className="text-center">Module Progress</h5>
                         </Col>
                     </Row>
                 </Container>
