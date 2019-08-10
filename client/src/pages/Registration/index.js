@@ -17,7 +17,6 @@ class Signup extends Component {
         stateProvince: ""
     }
 
-<<<<<<< HEAD
 render() {
     return(
         <div>
@@ -25,15 +24,6 @@ render() {
         <RegForm details={this.state}/>
         </div>
     )
-=======
-    render() {
-        return (
-            <div>
-                <Navbar />
-                <NewUserForm details={this.state} />
-            </div>
-        )
->>>>>>> ba850862069a78fa4c954a49e7d0c04ddc923983
     }
 };
 
