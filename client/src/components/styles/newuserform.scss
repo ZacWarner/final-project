@@ -1,0 +1,17 @@
+@import './variables.scss';
+
+
+.page-body{
+    background: url(https://www.freepik.com/free-vector/blue-laser-pyramid-prism-reflective-surface-starry-background-with-smoke-fog_4758450.htm) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 3%;
+}
+.form-holder{
+    background-color: rgba(87, 190, 190, 0.3);
+    width: 100%;
+    float: left;
+
+}

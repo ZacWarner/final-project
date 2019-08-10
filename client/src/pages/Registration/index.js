@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
+import '../../components/styles/registrationPage.scss';
 
 
 
@@ -19,7 +20,7 @@ class Signup extends Component {
 
 render() {
     return(
-        <div>
+        <div className="page-body">
         <Navbar />
         <RegForm details={this.state}/>
         </div>
