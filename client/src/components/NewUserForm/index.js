@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import '../styles/newuserform';
-import '../styles/variables';
+import { Col, Row, Button, Form, FormGroup, Label, Input, InputGroup,InputGroupAddon, Jumbotron, Container } from 'reactstrap';
+import '../styles/newuserform.scss';
+import '../styles/variables.scss';
 
 
 export default class RegForm extends React.Component {
   render() {
     return (
+      <Jumbotron>
+        <Container fluid>
       <Form>
         <Row form>
           <Col md={4}>
@@ -24,10 +26,12 @@ export default class RegForm extends React.Component {
           </Col>
         </Row>
         <Row>
-          <FormGroup>
+          <Col md={6}>
+          <InputGroup>
             <InputGroupAddon addonType="prepend">@</InputGroupAddon>
             <Input placeholder="username" />
-          </FormGroup>
+          </InputGroup>
+          </Col>
           <br />
         </Row>
         <Row form>
@@ -37,7 +41,7 @@ export default class RegForm extends React.Component {
               <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={4}>
             <FormGroup>
               <Label for="examplePassword">Password</Label>
               <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
@@ -74,6 +78,8 @@ export default class RegForm extends React.Component {
         </Row>
         <Button>Register</Button>
       </Form>
+      </Container>
+      </Jumbotron>
     );
   }
 }
