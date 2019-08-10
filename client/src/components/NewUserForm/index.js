@@ -1,74 +1,79 @@
 import React from 'react';
-// import '../styles/variables';
+
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import '../styles/newuserform';
+import '../styles/variables';
 
 
-
-function NewUserForm(props) {
+export default class RegForm extends React.Component {
+  render() {
     return (
-        <div>
-            <form className="needs-validation" novalidate>
-                <div className="form-row">
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltip01">First name</label>
-                        <input type="text" className="form-control" id="validationTooltip01" placeholder="First name" value={props.details.firstname} required></input>
-
-                        <div class="valid-tooltip">
-                            Looks good!
-      </div>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltip02">Last name</label>
-                        <input type="text" className="form-control" id="validationTooltip02" placeholder="Last name" value={props.details.lastname} required></input>
-                        <div className="valid-tooltip">
-                            Looks good!
-      </div>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltipUsername">Username</label>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                            </div>
-                            <input type="text" className="form-control" id="validationTooltipUsername" placeholder="Username" value={props.details.username} aria-describedby="validationTooltipUsernamePrepend" required></input>
-                            <div className="invalid-tooltip">
-                                Please choose a unique and valid username.
-        </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-                        <div className="col-sm-10">
-                            <input type="email" className="form-control" id="inputEmail3" placeholder="Email" value={props.details.email}></input>
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
-                        <div className="col-sm-10">
-                            <input type="password" className="form-control" id="inputPassword" placeholder="Password" value={props.details.password}></input>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="form-row">
-                    <div className="col-md-6 mb-3">
-                        <label for="validationTooltip03">City</label>
-                        <input type="text" className="form-control" id="validationTooltip03" placeholder="City" value={props.details.city} required></input>
-                        <div className="invalid-tooltip">
-                            Please provide a valid city.
-      </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                        <label for="validationTooltip04">State</label>
-                        <input type="text" class="form-control" id="validationTooltip04" placeholder="State" value={props.details.stateProvince} required></input>
-                        <div className="invalid-tooltip">
-                            Please provide a valid state.
-      </div>
-                    </div>
-                </div>
-                <button className="btn btn-primary" type="submit" onClick={props.details.submit}>Submit</button>
-            </form>
-        </div>
-    )
+      <Form>
+        <Row form>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="First Name">First Name</Label>
+              <Input type="text" name="First Name" placeholder="with a placeholder" />
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="Last Name">Last Name</Label>
+              <Input type="text" name="Last Name" placeholder="password placeholder" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <FormGroup>
+            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+            <Input placeholder="username" />
+          </FormGroup>
+          <br />
+        </Row>
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="exampleEmail">Email</Label>
+              <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <FormGroup>
+          <Label for="exampleAddress">Address</Label>
+          <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleAddress2">Address 2</Label>
+          <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" />
+        </FormGroup>
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="exampleCity">City</Label>
+              <Input type="text" name="city" id="exampleCity" />
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="exampleState">State</Label>
+              <Input type="text" name="state" id="exampleState" />
+            </FormGroup>
+          </Col>
+          <Col md={2}>
+            <FormGroup>
+              <Label for="exampleZip">Zip</Label>
+              <Input type="text" name="zip" id="exampleZip" />
+            </FormGroup>
+          </Col>
+        </Row>
+        <Button>Register</Button>
+      </Form>
+    );
+  }
 }
-
-export default NewUserForm

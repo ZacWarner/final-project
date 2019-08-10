@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
-import NewUserForm from '../../components/NewUserForm';
+import RegForm from '../../components/NewUserForm';
 
 
 
@@ -17,6 +17,15 @@ class Signup extends Component {
         stateProvince: ""
     }
 
+<<<<<<< HEAD
+render() {
+    return(
+        <div>
+        <Navbar />
+        <RegForm details={this.state}/>
+        </div>
+    )
+=======
     render() {
         return (
             <div>
@@ -24,6 +33,7 @@ class Signup extends Component {
                 <NewUserForm details={this.state} />
             </div>
         )
+>>>>>>> ba850862069a78fa4c954a49e7d0c04ddc923983
     }
 };
 
