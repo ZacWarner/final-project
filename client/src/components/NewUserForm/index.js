@@ -69,11 +69,7 @@ export default class Example extends React.Component {
             </FormGroup>
           </Col>
         </Row>
-        <FormGroup check>
-          <Input type="checkbox" name="check" id="exampleCheck" />
-          <Label for="exampleCheck" check>Check me out</Label>
-        </FormGroup>
-        <Button>Sign in</Button>
+        <Button>Register</Button>
       </Form>
     );
   }
