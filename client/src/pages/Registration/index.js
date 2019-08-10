@@ -14,15 +14,23 @@ class Signup extends Component {
         lastName: "",
         userName: "",
         password: "",
+        address1: "",
+        address2: "",
         city: "",
-        stateProvince: ""
-    }
+        stateProvince: "",
+        zip: "",
+
+        //user=()=>{
+            //api stuff to validate & save or throw err & display invalid fields as red
+        //}
+    };
+   
 
     render() {
         return (
             <div className="page-body">
                 <Navbar />
-                <RegForm details={this.state} />
+                <RegForm user={this.state.user} details={this.state} />
             </div>
         )
     }
