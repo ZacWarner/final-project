@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import Pie from '../../components/Dashboard/Pie';
 import Tree from '../../components/Dashboard/Tree';
 import Projphase from '../../components/Dashboard/Stepprogress';
+import Projsummary from '../../components/Dashboard/Projsummary';
 
 class Dashboard extends Component {
 
@@ -23,7 +24,7 @@ class Dashboard extends Component {
                 <Container>
                     <Row>
                         <Col md="3" className='bordered'>
-                            <h5>Project Summary</h5>
+                            <Projsummary/>
                         </Col>
                         <Col className='bordered'>
                             <Projphase />

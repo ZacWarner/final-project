@@ -1,6 +1,6 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-import './style.scss';
+import '../../../styles/dashboard/pie.scss';
 
 class PieClass extends Component {
     constructor(props) {
@@ -29,9 +29,9 @@ class PieClass extends Component {
     }
     componentDidMount() {
         //Temporary Hard Coded Data
-        const data = [{ "data": 0, "value": "1" },
+        const data = [{ "data": 0, "value": "2" },
         { "data": 1, "value": "2" },
-        { "data": 2, "value": "2" }];
+        { "data": 2, "value": "1" }];
 
         const svg = d3.select(this.ref.current).append('svg')
             .attr('width', this.props.width)
@@ -51,13 +51,13 @@ class PieClass extends Component {
             .style('fill', (d, i) => this.colors(d.index))
             .transition()
             .ease(d3.easeLinear)
-            .duration(2000)
+            .duration(1500)
             .attrTween('d', this.pieTween);
 
         g.append('text')
             .transition()
             .ease(d3.easeLinear)
-            .duration(2000)
+            .duration(1500)
             .attr("transform", d => `translate(${this.createArc.centroid(d)})`)
             .attr('dy', '.35em')
             // .text(d => this.format(d.value));

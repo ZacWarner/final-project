@@ -1,6 +1,6 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-import './style.scss';
+import '../../../styles/dashboard/tree.scss';
 
 class PieClass extends Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class PieClass extends Component {
                 + margin.left + "," + margin.top + ")");
 
         var i = 0,
-            duration = 750,
+            duration = 1250,
             root;
 
         var treemap = d3.tree().size([height, width]);
