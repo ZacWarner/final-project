@@ -58,7 +58,7 @@ class PieClass extends Component {
             ]
         };
 
-        var margin = { top: 20, right: 90, bottom: 30, left: 90 },
+        var margin = { top: 20, right: 90, bottom: 30, left: 75 },
             width = 600 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
@@ -121,10 +121,10 @@ class PieClass extends Component {
             nodeEnter.append('text')
                 .attr("dy", ".35em")
                 .attr("x", function (d) {
-                    return d.children || d._children ? -13 : 13;
+                    return -13;
                 })
                 .attr("text-anchor", function (d) {
-                    return d.children || d._children ? "end" : "start";
+                    return "end";
                 })
                 .text(function (d) { return d.data.name; });
 
