@@ -1,6 +1,6 @@
 import React, { createRef, Component } from "react";
 import Progressbar from "../Progressbar";
-import './style.css';
+import '../../styles/dashboard/moduleprogress.scss';
 
 class ProjPhase extends Component {
     constructor(props) {

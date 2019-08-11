@@ -1,6 +1,6 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-import './style.css';
+import '../../styles/dashboard/moduleprogress.scss';
 
 class ProjPhase extends Component {
     constructor(props) {
