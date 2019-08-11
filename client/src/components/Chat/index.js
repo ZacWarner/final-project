@@ -1,6 +1,7 @@
 import React from 'react';
 import socketIOClient from "socket.io-client";
-import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, FormGroup, InputGroupAddon } from 'reactstrap';
+import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon } from 'reactstrap';
+
 
 
 export default class Chat extends React.Component {
@@ -10,8 +11,10 @@ export default class Chat extends React.Component {
             search: "",
             response: 0,
             endpoint: "http://127.0.0.1:3001",
-
+            chatHistory: []
         };
+
+
     }
 
 
@@ -20,7 +23,7 @@ export default class Chat extends React.Component {
         const { endpoint } = this.state;
         //Very simply connect to the socket
         const socket = socketIOClient(endpoint);
-
+        socket.on('chat message', data => this.onMessageReceived(data));
     }
     handleInputChange = event => {
         this.setState({ search: event.target.value })
@@ -31,9 +34,14 @@ export default class Chat extends React.Component {
         const { endpoint } = this.state;
         const socket = socketIOClient(endpoint);
         socket.emit('chat message', this.state.search);
-        console.log(this.state.search);
+
     };
 
+    onMessageReceived(msg) {
+        const chatHistory = this.state.chatHistory;
+        chatHistory.push(msg);
+        this.setState(chatHistory);
+    }
 
 
 
@@ -42,7 +50,13 @@ export default class Chat extends React.Component {
             <Card>
                 <CardHeader>chat!</CardHeader>
                 <CardBody>
+                    <ListGroup>
+                        {this.state.chatHistory.map(msg => (
+                            <ListGroupItem key={msg}>{msg}</ListGroupItem>
+                        )
 
+                        )}
+                    </ListGroup>
                 </CardBody>
                 <CardFooter>
                     <InputGroup>
