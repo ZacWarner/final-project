@@ -15,7 +15,7 @@ $stroke-thin:1px;
    text-align: center;
    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
    border-collapse: collapse;
-   border: $stroke-width solid $color-neutral;
+   border: $stroke-width solid darkgray;
    width: 100%;
    th {
     padding-top: $cell-padding;

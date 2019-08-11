@@ -1,6 +1,9 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-// import '../../../styles/dashboard/pie.scss';
+import {
+    Card, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 import '../../styles/dashboard/pie.scss';
 
 class PieClass extends Component {
@@ -69,10 +72,18 @@ class PieClass extends Component {
 
     render() {
         return (
-            <div>
-                <h5>Overall Status (legends)</h5>
-                <div ref={this.ref} />
-            </div>
+            <Card className="m-1">
+                <CardBody>
+                    <CardTitle><h5>Overall Status</h5><hr /></CardTitle>
+                    <CardText>
+                        <div ref={this.ref} />
+                    </CardText>
+                </CardBody>
+            </Card>
+            // <div>
+            //     <h5>Overall Status (legends)</h5>
+            //     <div ref={this.ref} />
+            // </div>
         );
     }
 }

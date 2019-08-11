@@ -1,4 +1,8 @@
 import React, { createRef, Component } from "react";
+import {
+    Card, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 import Progressbar from "../Progressbar";
 import '../../styles/dashboard/moduleprogress.scss';
 
@@ -38,20 +42,38 @@ class ProjPhase extends Component {
 
     render() {
         return (
-            <div>
-                <h5>Table</h5>
-                <table id='module_progress' className="m-1">
-                    <tbody>
-                        <tr>
-                            <th>Module Name</th>
-                            <th>Module Owner</th>
-                            <th>Due Date</th>
-                            <th>Progress</th>
-                        </tr>
-                        {this.renderTableData()}
-                    </tbody>
-                </table>
-            </div>
+            <Card className="m-1">
+                <CardBody>
+                    <CardTitle><h5>Module Progress</h5><hr /></CardTitle>
+                    <CardText>
+                        <table id='module_progress' className="m-1">
+                            <tbody>
+                                <tr>
+                                    <th>Module Name</th>
+                                    <th>Module Owner</th>
+                                    <th>Due Date</th>
+                                    <th>Progress</th>
+                                </tr>
+                                {this.renderTableData()}
+                            </tbody>
+                        </table>
+                    </CardText>
+                </CardBody>
+            </Card>
+            // <div>
+            //     <h5>Table</h5>
+            //     <table id='module_progress' className="m-1">
+            //         <tbody>
+            //             <tr>
+            //                 <th>Module Name</th>
+            //                 <th>Module Owner</th>
+            //                 <th>Due Date</th>
+            //                 <th>Progress</th>
+            //             </tr>
+            //             {this.renderTableData()}
+            //         </tbody>
+            //     </table>
+            // </div>
         );
     }
 }
