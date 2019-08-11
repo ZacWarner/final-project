@@ -6,3 +6,31 @@
     width: 100%;
     
 }
+
+.page-body{
+    .form-holder{
+        .container-fluid{
+            Form{
+                .form-row {
+                    Label{
+                        color: $color-form-label;
+                    }
+                }
+            }
+        }
+    }
+};
+
+.page-body{
+    .form-holder{
+        .container-fluid{
+            Form{
+                .row {
+                    Label{
+                        color: $color-form-label;
+                    }
+                }
+            }
+        }
+    }
+}
