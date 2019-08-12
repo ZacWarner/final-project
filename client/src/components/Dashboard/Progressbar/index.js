@@ -9,6 +9,7 @@ class ProjPhase extends Component {
     }
     componentDidMount() {
         var data = [this.props.count, this.props.complete];
+        var percent = (data[1] / data[0]) * 100;
 
         var chart = d3.select(this.ref.current).append("svg")
             .attr("class", "chart")
@@ -19,7 +20,7 @@ class ProjPhase extends Component {
             .domain([0, d3.max(data)])
             .range([0, 30]);
 
-        chart.selectAll("rect")
+        var progress = chart.selectAll("rect")
             .data(data)
             .enter().append("rect")
             .attr("width", x)
@@ -27,6 +28,9 @@ class ProjPhase extends Component {
             .attr("rx", 5)
             .attr("ry", 5);
 
+
+        progress.append('title')
+            .text(percent.toFixed(1) + "%");
     }
 
     render() {

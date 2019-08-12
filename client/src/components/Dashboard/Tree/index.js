@@ -21,39 +21,69 @@ class PieClass extends Component {
                     "name": "Dash-board",
                     "children": [
                         {
-                            "name": "Deployment tree"
+                            "name": "Deployment tree",
+                            "dev": "Meena"
                         },
-                        { "name": "Project Summary" },
-                        { "name": "Overall Status" },
                         {
-                            "name": "Module Progress"
+                            "name": "Project Summary",
+                            "dev": "Meena"
                         },
-                        { "name": "Project phase" }
+                        {
+                            "name": "Overall Status",
+                            "dev": "Meena"
+                        },
+                        {
+                            "name": "Module Progress",
+                            "dev": "Meena"
+                        },
+                        {
+                            "name": "Project phase",
+                            "dev": "Meena"
+                        }
                     ]
                 },
                 {
                     "name": "User",
                     "children": [
-                        { "name": "Log In" },
-                        { "name": "Sign Up" }
+                        {
+                            "name": "Log In",
+                            "dev": "Lucious"
+                        },
+                        {
+                            "name": "Sign Up",
+                            "dev": "Lucious"
+                        }
                     ]
                 },
                 {
                     "name": "profile",
                     "children": [
-                        { "name": "projects list" },
-                        { "name": "Create new project" },
-                        { "name": "Update working project" }
+                        {
+                            "name": "projects list",
+                            "dev": "Adam"
+                        },
+                        {
+                            "name": "Create new project",
+                            "dev": "Adam"
+                        },
+                        {
+                            "name": "Update working project",
+                            "dev": "Adam"
+                        }
                     ]
                 },
                 {
                     "name": "Resouce-Deck",
                     "children": [
-                        { "name": "developer cards" }
+                        {
+                            "name": "developer cards",
+                            "dev": "Patrick"
+                        }
                     ]
                 },
                 {
-                    "name": "Chat"
+                    "name": "Chat",
+                    "dev": "Zac"
                 }
             ]
         };
@@ -111,12 +141,15 @@ class PieClass extends Component {
                 })
                 .on('click', click);
 
-            nodeEnter.append('circle')
+            var circle = nodeEnter.append('circle')
                 .attr('class', 'node')
                 .attr('r', 1e-6)
                 .style("fill", function (d) {
                     return d._children ? "lightsteelblue" : "#fff";
                 });
+
+            circle.append('title')
+                .text(function (d) { return d.data.dev; });
 
             nodeEnter.append('text')
                 .attr("dy", ".35em")
@@ -127,6 +160,21 @@ class PieClass extends Component {
                     return "end";
                 })
                 .text(function (d) { return d.data.name; });
+
+            // var tooltip = mod.append('div')
+            //     .attr('class', 'tooltip');
+            // tooltip.append('div')
+            //     .attr('class', 'label')
+            //     .attr('class', 'tooltiptext');
+
+            // mod.on('mouseover', function (d) {
+            //     tooltip.select('.label').html("text");
+            //     tooltip.style('display', 'block');
+            // });
+
+            // mod.on('mouseout', function () {
+            //     tooltip.style('display', 'none');
+            // });
 
             var nodeUpdate = nodeEnter.merge(node);
 
