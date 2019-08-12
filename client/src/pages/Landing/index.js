@@ -9,13 +9,6 @@ import {
 
 
 class Landing extends Component {
-
-
-
-
-
-
-
     render() {
         return (
             <>
