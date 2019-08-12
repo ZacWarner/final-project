@@ -5,7 +5,6 @@ import {
     CardTitle
 } from 'reactstrap';
 import '../../styles/dashboard/pie.scss';
-import './style.css';
 
 class PieClass extends Component {
     constructor(props) {
