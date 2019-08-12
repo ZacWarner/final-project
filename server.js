@@ -3,6 +3,7 @@ const app = express();
 var http = require('http').createServer(app);
 const path = require("path");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 3001;
 
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbRegulate");
 
 
 io.on('connection', function (socket) {
@@ -30,7 +32,7 @@ io.on('connection', function (socket) {
 });
 
 // Define API routes here
-
+app.use(routes);
 
 
 // Send every other request to the React app
