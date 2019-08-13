@@ -25,7 +25,7 @@ const projectSchema = new Schema({
             mod_description: String,
             mod_due: Date,
             developer: [String],
-            parent: { type: String, default: this.proj_name },
+            parent: { type: String },
             complete: { type: Boolean, default: false },
             level1module: { type: Boolean, default: true }
         }

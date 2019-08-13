@@ -3,6 +3,7 @@ const app = express();
 var http = require('http').createServer(app);
 const path = require("path");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 3001;
 
@@ -30,7 +31,7 @@ io.on('connection', function (socket) {
 });
 
 // Define API routes here
-
+app.use(routes);
 
 
 // Send every other request to the React app
