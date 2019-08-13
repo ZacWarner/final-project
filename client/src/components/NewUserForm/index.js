@@ -81,8 +81,8 @@ export default class RegForm extends React.Component {
                     <Input type="select" name="state" id="exampleState" value={this.props.stateProvince}>
                     <option>Select</option>
                     <option>AL</option>
-                    <option>AZ</option>
                     <option>AR</option>
+                    <option>AZ</option>
                     
                     </Input>
                   </FormGroup>
