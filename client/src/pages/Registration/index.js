@@ -48,9 +48,9 @@ class Signup extends Component {
             stateProvince: userToSave[0].userInfo.stateProvince,
             zip: userToSave[0].userInfo.zip,
         }
-        //console.log(UserDetails);
+        console.log(UserDetails);
         //API.saveUser(userDetails)
-        //    .then(alert('user infor saved'))
+        //    .then(alert('user info saved'))
         //    .catch(err => console.log(err))
     }
 
