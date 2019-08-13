@@ -1,6 +1,9 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-// import '../../../styles/dashboard/tree.scss';
+import {
+    Card, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 import '../../styles/dashboard/tree.scss';
 
 class PieClass extends Component {
@@ -18,44 +21,74 @@ class PieClass extends Component {
                     "name": "Dash-board",
                     "children": [
                         {
-                            "name": "Deployment tree"
+                            "name": "Deployment tree",
+                            "dev": "Meena"
                         },
-                        { "name": "Project Summary" },
-                        { "name": "Overall Status" },
                         {
-                            "name": "Module Progress"
+                            "name": "Project Summary",
+                            "dev": "Meena"
                         },
-                        { "name": "Project phase" }
+                        {
+                            "name": "Overall Status",
+                            "dev": "Meena"
+                        },
+                        {
+                            "name": "Module Progress",
+                            "dev": "Meena"
+                        },
+                        {
+                            "name": "Project phase",
+                            "dev": "Meena"
+                        }
                     ]
                 },
                 {
                     "name": "User",
                     "children": [
-                        { "name": "Log In" },
-                        { "name": "Sign Up" }
+                        {
+                            "name": "Log In",
+                            "dev": "Lucious"
+                        },
+                        {
+                            "name": "Sign Up",
+                            "dev": "Lucious"
+                        }
                     ]
                 },
                 {
                     "name": "profile",
                     "children": [
-                        { "name": "projects list" },
-                        { "name": "Create new project" },
-                        { "name": "Update working project" }
+                        {
+                            "name": "projects list",
+                            "dev": "Adam"
+                        },
+                        {
+                            "name": "Create new project",
+                            "dev": "Adam"
+                        },
+                        {
+                            "name": "Update working project",
+                            "dev": "Adam"
+                        }
                     ]
                 },
                 {
                     "name": "Resouce-Deck",
                     "children": [
-                        { "name": "developer cards" }
+                        {
+                            "name": "developer cards",
+                            "dev": "Patrick"
+                        }
                     ]
                 },
                 {
-                    "name": "Chat"
+                    "name": "Chat",
+                    "dev": "Zac"
                 }
             ]
         };
 
-        var margin = { top: 20, right: 90, bottom: 30, left: 90 },
+        var margin = { top: 20, right: 90, bottom: 30, left: 75 },
             width = 600 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
@@ -108,22 +141,40 @@ class PieClass extends Component {
                 })
                 .on('click', click);
 
-            nodeEnter.append('circle')
+            var circle = nodeEnter.append('circle')
                 .attr('class', 'node')
                 .attr('r', 1e-6)
                 .style("fill", function (d) {
                     return d._children ? "lightsteelblue" : "#fff";
                 });
 
+            circle.append('title')
+                .text(function (d) { return d.data.dev; });
+
             nodeEnter.append('text')
                 .attr("dy", ".35em")
                 .attr("x", function (d) {
-                    return d.children || d._children ? -13 : 13;
+                    return -13;
                 })
                 .attr("text-anchor", function (d) {
-                    return d.children || d._children ? "end" : "start";
+                    return "end";
                 })
                 .text(function (d) { return d.data.name; });
+
+            // var tooltip = mod.append('div')
+            //     .attr('class', 'tooltip');
+            // tooltip.append('div')
+            //     .attr('class', 'label')
+            //     .attr('class', 'tooltiptext');
+
+            // mod.on('mouseover', function (d) {
+            //     tooltip.select('.label').html("text");
+            //     tooltip.style('display', 'block');
+            // });
+
+            // mod.on('mouseout', function () {
+            //     tooltip.style('display', 'none');
+            // });
 
             var nodeUpdate = nodeEnter.merge(node);
 
@@ -220,11 +271,19 @@ class PieClass extends Component {
 
     render() {
         return (
-            <div>
-                <h5 className="text-center">Task Deployment</h5>
-                {/* <svg ref={this.ref} /> */}
-                <div ref={this.ref} />
-            </div>
+            <Card className="m-1">
+                <CardBody>
+                    <CardTitle><h5>Task Deployment</h5><hr /></CardTitle>
+                    <CardText>
+                        <div ref={this.ref} />
+                    </CardText>
+                </CardBody>
+            </Card>
+            // <div>
+            //     <h5 className="text-center">Task Deployment</h5>
+            //     {/* <svg ref={this.ref} /> */}
+            //     <div ref={this.ref} />
+            // </div>
         );
     }
 }
