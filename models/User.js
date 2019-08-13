@@ -10,8 +10,11 @@ const userSchema = new Schema({
     lastName: { type: String, unique: false },
     userName: { type: String, unique: true },
     password: { type: String, unique: false },
+    address1: {type: String, unique: false },
+    address2: {type: String, unique: false },
     city: { type: String },
-    state: { type: String }
+    stateProvince: { type: String },
+    zip: {type: String, unique: false}
 
 })
 
