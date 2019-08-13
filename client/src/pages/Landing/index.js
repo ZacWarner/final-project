@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
+import Chat from '../../components/Chat';
 import {
     Jumbotron,
     Container,
@@ -8,13 +9,6 @@ import {
 
 
 class Landing extends Component {
-
-
-
-
-
-
-
     render() {
         return (
             <>
@@ -26,6 +20,8 @@ class Landing extends Component {
                         <a href="/login" className="btn btn-primary m-3">Login</a>
                     </Container>
                 </Jumbotron>
+                <Chat projectid="1" name="zac" chatname="main chat!"></Chat>
+
             </>
         )
     }

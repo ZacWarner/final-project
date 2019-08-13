@@ -1,6 +1,9 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-// import './style.css';
+import {
+    Card, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 
 class ProjPhase extends Component {
     constructor(props) {
@@ -114,10 +117,18 @@ class ProjPhase extends Component {
 
     render() {
         return (
-            <div>
-                <h5 className="text-center">Current Phase</h5>
-                <div ref={this.ref} />
-            </div>
+            <Card className="m-1">
+                <CardBody>
+                    <CardTitle><h5>Current Phase</h5><hr /></CardTitle>
+                    <CardText>
+                        <div ref={this.ref} />
+                    </CardText>
+                </CardBody>
+            </Card>
+            // <div>
+            //     <h5 className="text-center">Current Phase</h5>
+            //     <div ref={this.ref} />
+            // </div>
         );
     }
 }

@@ -1,6 +1,9 @@
 import React, { createRef, Component } from "react";
 import * as d3 from "d3";
-// import '../../../styles/dashboard/pie.scss';
+import {
+    Card, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 import '../../styles/dashboard/pie.scss';
 
 class PieClass extends Component {
@@ -30,9 +33,9 @@ class PieClass extends Component {
     }
     componentDidMount() {
         //Temporary Hard Coded Data
-        const data = [{ "data": 0, "value": "2" },
-        { "data": 1, "value": "2" },
-        { "data": 2, "value": "1" }];
+        const data = [{ "data": "In progress", "value": "2", "percent": 40 },
+        { "data": "Pending", "value": "2", "percent": 40 },
+        { "data": "Complete", "value": "1", "percent": 20 }];
 
         const svg = d3.select(this.ref.current).append('svg')
             .attr('width', this.props.width)
@@ -47,10 +50,14 @@ class PieClass extends Component {
             .enter().append('g')
             .attr('class', 'arc');
 
-        g.append('path')
+        var path = g.append('path')
             .attr('d', this.createArc)
-            .style('fill', (d, i) => this.colors(d.index))
-            .transition()
+            .style('fill', (d, i) => this.colors(d.index));
+
+        path.append('title')
+            .text(function (d) { return (d.data.data + " - " + d.data.percent + "%"); });
+
+        path.transition()
             .ease(d3.easeLinear)
             .duration(1500)
             .attrTween('d', this.pieTween);
@@ -69,10 +76,18 @@ class PieClass extends Component {
 
     render() {
         return (
-            <div>
-                <h5>Overall Status (legends)</h5>
-                <div ref={this.ref} />
-            </div>
+            <Card className="m-1">
+                <CardBody>
+                    <CardTitle><h5>Overall Status</h5><hr /></CardTitle>
+                    <CardText>
+                        <div ref={this.ref} />
+                    </CardText>
+                </CardBody>
+            </Card>
+            // <div>
+            //     <h5>Overall Status (legends)</h5>
+            //     <div ref={this.ref} />
+            // </div>
         );
     }
 }

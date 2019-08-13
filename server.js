@@ -1,9 +1,13 @@
 const express = require("express");
+const app = express();
+var http = require('http').createServer(app);
 const path = require("path");
 const mongoose = require("mongoose");
-const socket = require("socket.io");
+const routes = require("./routes");
+const io = require('socket.io')(http);
 const PORT = process.env.PORT || 3001;
-const app = express();
+
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +17,23 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbRegulate");
+
+
+io.on('connection', function (socket) {
+  console.log('a user connected');
+  socket.on('chat message', function (msg) {
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+  socket.on('disconnect', function () {
+    console.log('user disconnected');
+  });
+});
+
 // Define API routes here
+app.use(routes);
+
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -21,6 +41,10 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, () => {
+//Database connection
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbRegulate");
+console.log("Connection state: " + mongoose.connection.readyState);
+
+http.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
