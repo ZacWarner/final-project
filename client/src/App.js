@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import { UserForm } from './pages/Profile/UserForm';
-import './pages/Profile/profile.css';
+import Signup from './pages/Registration';
+import Dashboard from './pages/Dashboard';
+import AboutUs from './pages/AboutUs';
+import Project from './pages/CreateProject';
+
+import './App.scss';
 
 class App extends Component {
+
+
   render() {
     return (
-      <div className="App">
-        <UserForm />
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={Landing} />
+          <Route exact path='/profile' component={Profile} />
+          {/* <Route exact path='/login' component={Login} /> */}
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/dashboard/:id' component={Dashboard} />
+
+          <Route exact path='/AboutUs' component={AboutUs}/>
+          <Route exact path='/createProject' component={Project}/>
+        </div>
+      </Router>
     );
   }
 }

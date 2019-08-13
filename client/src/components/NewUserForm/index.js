@@ -1,74 +1,104 @@
 import React from 'react';
-import '../styles/variables';
+
+import { Col, Row, Button, Form, FormGroup, FormFeedback, Label, Input, InputGroup, InputGroupAddon, Jumbotron, Container } from 'reactstrap';
+import '../styles/newuserform.scss';
+import '../styles/variables.scss';
 
 
-
-function NewUserForm(props) {
+export default class RegForm extends React.Component {
+  render() {
     return (
-        <div>
-            <form className="needs-validation" novalidate>
-                <div className="form-row">
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltip01">First name</label>
-                        <input type="text" className="form-control" id="validationTooltip01" placeholder="First name" value={props.details.firstname} required></input>
+      <div className="page-body">
+        <Jumbotron className="form-holder">
+          <Container fluid>
+            <Form>
+              <Row form>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="First Name">First Name</Label>
+                    <Input valid type="text" name="First Name" placeholder="First Name" value={this.props.firstName}/>
+                    
+                    
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="Last Name">Last Name</Label>
+                    <Input invalid type="text" name="Last Name" placeholder="Last Name" value={this.props.lastName}/>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={3}>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                    <Input invalid placeholder="username" value={this.props.userName}/>
+                    <FormFeedback>That name is already taken</FormFeedback>
+                  </InputGroup>
+                </Col>
 
-                        <div class="valid-tooltip">
-                            Looks good!
+              </Row>
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for="exampleEmail">Email</Label>
+                    <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" value={this.props.email}/>
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="examplePassword">Password</Label>
+                    <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" value={this.props.password}/>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for="exampleAddress">Address</Label>
+                    <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St" value={this.props.address1}/>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for="exampleAddress2">Address 2</Label>
+                    <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" value={this.props.address2}/>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row form>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for="exampleCity">City</Label>
+                    <Input type="text" name="city" id="exampleCity" placeholder="City" value={this.props.city}/>
+                  </FormGroup>
+                </Col>
+                <Col md={1}>
+                  <FormGroup>
+                    <Label for="exampleState">State</Label>
+                    <Input type="select" name="state" id="exampleState" value={this.props.stateProvince}>
+                    <option>Select</option>
+                    <option>AL</option>
+                    <option>AZ</option>
+                    <option>AR</option>
+                    
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for="exampleZip">Zip</Label>
+                    <Input type="text" name="zip" id="exampleZip" placeholder="5-digit Zip" value={this.props.zip}/>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Button onClick={this.props.user}>Register</Button>
+            </Form>
+          </Container>
+        </Jumbotron>
       </div>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltip02">Last name</label>
-                        <input type="text" className="form-control" id="validationTooltip02" placeholder="Last name" value={props.details.lastname} required></input>
-                        <div className="valid-tooltip">
-                            Looks good!
-      </div>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <label for="validationTooltipUsername">Username</label>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                            </div>
-                            <input type="text" className="form-control" id="validationTooltipUsername" placeholder="Username" value={props.details.username} aria-describedby="validationTooltipUsernamePrepend" required></input>
-                            <div className="invalid-tooltip">
-                                Please choose a unique and valid username.
-        </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-                        <div className="col-sm-10">
-                            <input type="email" className="form-control" id="inputEmail3" placeholder="Email" value={props.details.email}></input>
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
-                        <div className="col-sm-10">
-                            <input type="password" className="form-control" id="inputPassword" placeholder="Password" value={props.details.password}></input>
-                        </div>
-                    </div>
-
-                </div>
-                <div className="form-row">
-                    <div className="col-md-6 mb-3">
-                        <label for="validationTooltip03">City</label>
-                        <input type="text" className="form-control" id="validationTooltip03" placeholder="City" value={props.details.city} required></input>
-                        <div className="invalid-tooltip">
-                            Please provide a valid city.
-      </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                        <label for="validationTooltip04">State</label>
-                        <input type="text" class="form-control" id="validationTooltip04" placeholder="State" value={props.details.stateProvince} required></input>
-                        <div className="invalid-tooltip">
-                            Please provide a valid state.
-      </div>
-                    </div>
-                </div>
-                <button className="btn btn-primary" type="submit" onClick={props.details.submit}>Submit</button>
-            </form>
-        </div>
-    )
+    );
+  }
 }
-
-export default NewUserForm

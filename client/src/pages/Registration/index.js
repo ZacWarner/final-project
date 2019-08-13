@@ -1,29 +1,39 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
-import NewUserForm from '../../components/NewUserForm';
+import RegForm from '../../components/NewUserForm';
+import '../../components/styles/registrationPage.scss';
 
 
 
 
-class User extends Component{
+
+class Signup extends Component {
     state = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    userName: "",
-    password: "",
-    city: "",
-    stateProvince: ""
-    }
+        email: "",
+        firstName: "",
+        lastName: "",
+        userName: "",
+        password: "",
+        address1: "",
+        address2: "",
+        city: "",
+        stateProvince: "",
+        zip: "",
 
-render() {
-    return(
-        <div>
-        <Navbar />
-        <NewUserForm details={this.state}/>
-        </div>
-    )
+        //user=()=>{
+            //api stuff to validate & save or throw err & display invalid fields as red
+        //}
+    };
+   
+
+    render() {
+        return (
+            <div className="page-body">
+                <Navbar />
+                <RegForm user={this.state.user} details={this.state} />
+            </div>
+        )
     }
 };
 
-export default User
+export default Signup;
