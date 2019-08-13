@@ -89,11 +89,11 @@ export default class Chat extends React.Component {
     render() {
         return (
             <Card projectid={this.props.projectid}>
-                <CardHeader>{this.props.chatName}</CardHeader>
+                <CardHeader>{this.props.chatname}</CardHeader>
                 <CardBody>
                     <ListGroup>
                         {this.state.chatHistory.map(msg => (
-                            <ListGroupItem key={msg.message}>{msg.message}</ListGroupItem>
+                            <ListGroupItem className="border-0" key={msg._id}>{msg.name}: {msg.message}</ListGroupItem>
                         )
 
                         )}
