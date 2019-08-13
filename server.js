@@ -41,6 +41,10 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+//Database connection
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbRegulate");
+console.log("Connection state: " + mongoose.connection.readyState);
+
 http.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
