@@ -1,5 +1,7 @@
 @import '../variables.scss';
 
-.arc path{
+.arc {
+    path{
     stroke: $color-neutral;
+    }
 }

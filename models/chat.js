@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const chatSchema = new Schema({
+    projectId: { type: Number, required: true },
     name: { type: String, required: true },
     message: { type: String },
     date: { type: Date, default: Date.now }

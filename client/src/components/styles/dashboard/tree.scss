@@ -3,14 +3,15 @@
 $color-nodecolor:black;
 $stroke-link-width:2px;
 
-.node circle {
-    fill: $color-neutral;
-    stroke: $color-nodecolor;
-    stroke-width: $stroke-width;
-}
-
-.node text {
-    font: $font-normal sans-serif;
+.node {
+    circle {
+        fill: $color-neutral;
+        stroke: $color-nodecolor;
+        stroke-width: $stroke-width;
+    }
+    text {
+        font: $font-normal sans-serif;
+    }
 }
 
 .link {
