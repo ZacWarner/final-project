@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Landing from './pages/Landing';
+import { UserForm } from './pages/Profile/UserForm';
+import './pages/Profile/profile.css';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-
-          <Route exact path="/" component={Landing} />
-
-        </div>
-      </Router>
+      <div className="App">
+        <UserForm />
+      </div>
     );
   }
 }

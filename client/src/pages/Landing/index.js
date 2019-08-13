@@ -14,9 +14,7 @@ class Landing extends Component {
         return (
             <>
                 <Navbar />
-                <div>
-                    <h1>Our website</h1>
-                </div>
+           
             </>
         )
     }
