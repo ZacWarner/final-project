@@ -13,6 +13,7 @@ class Project extends Component {
     state = {
         projName: "",
         projOwner: "",
+        startDate: "",
         dueDate: "",
         projDesc: "",
         developers: [],
@@ -41,18 +42,9 @@ class Project extends Component {
         this.setState({
             [name]: value
         });
-        console.log("logged!");
-        console.log(this.state[name]);
+        console.log(this.state);
     };
-    handleDateChange = event => {
-        var date = event.target.value;
-        // date = new Date();
-        console.log(date);
-        this.setState({
-            dueDate: date.toString()
-        });
-        console.log(this.state.dueDate);
-    };
+
     createProject = () => {
         //API
     }
@@ -78,13 +70,13 @@ class Project extends Component {
                                     </Col>
                                     <Col>
                                         <FormGroup>
-                                            <Label for="dueDate">ETA: </Label>
+                                            <Label for="startDate">Start Date: </Label>
                                             <Input
                                                 type="date"
-                                                name="dueDate"
-                                                id="dueDate"
-                                                value={this.state.dueDate}
-                                                onChange={this.handleDateChange}
+                                                name="startDate"
+                                                id="startDate"
+                                                value={this.state.startDate}
+                                                onChange={this.handleInputChange}
                                             />
                                         </FormGroup>
                                     </Col>
@@ -97,6 +89,18 @@ class Project extends Component {
                                                 id="projDesc" onChange={this.handleInputChange} />
                                         </FormGroup>
                                     </Col>
+                                    <Col>
+                                        <FormGroup>
+                                            <Label for="dueDate">End Date: </Label>
+                                            <Input
+                                                type="date"
+                                                name="dueDate"
+                                                id="dueDate"
+                                                value={this.state.dueDate}
+                                                onChange={this.handleInputChange}
+                                            />
+                                        </FormGroup>
+                                    </Col>
                                 </Row>
                                 <Row>
                                     <Button color="primary" className="m-2" onClick={this.createProject}>Create</Button>
@@ -107,7 +111,7 @@ class Project extends Component {
                     <Card className="my-3 card-props">
                         <CardBody>
                             <CardTitle><h5>Add Module</h5><hr /></CardTitle>
-                            <AddModule data={this.state} handleCheckBox={this.handleCheckBox} />
+                            <AddModule data={this.state} handleInputChange={this.handleInputChange} handleCheckBox={this.handleCheckBox} />
                         </CardBody>
                     </Card>
                     <div className="modules">

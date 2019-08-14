@@ -8,13 +8,15 @@ import '../../styles/variables.scss';
 const addModule = (props) => {
     return (
         <>
+            {console.log(props.data)}
             <Container className="form-holder">
                 <Form>
                     <Row form>
                         <Col>
                             <FormGroup>
                                 <Label for="projName">Module Name: </Label>
-                                <Input type="text" id="modName" value={props.data.modName} placeholder="Module Name" />
+                                <Input type="text" id="modName" value={props.data.modName} placeholder="Module Name"
+                                    onChange={props.handleInputChange} />
                             </FormGroup>
                         </Col>
                         <Col>
@@ -24,6 +26,7 @@ const addModule = (props) => {
                                     type="date"
                                     name="date"
                                     id="dueDate"
+                                    onChange={props.handleInputChange}
                                 />
                             </FormGroup>
                         </Col>
@@ -32,14 +35,14 @@ const addModule = (props) => {
                         <Col>
                             <FormGroup>
                                 <Label for="projDesc">Module Description:</Label>
-                                <Input type="textarea" name="text" id="projDesc" />
+                                <Input type="textarea" name="text" id="projDesc" onChange={props.handleInputChange} />
                             </FormGroup>
                             <Button color="primary">Add Module</Button>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="assignDev">Assign To:</Label>
-                                <Input type="select" name="select" id="assignDev">
+                                <Input type="select" name="select" id="assignDev" onChange={props.handleInputChange}>
                                     <option>-- select developer --</option>
                                 </Input>
                             </FormGroup>
