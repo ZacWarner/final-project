@@ -14,7 +14,7 @@ const addModule = (props) => {
                         <Col>
                             <FormGroup>
                                 <Label for="projName">Module Name: </Label>
-                                <Input type="text" id="modName" placeholder="Module Name" />
+                                <Input type="text" id="modName" value={props.data.modName} placeholder="Module Name" />
                             </FormGroup>
                         </Col>
                         <Col>
@@ -45,12 +45,12 @@ const addModule = (props) => {
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" defaultChecked={props.properties.level1} onChange={props.handleCheckBox} />{' '}
+                                    <Input type="checkbox" defaultChecked={props.data.level1} onChange={props.handleCheckBox} />{' '}
                                     Level 1 Module
                                     </Label>
                             </FormGroup>
                             <FormGroup>
-                                <Input type="select" name="select" id="modParent" disabled={props.properties.level1 === true ? true : false}>
+                                <Input type="select" name="select" id="modParent" disabled={props.data.level1 === true ? true : false}>
                                     <option>-- select parent --</option>
                                 </Input>
                             </FormGroup>
