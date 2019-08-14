@@ -76,7 +76,7 @@ class PieClass extends Component {
 
     render() {
         return (
-            <Card className="m-1">
+            <Card className="m-1 card-props">
                 <CardBody>
                     <CardTitle><h5>Overall Status</h5><hr /></CardTitle>
                     <CardText>

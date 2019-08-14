@@ -161,21 +161,6 @@ class PieClass extends Component {
                 })
                 .text(function (d) { return d.data.name; });
 
-            // var tooltip = mod.append('div')
-            //     .attr('class', 'tooltip');
-            // tooltip.append('div')
-            //     .attr('class', 'label')
-            //     .attr('class', 'tooltiptext');
-
-            // mod.on('mouseover', function (d) {
-            //     tooltip.select('.label').html("text");
-            //     tooltip.style('display', 'block');
-            // });
-
-            // mod.on('mouseout', function () {
-            //     tooltip.style('display', 'none');
-            // });
-
             var nodeUpdate = nodeEnter.merge(node);
 
             nodeUpdate.transition()
@@ -271,7 +256,7 @@ class PieClass extends Component {
 
     render() {
         return (
-            <Card className="m-1">
+            <Card className="m-1 card-props">
                 <CardBody>
                     <CardTitle><h5>Task Deployment</h5><hr /></CardTitle>
                     <CardText>
