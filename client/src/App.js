@@ -11,8 +11,8 @@ import Project from './pages/Project';
 
 import './App.scss';
 
-class App extends Component {
 
+class App extends Component {
 
 
   render() {

@@ -1,0 +1,26 @@
+.form{
+  background-color: grey;
+}
+
+.profileImage{
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.topTitle{
+  margin-top: 25%;
+}
+
+.col{
+  padding-top: 3rem;
+  height: 26.5rem;
+} 
+
+#columnDetail{
+  height: 3rem;
+}
+
+.text-center{
+  background-color: rgb(240, 238, 238);
+}
