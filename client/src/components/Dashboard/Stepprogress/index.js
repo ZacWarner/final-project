@@ -117,7 +117,7 @@ class ProjPhase extends Component {
 
     render() {
         return (
-            <Card className="m-1">
+            <Card className="m-1 card-props">
                 <CardBody>
                     <CardTitle><h5>Current Phase</h5><hr /></CardTitle>
                     <CardText>

@@ -6,7 +6,9 @@ import Login from './pages/Login';
 import Signup from './pages/Registration';
 import Dashboard from './pages/Dashboard';
 import AboutUs from './pages/AboutUs';
-import Project from './pages/CreateProject';
+import CreateProject from './pages/CreateProject';
+import Project from './pages/Project';
+
 import './App.scss';
 
 class App extends Component {
@@ -20,8 +22,9 @@ class App extends Component {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/dashboard/:id' component={Dashboard} />
+          <Route exact path='/project/:id' component={Project} />
           <Route exact path='/AboutUs' component={AboutUs} />
-          <Route exact path='/createProject' component={Project} />
+          <Route exact path='/createProject' component={CreateProject} />
         </div>
       </Router>
     );

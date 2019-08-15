@@ -29,9 +29,11 @@ $stroke-thin:1px;
    }
    tr:nth-child(even) {
     background-color: $record-even;
+    color: black;
    }
    tr:nth-child(odd) {
     background-color: $record-odd;
+    color:black
    }
    tr:hover {
     background-color: $active-record;

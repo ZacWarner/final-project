@@ -12,7 +12,7 @@ class Projsummary extends Component {
 
     render() {
         return (
-            <Card className="m-1">
+            <Card className="m-1 card-props">
                 <CardBody>
                     <CardTitle><h5>Project Name</h5><hr /></CardTitle>
                     <CardSubtitle><h6>Project Owner</h6></CardSubtitle>
