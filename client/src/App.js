@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Landing from './pages/Landing';
+import Profile from './pages/Profile';
+// import Login from './pages/Login';
 import Signup from './pages/Registration';
 import Dashboard from './pages/Dashboard';
 import AboutUs from './pages/AboutUs';
 import Project from './pages/CreateProject';
-
 import './App.scss';
+
 
 class App extends Component {
 
