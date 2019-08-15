@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import theImage from './regulate_1.png'
+import theImage from '../../regulate_1.png'
 
 export default class Staff extends Component {
     state = {
@@ -15,13 +15,13 @@ export default class Staff extends Component {
         })
     }
     render() {
-        const {currentUserEmail, currentUserName } = this.state;
+        const { currentUserEmail, currentUserName } = this.state;
         return (
             <div>
-              <h1>Welcome {currentUserName }</h1> 
-              <p> Email: { currentUserEmail}</p>
-              <img src={theImage} className="img" />
-              <p>You have reached this Admin area of the Portal</p>
+                <h1>Welcome {currentUserName}</h1>
+                <p> Email: {currentUserEmail}</p>
+                <img src={theImage} className="img" />
+                <p>You have reached this Admin area of the Portal</p>
             </div>
         )
     }

@@ -9,7 +9,7 @@ export default withAuth(class Home extends Component {
 
   }
 
-  checkAuthentication = async() => {
+  checkAuthentication = async () => {
     const authenticated = await this.props.auth.isAuthenticated();
     if (authenticated !== this.state.authenticated) {
       this.setState({ authenticated });
@@ -23,11 +23,11 @@ export default withAuth(class Home extends Component {
     this.checkAuthentication();
   }
 
-   login = async() =>{
+  login = async () => {
     this.props.auth.login('/');
   }
 
-   logout = async() => {
+  logout = async () => {
     this.props.auth.logout('/');
   }
 
@@ -35,22 +35,22 @@ export default withAuth(class Home extends Component {
     if (this.state.authenticated === null) return null;
 
     const mainContent = this.state.authenticated ? (
-        <div>
-            <p className="lead">You have entered the staff portal, <Link to="/staff">Click Here</Link></p>
-            <button className="btn btn-light btn-lg" onClick={this.logout}>Logout</button>
-        </div>) : 
-        ( <div>
+      <div>
+        <p className="lead">You have entered the staff portal, <Link to="/staff">Click Here</Link></p>
+        <button className="btn btn-light btn-lg" onClick={this.logout}>Logout</button>
+      </div>) :
+      (<div>
         <p className="lead">If you are a staff member, please obtain your credentials. <Link to="/staff">Click Here</Link></p>
-            <button className="btn btn-dark btn-lg" onClick={this.login}>Login</button>
+        <button className="btn btn-dark btn-lg" onClick={this.login}>Login</button>
 
-    </div>);
-      
-      
+      </div>);
+
+
 
     return (
       <div className="jumbnotron">
         <h1 className="display-4">Regulate Admin Portal</h1>
-           {mainContent} 
+        {mainContent}
       </div>
     );
   }

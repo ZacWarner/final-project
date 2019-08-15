@@ -39,12 +39,12 @@ export default withAuth(
       return this.state.authenticated ? (
         <Redirect to={{ pathname: '/' }} />
       ) : (
-        <SignInWidget
-          baseUrl={this.props.baseUrl}
-          onSuccess={this.onSuccess}
-          onError={this.onError}
-        />
-      );
+          <SignInWidget
+            baseUrl={this.props.baseUrl}
+            onSuccess={this.onSuccess}
+            onError={this.onError}
+          />
+        );
     }
   }
 );

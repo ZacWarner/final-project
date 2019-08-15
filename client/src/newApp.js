@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-import Navabar from '../client/src/components/Navbar/Navbar';
-import Home from '../client/src/pages/Home/Home';
-import Staff from '../client/src/pages/Staff/Staff';
-import Login from '../client/src/components/auth/Login';
-import './App.css';
+import Navabar from './components/Navbar/Navbar';
+import Home from './pages/Login';
+import Staff from './pages/Staff/Staff';
+import Login from './pages/Login';
+
 
 
 function onAuthRequired({ history }) {
