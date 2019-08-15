@@ -11,8 +11,13 @@ import Project from './pages/Project';
 
 import './App.scss';
 
+
+<<<<<<< HEAD
+=======
 class App extends Component {
 
+
+>>>>>>> 91c3bcdf65e67b355a3143c7852d456d5164f99b
   render() {
     return (
       <Router>
