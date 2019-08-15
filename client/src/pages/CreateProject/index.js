@@ -50,6 +50,10 @@ class Project extends Component {
         //API
     }
 
+    addModule = () => {
+        //API
+    }
+
     render() {
         return (
             <div className="page-body">
