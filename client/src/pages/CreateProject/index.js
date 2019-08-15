@@ -21,6 +21,7 @@ class Project extends Component {
         modDesc: "",
         modDev: "",
         modDueDate: "",
+        modParent: "",
         level1: true
     };
     modules = [
@@ -58,54 +59,7 @@ class Project extends Component {
                         <CardBody>
                             <CardTitle><h5>Create New Project</h5><hr /></CardTitle>
                             <CardSubtitle><h6>Project owner: <i>LoggedIn User Name</i></h6></CardSubtitle>
-                            {/* <ProjectForm data={this.state} name={this.state.projName} handleInputChange={this.handleInputChange} /> */}
-                            <Form>
-                                <Row form>
-                                    <Col>
-                                        <FormGroup>
-                                            <Label for="projName">Project Name: </Label>
-                                            <Input type="text" id="projName" name="projName" value={this.state.projName}
-                                                placeholder="Project Name" onChange={this.handleInputChange} />
-                                        </FormGroup>
-                                    </Col>
-                                    <Col>
-                                        <FormGroup>
-                                            <Label for="startDate">Start Date: </Label>
-                                            <Input
-                                                type="date"
-                                                name="startDate"
-                                                id="startDate"
-                                                value={this.state.startDate}
-                                                onChange={this.handleInputChange}
-                                            />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row form>
-                                    <Col>
-                                        <FormGroup>
-                                            <Label for="projDesc">Project Description:</Label>
-                                            <Input type="textarea" name="projDesc" value={this.state.projDesc}
-                                                id="projDesc" onChange={this.handleInputChange} />
-                                        </FormGroup>
-                                    </Col>
-                                    <Col>
-                                        <FormGroup>
-                                            <Label for="dueDate">End Date: </Label>
-                                            <Input
-                                                type="date"
-                                                name="dueDate"
-                                                id="dueDate"
-                                                value={this.state.dueDate}
-                                                onChange={this.handleInputChange}
-                                            />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Button color="primary" className="m-2" onClick={this.createProject}>Create</Button>
-                                </Row>
-                            </Form>
+                            <ProjectForm data={this.state} handleInputChange={this.handleInputChange} />
                         </CardBody>
                     </Card>
                     <Card className="my-3 card-props">
