@@ -7,7 +7,7 @@ import {
 class Projsummary extends Component {
 
     componentDidMount() {
-        //Manipulate Data
+
     }
 
     render() {

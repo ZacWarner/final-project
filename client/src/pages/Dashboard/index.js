@@ -12,11 +12,39 @@ class Dashboard extends Component {
 
     state = {
         pieData: {},
-        treeData: {}
+        treeData: {},
+        projSum: {},
+        overallPercentage: 0
     };
 
     componentDidMount = () => {
-        //Manipulate Data
+        //Grab Data from db
+        console.log("Proj id: " + this.props.match.params.id);
+        API.getProject(this.props.match.params.id)
+            .then(res => {
+                console.log(res);
+                this.overallstatus(res);
+                this.setState({
+                    projSum: this.dataSummary(res)
+                });
+                console.log(this.state.projSum);
+
+            })
+            .catch(err => console.log(err));
+    }
+
+    overallstatus(res) {
+
+    }
+
+    dataSummary(res) {
+        let summary = {};
+        summary.projName = res.data.proj_name;
+        summary.projOwner = res.data.proj_owner;
+        summary.start_date = res.data.start_date;
+        summary.due_date = res.data.due_date;
+
+        return summary;
     }
 
     loadProjects = () => {
@@ -37,7 +65,9 @@ class Dashboard extends Component {
                 <Container>
                     <Row className="mt-3">
                         <Col md="3">
-                            <Projsummary />
+                            <Projsummary
+
+                            />
                         </Col>
                         <Col className="text-center">
                             <Projphase />
