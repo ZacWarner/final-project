@@ -16,13 +16,13 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <FormGroup>
                     <Label for="First Name">First Name</Label>
-                    <Input valid type="text" name="firstName" onChange={this.props.handleInputChange} placeholder="First Name" value={this.props.details.firstName} />
+                    <Input type="text" name="firstName" onChange={this.props.handleInputChange} placeholder="First Name" value={this.props.details.firstName} />
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="Last Name">Last Name</Label>
-                    <Input invalid type="text" name="lastName" onChange={this.props.handleInputChange} placeholder="Last Name" value={this.props.details.lastName} />
+                    <Input type="text" name="lastName" onChange={this.props.handleInputChange} placeholder="Last Name" value={this.props.details.lastName} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -30,7 +30,7 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                    <Input invalid placeholder="userName" name="userName" onChange={this.props.handleInputChange} value={this.props.details.userName} />
+                    <Input placeholder="userName" name="userName" onChange={this.props.handleInputChange} value={this.props.details.userName} />
                     <FormFeedback>That name is already taken</FormFeedback>
                   </InputGroup>
                 </Col>
