@@ -19,6 +19,7 @@ router
 
 router
     .route("/module/:id/:modid")
-    .put(projectController.updateModule);
+    .put(projectController.updateModule)
+    .delete(projectController.deleteModule);
 
 module.exports = router;

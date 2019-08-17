@@ -11,6 +11,8 @@ const addModule = (props) => {
         <Card className="m-1 card-props">
             {console.log("module card")}
             {console.log(props.data)}
+            {console.log("name: " + props.data.mod_name)}
+            {console.log("id: " + props.data._id)}
             <CardBody>
                 <CardTitle><h5>Module Name: {props.data.mod_name}</h5><hr /></CardTitle>
                 <Row>
@@ -27,7 +29,7 @@ const addModule = (props) => {
                     </Col>
                 </Row>
 
-                <Button color="primary">Delete</Button>
+                <Button color="primary" id={props.data._id} onClick={() => props.delModule(props.data._id)}>Delete</Button>
             </CardBody>
         </Card>
     );

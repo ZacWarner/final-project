@@ -32,5 +32,10 @@ export default {
     updateModule: function (id, modid, data) {
         console.log(id);
         return axios.put("/api/project/module/" + id + "/" + modid, data);
+    },
+    deleteModule: function (projId, modId) {
+        console.log(projId);
+        console.log(modId);
+        return axios.delete("/api/project/module/" + projId + "/" + modId);
     }
 };

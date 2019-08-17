@@ -27,28 +27,12 @@ class Dashboard extends Component {
         //     .catch(err => console.log(err));
 
         let id = "5d521ab554d46540e0170e64";
-        // API.updateProject(id, {
-        //     proj_name: "regulate",
-        //     proj_owner: "osom"
-        // })
-        //     .then(res =>
-        //         console.log(res)
-        //     )
-        //     .catch(err => console.log(err));
         let modid = "5d5218c90689120ad0e43b45";
         API.updateModule(id, modid, {
             complete: true
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));
-
-        // API.addModule(id, {
-        //     mod_name: "tree",
-        //     mod_description: "module progress",
-        //     developer: "meena"
-        // })
-        //     .then(res => console.log(res))
-        //     .catch(err => console.log(err));
     };
 
     render() {

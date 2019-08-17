@@ -42,6 +42,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    deleteModule: function (req, res) {
+        db.Project
+            .find({ _id: req.params.id }, { modules: { $elemMatch: { _id: req.params.modid } } })
+            .then(dbModule => dbModule.remove())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     remove: function (req, res) {
         db.Project
             .findById({ _id: req.params.id })

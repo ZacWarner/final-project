@@ -116,6 +116,12 @@ class Project extends Component {
             .catch(err => console.log(err));
     }
 
+    delModule = (modId) => {
+        API.deleteModule(this.state.projId, modId)
+            .then(res => console.log("deleted"))
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <div className="page-body">
@@ -140,7 +146,7 @@ class Project extends Component {
                     </Card>
                     <div className="modules">
                         {this.state.modules.map(module => (
-                            <ModuleCard key={module.id} data={module} />
+                            <ModuleCard key={module.id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
                 </Container>
