@@ -13,4 +13,13 @@ router
     .put(projectController.update)
     .delete(projectController.remove);
 
+router
+    .route("/module/:id")
+    .put(projectController.addModule);
+
+router
+    .route("/module/:id/:modid")
+    .put(projectController.updateModule)
+    .delete(projectController.deleteModule);
+
 module.exports = router;
