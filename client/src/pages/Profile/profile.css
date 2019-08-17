@@ -1,18 +1,18 @@
-/* .form{
-  background-color: grey;
-}
 
 .profileImage{
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
+  margin-top: 2.5rem;
+  margin-left: .5rem;
 }
 
 .topTitle{
   margin-top: 25%;
 }
 
-.col{
+.profileColumn, .topTitle{
+  margin-bottom: 5rem;
   padding-top: 3rem;
  
 } 
