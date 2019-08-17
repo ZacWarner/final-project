@@ -14,7 +14,6 @@ const projectSchema = new Schema({
     proj_description: { type: String, default: "Project" },
     start_date: Date,
     due_date: Date,
-    developers: [String],
     proj_complete: { type: Boolean, default: false },
     modules: [
         {

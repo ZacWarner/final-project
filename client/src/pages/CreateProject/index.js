@@ -18,7 +18,6 @@ class Project extends Component {
         startDate: "",
         dueDate: "",
         projDesc: "",
-        developers: [],
         modName: "",
         modDesc: "",
         modDev: "",
