@@ -10,7 +10,7 @@ function Patrick() {
     return (
         <div>
             <div className="card dev-card">
-                <img src="https://media.licdn.com/dms/image/C5103AQEzSTQTF4kPBg/profile-displayphoto-shrink_100_100/0?e=1571270400&v=beta&t=wETSXPSohAL5rrSgDqntfpkBrq_oMb4xx0IGlvExYjM" className="card-img-top"></img>
+                <img src="https://avatars2.githubusercontent.com/u/48222005?s=460&v=4" className="card-img-top"></img>
                     <div className="card-body">
                     <h3>Patrick Owens</h3>
                     <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
