@@ -42,7 +42,7 @@ class Profile extends Component {
                                         <p>Date Registered: 01/01/2019</p>
                                 </CardText>
                             </CardBody>
-                            <CardTitle><h5 className="text-center">Location</h5></CardTitle>
+                            <CardTitle><h5 id="profileHeader">Location</h5></CardTitle>
                             <CardBody>
                                 <CardText>
                                         <p>Country: United States</p>
@@ -50,7 +50,7 @@ class Profile extends Component {
                                         <p>State: CA</p>
                                 </CardText>
                             </CardBody>
-                            <CardTitle><h5 className="text-center">Personal Information</h5></CardTitle>
+                            <CardTitle><h5 id="profileHeader">Personal Information</h5></CardTitle>
                             <CardBody>
                                 <CardText>
                                         <p>Birth Date: 01/01/1900</p>
