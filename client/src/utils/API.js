@@ -17,8 +17,20 @@ export default {
     deleteProject: function (id) {
         return axios.delete("/api/project/" + id);
     },
+    updateProject: function (id, data) {
+        console.log(id);
+        return axios.put("/api/project/" + id, data);
+    },
     addProject: function (projData) {
         console.log("Utils");
         return axios.post("/api/project", projData);
+    },
+    addModule: function (id, modData) {
+        console.log("Util module");
+        return axios.put("/api/project/module/" + id, modData);
+    },
+    updateModule: function (id, modid, data) {
+        console.log(id);
+        return axios.put("/api/project/module/" + id + "/" + modid, data);
     }
 };
