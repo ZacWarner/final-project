@@ -55,7 +55,7 @@ const createProj = (props) => {
                         </Col>
                     </Row>
                     <Row>
-                        <Button color="primary" className="m-2">Create</Button>
+                        <Button color="primary" className="m-2" onClick={props.createProject}>Create</Button>
                     </Row>
                 </Form>
             </Container>

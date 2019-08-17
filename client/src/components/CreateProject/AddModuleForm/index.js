@@ -8,7 +8,6 @@ import '../../styles/variables.scss';
 const addModule = (props) => {
     return (
         <>
-            {console.log(props.data)}
             <Container className="form-holder">
                 <Form>
                     <Row form>
@@ -38,7 +37,7 @@ const addModule = (props) => {
                                 <Label for="projDesc">Module Description:</Label>
                                 <Input type="textarea" name="modDesc" id="modDesc" onChange={props.handleInputChange} />
                             </FormGroup>
-                            <Button color="primary">Add Module</Button>
+                            <Button color="primary" onClick={props.handleAddModule}>Add Module</Button>
                         </Col>
                         <Col>
                             <FormGroup>
