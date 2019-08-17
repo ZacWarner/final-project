@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Col, Row, Button, Form, FormGroup, FormFeedback, Label, Input, InputGroup, InputGroupAddon, Jumbotron, Container } from 'reactstrap';
 import '../styles/newuserform.scss';
 import '../styles/variables.scss';
