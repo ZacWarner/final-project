@@ -45,23 +45,50 @@ class Project extends Component {
     };
 
     createProject = () => {
-        API.addProject({
-            proj_name: this.state.projName,
-            proj_owner: "filler",
-            proj_description: this.state.projDesc,
-            start_date: this.state.startDate,
-            due_date: this.state.dueDate
-        })
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    projCreated: "yes",
-                    projId: res.data._id
+        if (this.state.projId === "") {
+            console.log("Calling createProject");
+            API.addProject({
+                proj_name: this.state.projName,
+                proj_owner: "filler",
+                proj_description: this.state.projDesc,
+                start_date: this.state.startDate,
+                due_date: this.state.dueDate
+            })
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        projCreated: "yes",
+                        projId: res.data._id
+                    })
+                    console.log(this.state);
                 })
-                console.log(this.state);
-            }
-            )
-            .catch(err => console.log(err));
+                .catch(err => console.log(err));
+        } else {
+            console.log("Calling updateProject");
+            API.updateProject(this.state.projId, {
+                proj_name: this.state.projName,
+                proj_owner: "filler",
+                proj_description: this.state.projDesc,
+                start_date: this.state.startDate,
+                due_date: this.state.dueDate
+            })
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        projCreated: "yes",
+                        projId: res.data._id
+                    })
+                    console.log(this.state);
+                })
+                .catch(err => console.log(err));
+        }
+    }
+
+    editProject = () => {
+        console.log("Updating Project");
+        this.setState({
+            projCreated: "no"
+        })
     }
 
     addModule = () => {
@@ -102,7 +129,7 @@ class Project extends Component {
                                 <ProjectForm data={this.state} handleInputChange={this.handleInputChange} createProject={this.createProject} />
                             </CardBody>
                         </Card>) :
-                        (<ProjectCard data={this.state} />)
+                        (<ProjectCard data={this.state} editProject={this.editProject} />)
                     }
                     <Card className="my-3 card-props">
                         <CardBody>

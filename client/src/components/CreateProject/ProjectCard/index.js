@@ -27,7 +27,7 @@ const addModule = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Button color="primary" className="mx-3">Edit</Button>
+                    <Button color="primary" className="mx-3" onClick={props.editProject}>Edit</Button>
                 </Row>
             </CardBody>
         </Card>
