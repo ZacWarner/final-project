@@ -34,7 +34,7 @@ class Signup extends Component {
 
     saveUser = event => {
         console.log("Saved Informaiton for User" + event.target.id);
-        
+
         let userToSave = this.state.user.filter(user => user.id === event.target.id);
         let userDetails = {
             email: userToSave[0].userInfo.email,
@@ -48,7 +48,7 @@ class Signup extends Component {
             stateProvince: userToSave[0].userInfo.stateProvince,
             zip: userToSave[0].userInfo.zip,
         }
-        //console.log(UserDetails);
+        console.log(UserDetails);
         //API.saveUser(userDetails)
         //    .then(alert('user info saved'))
         //    .catch(err => console.log(err))
