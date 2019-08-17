@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the booksController
 module.exports = {
     findAll: function (req, res) {
         db.Project
@@ -37,15 +36,13 @@ module.exports = {
     },
     updateModule: function (req, res) {
         db.Project
-            // .findOneAndUpdate({ "modules._id": req.params.modid }, { $set: { complete: true } })
             .find({ _id: req.params.id }, { modules: { $elemMatch: { _id: req.params.modid } } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     deleteModule: function (req, res) {
         db.Project
-            .find({ _id: req.params.id }, { modules: { $elemMatch: { _id: req.params.modid } } })
-            .then(dbModule => dbModule.remove())
+            .findOneAndUpdate({ _id: req.params.id }, { $pull: { modules: { _id: req.params.modid } } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

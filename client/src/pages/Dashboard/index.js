@@ -20,11 +20,6 @@ class Dashboard extends Component {
     }
 
     loadProjects = () => {
-        // API.getProject("5d5218c90689120ad0e43b44")
-        //     .then(res =>
-        //         console.log(res)
-        //     )
-        //     .catch(err => console.log(err));
 
         let id = "5d521ab554d46540e0170e64";
         let modid = "5d5218c90689120ad0e43b45";
@@ -64,9 +59,6 @@ class Dashboard extends Component {
                         <Col className="text-center">
                             <Moduleprogress />
                         </Col>
-                    </Row>
-                    <Row>
-                        <Button onClick={() => this.loadProjects()}>Check</Button>
                     </Row>
                 </Container>
             </>

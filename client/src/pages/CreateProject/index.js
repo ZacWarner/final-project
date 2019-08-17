@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Container, Card, CardBody,
-    CardTitle, CardSubtitle
+    CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import ProjectForm from '../../components/CreateProject/CreateProjectForm';
@@ -28,9 +28,10 @@ class Project extends Component {
 
         projCreated: "no",
         projId: "",
-        modules: []
+        modules: [],
+        navigateTo: ""
     };
-    modules = [];
+
 
     handleCheckBox = () => {
         this.setState({ level1: !this.state.level1 });
@@ -58,7 +59,8 @@ class Project extends Component {
                     console.log(res);
                     this.setState({
                         projCreated: "yes",
-                        projId: res.data._id
+                        projId: res.data._id,
+                        navigateTo: "/project/" + res.data._id
                     })
                     console.log(this.state);
                 })
@@ -118,7 +120,18 @@ class Project extends Component {
 
     delModule = (modId) => {
         API.deleteModule(this.state.projId, modId)
-            .then(res => console.log("deleted"))
+            .then(res => {
+                console.log(res);
+                // To update this.state.modules
+                API.getProject(this.state.projId)
+                    .then(res => {
+                        console.log(res);
+                        this.setState({
+                            modules: res.data.modules
+                        })
+                    })
+                    .catch(err => console.log(err));
+            })
             .catch(err => console.log(err));
     }
 
@@ -149,6 +162,9 @@ class Project extends Component {
                             <ModuleCard key={module.id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
+                    <a href={this.state.navigateTo}>
+                        <Button color="success" size="lg" block>Done</Button>
+                    </a>
                 </Container>
             </div>
         )

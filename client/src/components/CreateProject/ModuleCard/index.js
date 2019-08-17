@@ -27,6 +27,15 @@ const addModule = (props) => {
                     <Col>
                         <p>Description: {props.data.mod_description}</p>
                     </Col>
+                    {(props.data.parent !== "") ? (
+                        <Col>
+                            <p>
+                                Parent Module: {props.data.parent}
+                            </p>
+                        </Col>
+                    ) : (
+                            <></>
+                        )}
                 </Row>
 
                 <Button color="primary" id={props.data._id} onClick={() => props.delModule(props.data._id)}>Delete</Button>
