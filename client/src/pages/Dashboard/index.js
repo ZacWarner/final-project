@@ -47,17 +47,6 @@ class Dashboard extends Component {
         return summary;
     }
 
-    loadProjects = () => {
-
-        let id = "5d521ab554d46540e0170e64";
-        let modid = "5d5218c90689120ad0e43b45";
-        API.updateModule(id, modid, {
-            complete: true
-        })
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-    };
-
     render() {
         return (
             <>
