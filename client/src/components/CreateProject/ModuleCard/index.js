@@ -1,19 +1,44 @@
 import React from "react";
 import {
     Card, CardBody,
-    CardTitle, CardSubtitle, Button
+    CardTitle, Button, Row, Col
 } from 'reactstrap';
+import Moment from 'moment';
 
 const addModule = (props) => {
     return (
+
         <Card className="m-1 card-props">
+            {console.log("module card")}
+            {console.log(props.data)}
+            {console.log("name: " + props.data.mod_name)}
+            {console.log("id: " + props.data._id)}
             <CardBody>
-                <CardTitle><h5>Module Name: {props.data.name}</h5><hr /></CardTitle>
-                <CardSubtitle><h6>Project Owner: {props.data.owner}</h6></CardSubtitle>
-                <p>Description: {props.data.desc}</p>
-                <p>Due Date: {props.data.due}</p>
-                <p>Assigned to: {props.data.dev}</p>
-                <Button color="primary">Delete</Button>
+                <CardTitle><h5>Module Name: {props.data.mod_name}</h5><hr /></CardTitle>
+                <Row>
+                    <Col>
+                        <p>Assigned to: {props.data.developer}</p>
+                    </Col>
+                    <Col>
+                        <p>Due Date: {Moment(props.data.mod_due).format('YYYY-MM-DD')}</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <p>Description: {props.data.mod_description}</p>
+                    </Col>
+                    {(props.data.parent !== "") ? (
+                        <Col>
+                            <p>
+                                Parent Module: {props.data.parent}
+                            </p>
+                        </Col>
+                    ) : (
+                            <></>
+                        )}
+                </Row>
+
+                <Button color="primary" id={props.data._id} onClick={() => props.delModule(props.data._id)}>Delete</Button>
             </CardBody>
         </Card>
     );
