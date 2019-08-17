@@ -16,13 +16,13 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <FormGroup>
                     <Label for="First Name">First Name</Label>
-                    <Input valid type="text" name="First Name" placeholder="First Name" value={this.props.firstName} />
+                    <Input valid type="text" name="firstName" onChange={this.props.handleInputChange} placeholder="First Name" value={this.props.details.firstName} />
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="Last Name">Last Name</Label>
-                    <Input invalid type="text" name="Last Name" placeholder="Last Name" value={this.props.lastName} />
+                    <Input invalid type="text" name="lastName" onChange={this.props.handleInputChange} placeholder="Last Name" value={this.props.details.lastName} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -30,7 +30,7 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                    <Input invalid placeholder="username" value={this.props.userName} />
+                    <Input invalid placeholder="userName" name="userName" onChange={this.props.handleInputChange} value={this.props.details.userName} />
                     <FormFeedback>That name is already taken</FormFeedback>
                   </InputGroup>
                 </Col>
@@ -39,13 +39,13 @@ export default class RegForm extends React.Component {
                 <Col md={4}>
                   <FormGroup>
                     <Label for="exampleEmail">Email</Label>
-                    <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" value={this.props.email} />
+                    <Input type="email" name="email" id="exampleEmail" onChange={this.props.handleInputChange} placeholder="with a placeholder" value={this.props.details.email} />
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="examplePassword">Password</Label>
-                    <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" value={this.props.password} />
+                    <Input type="password" name="password" id="examplePassword" onChange={this.props.handleInputChange} placeholder="password placeholder" value={this.props.details.password} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -53,7 +53,7 @@ export default class RegForm extends React.Component {
                 <Col md={4}>
                   <FormGroup>
                     <Label for="exampleAddress">Address</Label>
-                    <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St" value={this.props.address1} />
+                    <Input type="text" name="address1" id="exampleAddress" onChange={this.props.handleInputChange} placeholder="1234 Main St" value={this.props.details.address1} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -61,7 +61,7 @@ export default class RegForm extends React.Component {
                 <Col md={4}>
                   <FormGroup>
                     <Label for="exampleAddress2">Address 2</Label>
-                    <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" value={this.props.address2} />
+                    <Input type="text" name="address2" id="exampleAddress2" onChange={this.props.handleInputChange} placeholder="Apartment, studio, or floor" value={this.props.details.address2} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -69,13 +69,13 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <FormGroup>
                     <Label for="exampleCity">City</Label>
-                    <Input type="text" name="city" id="exampleCity" placeholder="City" value={this.props.city} />
+                    <Input type="text" name="city" id="exampleCity" onChange={this.props.handleInputChange} placeholder="City" value={this.props.details.city} />
                   </FormGroup>
                 </Col>
                 <Col md={1}>
                   <FormGroup>
                     <Label for="exampleState">State</Label>
-                    <Input type="select" name="state" id="exampleState" value={this.props.stateProvince}>
+                    <Input type="select" name="stateProvince" id="exampleState" onChange={this.props.handleInputChange} value={this.props.details.stateProvince}>
                       <option>Select</option>
                       <option>Alaska - AK</option>
                       <option>Arizona - AZ</option>
@@ -141,7 +141,7 @@ export default class RegForm extends React.Component {
                 <Col md={1}>
                   <FormGroup>
                     <Label for="exampleZip">Zip</Label>
-                    <Input type="text" name="zip" id="exampleZip" placeholder="5-digit Zip" value={this.props.zip} />
+                    <Input type="text" name="zip" id="exampleZip" onChange={this.props.handleInputChange} placeholder="5-digit Zip" value={this.props.details.zip} />
                   </FormGroup>
                 </Col>
               </Row>
