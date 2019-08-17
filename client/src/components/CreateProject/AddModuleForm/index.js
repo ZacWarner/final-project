@@ -8,7 +8,6 @@ import '../../styles/variables.scss';
 const addModule = (props) => {
     return (
         <>
-            {console.log(props.data)}
             <Container className="form-holder">
                 <Form>
                     <Row form>
@@ -16,7 +15,8 @@ const addModule = (props) => {
                             <FormGroup>
                                 <Label for="projName">Module Name: </Label>
                                 <Input type="text" id="modName" name="modName" value={props.data.modName} placeholder="Module Name"
-                                    onChange={props.handleInputChange} />
+                                    onChange={props.handleInputChange}
+                                    disabled={(props.data.projCreated === "no") ? true : false} />
                             </FormGroup>
                         </Col>
                         <Col>
@@ -28,6 +28,7 @@ const addModule = (props) => {
                                     id="modDueDate"
                                     value={props.data.modDueDate}
                                     onChange={props.handleInputChange}
+                                    disabled={(props.data.projCreated === "no") ? true : false}
                                 />
                             </FormGroup>
                         </Col>
@@ -36,23 +37,33 @@ const addModule = (props) => {
                         <Col>
                             <FormGroup>
                                 <Label for="projDesc">Module Description:</Label>
-                                <Input type="textarea" name="modDesc" id="modDesc" onChange={props.handleInputChange} />
+                                <Input type="textarea" name="modDesc" id="modDesc" value={props.data.modDesc}
+                                    onChange={props.handleInputChange}
+                                    disabled={(props.data.projCreated === "no") ? true : false} />
                             </FormGroup>
-                            <Button color="primary">Add Module</Button>
+                            <Button color="primary" onClick={props.handleAddModule}
+                                disabled={(props.data.projCreated === "no") ? true : false}>Add Module</Button>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="assignDev">Assign To:</Label>
                                 <Input type="select" name="modDev" id="assignDev"
-                                    value={props.data.modDev} onChange={props.handleInputChange}>
+                                    value={props.data.modDev} onChange={props.handleInputChange}
+                                    disabled={(props.data.projCreated === "no") ? true : false}>
                                     <option>-- select developer --</option>
-                                    <option>check</option>
+                                    {/* To be loaded from profile collection */}
+                                    <option>Meena</option>
+                                    <option>Zac</option>
+                                    <option>Patrick</option>
+                                    <option>Adam</option>
+                                    <option>Lucious</option>
+
                                 </Input>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
                                     <Input type="checkbox" defaultChecked={props.data.level1}
-                                        onChange={props.handleCheckBox} />{' '}
+                                        onChange={props.handleCheckBox} disabled={(props.data.projCreated === "no") ? true : false} />{' '}
                                     Level 1 Module
                                     </Label>
                             </FormGroup>
@@ -61,7 +72,11 @@ const addModule = (props) => {
                                     disabled={props.data.level1 === true ? true : false}
                                     value={props.data.modParent} onChange={props.handleInputChange}>
                                     <option>-- select parent --</option>
-                                    <option>check</option>
+                                    {props.data.modules.map((e, key) => {
+                                        if (e.level1module) {
+                                            return <option key={key} value={e.mod_name}>{e.mod_name}</option>;
+                                        }
+                                    })}
                                 </Input>
                             </FormGroup>
                         </Col>
