@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {
     Container, Card, CardBody,
-    CardTitle, CardSubtitle
+    CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import ProjectForm from '../../components/CreateProject/CreateProjectForm';
 import AddModule from '../../components/CreateProject/AddModuleForm';
 import ModuleCard from '../../components/CreateProject/ModuleCard';
+import ProjectCard from '../../components/CreateProject/ProjectCard';
+import API from '../../utils/API';
 
 
 class Project extends Component {
@@ -16,23 +18,19 @@ class Project extends Component {
         startDate: "",
         dueDate: "",
         projDesc: "",
-        developers: [],
         modName: "",
         modDesc: "",
         modDev: "",
         modDueDate: "",
         modParent: "",
-        level1: true
+        level1: true,
+
+        projCreated: "no",
+        projId: "",
+        modules: [],
+        navigateTo: ""
     };
-    modules = [
-        // {
-        //     name: "chk",
-        //     owner: "check",
-        //     desc: "chk check",
-        //     due: "date",
-        //     dev: "developer"
-        // }
-    ];
+
 
     handleCheckBox = () => {
         this.setState({ level1: !this.state.level1 });
@@ -47,11 +45,93 @@ class Project extends Component {
     };
 
     createProject = () => {
-        //API
+        if (this.state.projId === "") {
+            console.log("Calling createProject");
+            API.addProject({
+                proj_name: this.state.projName,
+                proj_owner: "filler",
+                proj_description: this.state.projDesc,
+                start_date: this.state.startDate,
+                due_date: this.state.dueDate
+            })
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        projCreated: "yes",
+                        projId: res.data._id,
+                        navigateTo: "/project/" + res.data._id
+                    })
+                    console.log(this.state);
+                })
+                .catch(err => console.log(err));
+        } else {
+            console.log("Calling updateProject");
+            API.updateProject(this.state.projId, {
+                proj_name: this.state.projName,
+                proj_owner: "filler",
+                proj_description: this.state.projDesc,
+                start_date: this.state.startDate,
+                due_date: this.state.dueDate
+            })
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        projCreated: "yes",
+                        projId: res.data._id
+                    })
+                    console.log(this.state);
+                })
+                .catch(err => console.log(err));
+        }
+    }
+
+    editProject = () => {
+        console.log("Updating Project");
+        this.setState({
+            projCreated: "no"
+        })
     }
 
     addModule = () => {
-        //API
+        API.addModule(this.state.projId, {
+            mod_name: this.state.modName,
+            mod_description: this.state.modDesc,
+            developer: this.state.modDev,
+            mod_due: this.state.modDueDate,
+            parent: this.state.modParent,
+            level1module: this.state.level1
+        })
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    modules: res.data.modules,
+                    modName: "",
+                    modDesc: "",
+                    modDev: "",
+                    modDueDate: "",
+                    modParent: "",
+                    level1: true
+                })
+                console.log(this.state);
+            })
+            .catch(err => console.log(err));
+    }
+
+    delModule = (modId) => {
+        API.deleteModule(this.state.projId, modId)
+            .then(res => {
+                console.log(res);
+                // To update this.state.modules
+                API.getProject(this.state.projId)
+                    .then(res => {
+                        console.log(res);
+                        this.setState({
+                            modules: res.data.modules
+                        })
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -59,24 +139,31 @@ class Project extends Component {
             <div className="page-body">
                 <Navbar />
                 <Container>
-                    <Card className="my-3 card-props">
-                        <CardBody>
-                            <CardTitle><h5>Create New Project</h5><hr /></CardTitle>
-                            <CardSubtitle><h6>Project owner: <i>LoggedIn User Name</i></h6></CardSubtitle>
-                            <ProjectForm data={this.state} handleInputChange={this.handleInputChange} />
-                        </CardBody>
-                    </Card>
+                    {this.state.projCreated === "no" ?
+                        (<Card className="my-3 card-props">
+                            <CardBody>
+                                <CardTitle><h5>Create New Project</h5><hr /></CardTitle>
+                                <CardSubtitle><h6>Project owner: <i>LoggedIn User Name</i></h6></CardSubtitle>
+                                <ProjectForm data={this.state} handleInputChange={this.handleInputChange} createProject={this.createProject} />
+                            </CardBody>
+                        </Card>) :
+                        (<ProjectCard data={this.state} editProject={this.editProject} />)
+                    }
                     <Card className="my-3 card-props">
                         <CardBody>
                             <CardTitle><h5>Add Module</h5><hr /></CardTitle>
-                            <AddModule data={this.state} handleInputChange={this.handleInputChange} handleCheckBox={this.handleCheckBox} />
+                            <AddModule data={this.state} handleInputChange={this.handleInputChange}
+                                handleCheckBox={this.handleCheckBox} handleAddModule={this.addModule} />
                         </CardBody>
                     </Card>
                     <div className="modules">
-                        {this.modules.map(module => (
-                            <ModuleCard data={module} />
+                        {this.state.modules.map(module => (
+                            <ModuleCard key={module.id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
+                    <a href={this.state.navigateTo}>
+                        <Button color="success" size="lg" block>Done</Button>
+                    </a>
                 </Container>
             </div>
         )
