@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import ProjectForm from '../../components/CreateProject/CreateProjectForm';
 import AddModule from '../../components/CreateProject/AddModuleForm';
 import ModuleCard from '../../components/CreateProject/ModuleCard';
-import ProjectCard from '../../components/CreateProject/projectCard';
+import ProjectCard from '../../components/CreateProject/ProjectCard';
 import API from '../../utils/API';
 
 

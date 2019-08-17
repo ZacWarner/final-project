@@ -12,7 +12,7 @@ const projectSchema = new Schema({
         type: String, required: true
     },
     proj_description: { type: String, default: "Project" },
-    start_date: { type: Date, default: Date.now },
+    start_date: Date,
     due_date: Date,
     developers: [String],
     proj_complete: { type: Boolean, default: false },
