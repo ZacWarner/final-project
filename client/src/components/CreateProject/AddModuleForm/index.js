@@ -51,7 +51,13 @@ const addModule = (props) => {
                                     value={props.data.modDev} onChange={props.handleInputChange}
                                     disabled={(props.data.projCreated === "no") ? true : false}>
                                     <option>-- select developer --</option>
-                                    <option>check</option>
+                                    {/* To be loaded from profile collection */}
+                                    <option>Meena</option>
+                                    <option>Zac</option>
+                                    <option>Patrick</option>
+                                    <option>Adam</option>
+                                    <option>Lucious</option>
+
                                 </Input>
                             </FormGroup>
                             <FormGroup check>
@@ -66,7 +72,11 @@ const addModule = (props) => {
                                     disabled={props.data.level1 === true ? true : false}
                                     value={props.data.modParent} onChange={props.handleInputChange}>
                                     <option>-- select parent --</option>
-                                    <option>check</option>
+                                    {props.data.modules.map((e, key) => {
+                                        if (e.level1module) {
+                                            return <option key={key} value={e.mod_name}>{e.mod_name}</option>;
+                                        }
+                                    })}
                                 </Input>
                             </FormGroup>
                         </Col>
