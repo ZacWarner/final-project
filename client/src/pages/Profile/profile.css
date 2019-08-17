@@ -1,3 +1,4 @@
+
 .profileImage{
   width: 10rem;
   height: 10rem;
@@ -13,7 +14,7 @@
 .profileColumn, .topTitle{
   margin-bottom: 5rem;
   padding-top: 3rem;
-  height: 26.5rem;
+ 
 } 
 
 #columnDetail{
@@ -23,4 +24,4 @@
 #profileHeader{
   text-align: center;
   background-color: rgb(240, 238, 238);
-}
+} */

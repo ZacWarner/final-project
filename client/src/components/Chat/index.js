@@ -1,7 +1,7 @@
 import React from 'react';
 import socketIOClient from "socket.io-client";
 import API from "../../utils/API";
-import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon } from 'reactstrap';
+import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon, Form, FormGroup } from 'reactstrap';
 
 
 
@@ -68,20 +68,13 @@ export default class Chat extends React.Component {
         const socket = socketIOClient(endpoint);
         socket.emit('chat message', this.state.message);
         this.addChatHistory();
-
+        this.setState({ message: "" });
     };
 
-    onMessageReceived(msg) {
-        const chatHistory = this.state.chatHistory;
-        const projectId = this.state.projectId;
-        const name = this.state.name;
-        const chat = {
-            projectId: projectId,
-            message: msg,
-            name: name
-        }
-        chatHistory.push(chat);
-        this.setState(chatHistory);
+    onMessageReceived() {
+        const id = this.state.projectId;
+
+        this.getChatHistory(id);
     }
 
 
@@ -100,21 +93,24 @@ export default class Chat extends React.Component {
                     </ListGroup>
                 </CardBody>
                 <CardFooter>
-                    <InputGroup>
-                        <Input
-                            placeholder="Type to chat!"
-                            value={this.message}
-                            onChange={this.handleInputChange}
-                        />
-                        <InputGroupAddon addonType="append">
-                            <Button
-                                color="success"
-                                onClick={this.handleFormSubmit}
-                            >
-                                Enter
+                    <Form>
+                        <InputGroup>
+                            <Input
+                                placeholder="Type to chat!"
+                                value={this.state.message}
+                                onChange={this.handleInputChange}
+                            />
+                            <InputGroupAddon addonType="append">
+                                <Button
+                                    type="submit"
+                                    color="success"
+                                    onClick={this.handleFormSubmit}
+                                >
+                                    Enter
                                 </Button>
-                        </InputGroupAddon>
-                    </InputGroup>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </Form>
                 </CardFooter>
             </Card>
 
