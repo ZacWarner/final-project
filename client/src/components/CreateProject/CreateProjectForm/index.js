@@ -16,7 +16,7 @@ const createProj = (props) => {
                         <Col>
                             <FormGroup>
                                 <Label for="projName">Project Name: </Label>
-                                <Input type="text" id="projName" name="projName" value={props.data.name}
+                                <Input type="text" id="projName" name="projName" value={props.data.projName}
                                     placeholder="Project Name" onChange={props.handleInputChange} />
                             </FormGroup>
                         </Col>
