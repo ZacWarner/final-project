@@ -35,7 +35,7 @@ const addModule = (props) => {
                         <Col>
                             <FormGroup>
                                 <Label for="projDesc">Module Description:</Label>
-                                <Input type="textarea" name="modDesc" id="modDesc" onChange={props.handleInputChange} />
+                                <Input type="textarea" name="modDesc" id="modDesc" value={props.data.modDesc} onChange={props.handleInputChange} />
                             </FormGroup>
                             <Button color="primary" onClick={props.handleAddModule}>Add Module</Button>
                         </Col>

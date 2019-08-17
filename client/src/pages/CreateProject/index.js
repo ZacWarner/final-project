@@ -28,15 +28,7 @@ class Project extends Component {
 
         projCreated: "no",
         projId: "",
-        modules: [
-            {
-                name: "chk",
-                owner: "check",
-                desc: "chk check",
-                due: "date",
-                dev: "developer"
-            }
-        ]
+        modules: []
     };
     modules = [];
 
@@ -84,7 +76,13 @@ class Project extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                    modules: res.data.modules
+                    modules: res.data.modules,
+                    modName: "",
+                    modDesc: "",
+                    modDev: "",
+                    modDueDate: "",
+                    modParent: "",
+                    level1: true
                 })
                 console.log(this.state);
             })
