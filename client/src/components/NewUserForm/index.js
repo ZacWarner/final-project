@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Col, Row, Button, Form, FormGroup, FormFeedback, Label, Input, InputGroup, InputGroupAddon, Jumbotron, Container } from 'reactstrap';
 import '../styles/newuserform.scss';
 import '../styles/variables.scss';
@@ -16,13 +15,13 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <FormGroup>
                     <Label for="First Name">First Name</Label>
-                    <Input valid type="text" name="First Name" placeholder="First Name" value={this.props.firstName} />
+                    <Input type="text" name="First Name" placeholder="First Name" value={this.props.firstName} />
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="Last Name">Last Name</Label>
-                    <Input invalid type="text" name="Last Name" placeholder="Last Name" value={this.props.lastName} />
+                    <Input type="text" name="Last Name" placeholder="Last Name" value={this.props.lastName} />
                   </FormGroup>
                 </Col>
               </Row>
@@ -30,7 +29,7 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                    <Input invalid placeholder="username" value={this.props.userName} />
+                    <Input placeholder="username" value={this.props.userName} />
                     <FormFeedback>That name is already taken</FormFeedback>
                   </InputGroup>
                 </Col>
