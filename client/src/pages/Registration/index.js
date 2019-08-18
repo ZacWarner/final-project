@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
-
+import API from '../../utils/API';
 
 
 
@@ -23,16 +23,30 @@ class Signup extends Component {
 
     };
 
+    CheckPassword(inputtxt) {
+        var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+        if (inputtxt.match(paswd)) {
+
+            return true;
+        }
+        else {
+            alert('passwords must be between 7 and 15 characters, containing at least one numeric digit & one special character')
+            return false;
+        }
+    }
+
     handleInputChange = event => {
         const { name, value } = event.target;
+        //console.log(name, value);
         this.setState({
             [name]: value,
         });
+
     };
 
     saveUser = event => {
         event.preventDefault();
-        console.log("Saved Informaiton for User" + event.target.id);
+        console.log("Saved Information for User" + event.target.id);
 
         // let userToSave = this.state.user.filter(user => user.id === event.target.id);
         let userDetails = {
@@ -48,9 +62,16 @@ class Signup extends Component {
             zip: this.state.zip,
         }
         console.log(userDetails);
-        //API.saveUser(userDetails)
-        //    .then(alert('user info saved'))
-        //    .catch(err => console.log(err))
+
+        this.CheckPassword(this.state.password);
+
+
+
+        API.createUser(userDetails)
+            .then(function (data) {
+                window.location.replace("/profile");
+            });
+        
     }
 
     render() {

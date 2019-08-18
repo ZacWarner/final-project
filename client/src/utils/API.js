@@ -37,5 +37,22 @@ export default {
         console.log(projId);
         console.log(modId);
         return axios.delete("/api/project/module/" + projId + "/" + modId);
+    },
+    createUser: function (user) {
+        console.log(user);
+        return axios.post("api/user/signup", user);
+    },
+    login: function (user) {
+        return axios.post("api/user/login", user);
+    },
+    findUsr: function (id) {
+        return axios.get("api/user/login/" + id);
+    },
+    logOut: function () {
+        return axios.get("api/user/logout");
+    },
+    getUsr: function () {
+        return axios.get("/api/user/getusr");
     }
+
 };

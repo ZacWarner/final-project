@@ -1,7 +1,9 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, FormFeedback, Label, Input, InputGroup, InputGroupAddon, Jumbotron, Container } from 'reactstrap';
+import { Col, Row, Button, FormGroup, FormFeedback, Label, Input, InputGroup, InputGroupAddon, Jumbotron, Container } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import '../styles/newuserform.scss';
 import '../styles/variables.scss';
+
 
 
 export default class RegForm extends React.Component {
@@ -10,7 +12,7 @@ export default class RegForm extends React.Component {
       <div className="page-body">
         <Jumbotron className="form-holder">
           <Container fluid>
-            <Form>
+            <AvForm>
               <Row form>
                 <Col md={3}>
                   <FormGroup>
@@ -29,7 +31,7 @@ export default class RegForm extends React.Component {
                 <Col md={3}>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                    <Input placeholder="userName" name="userName" onChange={this.props.handleInputChange} value={this.props.details.userName} />
+                    <Input placeholder="Username" name="userName" onChange={this.props.handleInputChange} value={this.props.details.userName} />
                     <FormFeedback>That name is already taken</FormFeedback>
                   </InputGroup>
                 </Col>
@@ -37,14 +39,19 @@ export default class RegForm extends React.Component {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for="exampleEmail">Email</Label>
-                    <Input type="email" name="email" id="exampleEmail" onChange={this.props.handleInputChange} placeholder="with a placeholder" value={this.props.details.email} />
+
+                    <AvField name="email" label="Email Address" placeholder="Email Address" onChange={this.props.handleInputChange} value={this.props.details.email} type="email" required />
+
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="examplePassword">Password</Label>
-                    <Input type="password" name="password" id="examplePassword" onChange={this.props.handleInputChange} placeholder="password placeholder" value={this.props.details.password} />
+
+                    <AvField type="password" name="password" onChange={this.props.handleInputChange} placeholder="*******" value={this.props.details.password} required />
+
+                    {/* <Input type="password" name="password" id="examplePassword" onChange={this.props.handleInputChange} placeholder="password placeholder" value={this.props.details.password} /> */}
+
                   </FormGroup>
                 </Col>
               </Row>
@@ -145,7 +152,7 @@ export default class RegForm extends React.Component {
                 </Col>
               </Row>
               <Button onClick={this.props.user}>Register</Button>
-            </Form>
+            </AvForm>
           </Container>
         </Jumbotron>
       </div>

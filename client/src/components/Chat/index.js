@@ -32,8 +32,13 @@ export default class Chat extends React.Component {
 
         const name = this.props.name;
         this.setState({ projectId: projectId });
-        this.setState({ name: name });
 
+        API.getUsr().then(res => {
+            if (res.data.user) {
+                this.setState({ name: res.data.user.userName })
+            }
+
+        });
         this.getChatHistory(projectId);
 
     }
@@ -42,7 +47,7 @@ export default class Chat extends React.Component {
         API.getChat(id)
             .then(res => {
                 this.setState({ chatHistory: res.data });
-                console.log(res.data);
+                console.log(res);
             });
 
     };
