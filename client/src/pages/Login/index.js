@@ -45,7 +45,7 @@ class Login extends Component {
                                 </Col>
                                 <Col md="6">
                                     <Label>Password</Label>
-                                    <Input placeholder="your password" name="password" value={this.state.password} onChange={this.handleInputChange}></Input>
+                                    <Input type="password" placeholder="your password" name="password" value={this.state.password} onChange={this.handleInputChange}></Input>
                                 </Col>
                             </Row>
                             <Row>
