@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
-
+import API from '../../utils/API';
 
 
 
@@ -47,7 +47,11 @@ class Signup extends Component {
             stateProvince: this.state.stateProvince,
             zip: this.state.zip,
         }
-        console.log(userDetails);
+
+        API.createUser(userDetails)
+            .then(function (data) {
+                window.location.replace("/profile");
+            });
         //API.saveUser(userDetails)
         //    .then(alert('user info saved'))
         //    .catch(err => console.log(err))

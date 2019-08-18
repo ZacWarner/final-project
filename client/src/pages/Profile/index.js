@@ -12,8 +12,13 @@ import Form from './Form';
 class Profile extends Component {
 
     state = {
-
+        email: ""
     };
+
+    componentDidMount() {
+
+
+    }
 
     render() {
         return (
@@ -24,24 +29,24 @@ class Profile extends Component {
                     <Row>
 
                         <Col className="profileColumn">
-                        <Card style={{ width: '100%' }}>
-                            <Row>
-                                <Col id="columnDetail">
-                                <CardImg className="profileImage" variant="top" src={logo} />
-                                </Col>
-                                <Col id="columnDetail" className="topTitle">
-                                
-                                <CardTitle><h3>D-Jane1234</h3></CardTitle>
-                                <CardTitle><h3>Jane Doe</h3></CardTitle>
-                                </Col>
-                                
-                            </Row><hr />
-                           
-                            <CardBody>
-                                
-                                <CardText style={{paddingTop: '2rem'}}>
+                            <Card style={{ width: '100%' }}>
+                                <Row>
+                                    <Col id="columnDetail">
+                                        <CardImg className="profileImage" variant="top" src={logo} />
+                                    </Col>
+                                    <Col id="columnDetail" className="topTitle">
 
-                                        <p>Email: JaneDoe@gmail.com</p>
+                                        <CardTitle><h3>D-Jane1234</h3></CardTitle>
+                                        <CardTitle><h3>Jane Doe</h3></CardTitle>
+                                    </Col>
+
+                                </Row><hr />
+
+                                <CardBody>
+
+                                    <CardText style={{ paddingTop: '2rem' }}>
+
+                                        <p>Email: {this.state.email}</p>
                                         <p>Role: Developer</p>
                                         <p>Date Registered: 01/01/2019</p>
                                     </CardText>
@@ -86,11 +91,11 @@ class Profile extends Component {
                                             <li><a href='#'>Agora</a></li>
                                             <li><a href='#'>Lorem</a></li>
                                         </ul>
-                                        
+
                                     </CardText>
-                                    
+
                                     <Button color="primary" className="float-right">Create New</Button>
-                                    
+
                                 </CardBody>
                             </Card></Col>
                         <Col className="profileColumn">
@@ -108,24 +113,24 @@ class Profile extends Component {
                     </Row>
 
                     <Col className="profileColumn">
-                    <Card className="ml-auto" style={{ width: '65%' }}>
-                                <CardBody>
-                                    <CardTitle><h4>Skills</h4><hr /></CardTitle>
-                                    <CardText>
-                                        <p>HTML 5</p>
-                                        <p>CSS 3</p>
-                                        <p>JavaScript</p>
-                                        <p>React</p>
-                                    </CardText>
-                                    <Button color="primary" className="float-right">Edit</Button>
-                                </CardBody>
-                            </Card>
+                        <Card className="ml-auto" style={{ width: '65%' }}>
+                            <CardBody>
+                                <CardTitle><h4>Skills</h4><hr /></CardTitle>
+                                <CardText>
+                                    <p>HTML 5</p>
+                                    <p>CSS 3</p>
+                                    <p>JavaScript</p>
+                                    <p>React</p>
+                                </CardText>
+                                <Button color="primary" className="float-right">Edit</Button>
+                            </CardBody>
+                        </Card>
 
                     </Col>
                 </Container>
 
             </>
-            
+
         );
     }
 }
