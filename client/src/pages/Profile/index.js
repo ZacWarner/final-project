@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Card, CardText, CardBody, CardTitle, CardSubtitle, Button, CardImg } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import logo from '../../images/orangelady.jpeg';
-
 import './profile.css';
 import Form from './Form';
 
@@ -12,7 +11,16 @@ import Form from './Form';
 class Profile extends Component {
 
     state = {
-        email: ""
+        email: "",
+        role: "",
+        dateReg: "",
+        country: "",
+        city: "",
+        state: "",
+        birthDate: "",
+        phoneNumber: "",
+        jobTitle: "",
+
     };
 
     componentDidMount() {
@@ -27,49 +35,55 @@ class Profile extends Component {
                 <Container>
 
                     <Row>
-
+                        <Col-md-6>
                         <Col className="profileColumn">
-                            <Card style={{ width: '100%' }}>
-                                <Row>
-                                    <Col id="columnDetail">
-                                        <CardImg className="profileImage" variant="top" src={logo} />
-                                    </Col>
-                                    <Col id="columnDetail" className="topTitle">
+                        <Card style={{ width: '100%' }}>
+                            <Row>
+                                <Col id="columnDetail">
+                                <CardImg className="profileImage" variant="top" src={logo} />
+                                </Col>
+                                <Col id="columnDetail" className="topTitle">
+                                
+                                <CardTitle><h3>D-Jane1234</h3></CardTitle>
+                                <CardTitle><h3>Jane Doe</h3></CardTitle>
+                                </Col>
+                                
+                            </Row><hr />
+                        
 
-                                        <CardTitle><h3>D-Jane1234</h3></CardTitle>
-                                        <CardTitle><h3>Jane Doe</h3></CardTitle>
-                                    </Col>
+                            
+                            <CardBody>
+                                
+                                <CardText style={{paddingTop: '2rem'}}>
 
-                                </Row><hr />
-
-                                <CardBody>
-
-                                    <CardText style={{ paddingTop: '2rem' }}>
-
-                                        <p>Email: {this.state.email}</p>
-                                        <p>Role: Developer</p>
-                                        <p>Date Registered: 01/01/2019</p>
+                                        <p>Email: {this.state.email} </p>
+                                        <p>Role: {this.state.role} </p>
+                                        <p>Date Registered: {this.state.dateReg} </p>
                                     </CardText>
                                 </CardBody>
-                                <CardTitle><h5 className="text-center">Location</h5></CardTitle>
+                                <CardTitle><h5 id="profileHeader">Location</h5></CardTitle>
                                 <CardBody>
                                     <CardText>
-                                        <p>Country: United States</p>
-                                        <p>City: Sacramento</p>
-                                        <p>State: CA</p>
+                                        <p>Country: {this.state.country} </p>
+                                        <p>City: {this.state.city} </p>
+                                        <p>State: {this.state.state} </p>
                                     </CardText>
                                 </CardBody>
-                                <CardTitle><h5 className="text-center">Personal Information</h5></CardTitle>
+                                <CardTitle><h5 id="profileHeader">Personal Information</h5></CardTitle>
                                 <CardBody>
                                     <CardText>
-                                        <p>Birth Date: 01/01/1900</p>
-                                        <p>Phone Number: 000-000-0000</p>
-                                        <p>Job Title: Web Developer</p>
+                                        <p>Birth Date: {this.state.birthDate} </p>
+                                        <p>Phone Number: {this.state.phoneNumber} </p>
+                                        <p>Job Title: {this.state.jobTitle} </p>
 
                                     </CardText>
                                 </CardBody>
                             </Card>
                         </Col>
+                        </Col-md-6>
+
+                        <Col-md-6>
+                        <Row>
                         <Col className="profileColumn">
                             <Card className="m-0" style={{ width: '100%' }}>
                                 <CardBody>
@@ -98,6 +112,7 @@ class Profile extends Component {
 
                                 </CardBody>
                             </Card></Col>
+
                         <Col className="profileColumn">
                             <Card className="m-0" style={{ width: '100%' }}>
                                 <CardBody>
@@ -110,23 +125,25 @@ class Profile extends Component {
                                     <Form />
                                 </CardBody>
                             </Card></Col>
-                    </Row>
+                            </Row>
 
-                    <Col className="profileColumn">
-                        <Card className="ml-auto" style={{ width: '65%' }}>
-                            <CardBody>
-                                <CardTitle><h4>Skills</h4><hr /></CardTitle>
-                                <CardText>
-                                    <p>HTML 5</p>
-                                    <p>CSS 3</p>
-                                    <p>JavaScript</p>
-                                    <p>React</p>
-                                </CardText>
-                                <Button color="primary" className="float-right">Edit</Button>
-                            </CardBody>
-                        </Card>
-
-                    </Col>
+                            <Row>
+                            <Col className="profileColumn">
+                             <Card  style={{ width: '100%' }}>
+                                <CardBody>
+                                    <CardTitle><h4>Skills</h4><hr /></CardTitle>
+                                    <CardText>
+                                        <p>HTML 5</p>
+                                        <p>CSS 3</p>
+                                        <p>JavaScript</p>
+                                        <p>React</p>
+                                    </CardText>
+                                    <Button color="primary" className="float-right">Edit</Button>
+                                </CardBody>
+                            </Card></Col>
+                            </Row>
+                            </Col-md-6>
+                        </Row>
                 </Container>
 
             </>
