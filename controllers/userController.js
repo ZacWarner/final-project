@@ -22,5 +22,12 @@ module.exports = {
     logOut: function (req, res) {
         req.logout();
         res.redirect("/")
+    },
+    getUsr: function (req, res) {
+        if (req.user) {
+            res.json({ user: req.user })
+        } else {
+            res.json({ user: null })
+        }
     }
 };

@@ -14,5 +14,10 @@ router.route("/login/:id")
     .get(userController.find);
 router.route("/logout")
     .get((req, res) => { req.logout(), res.redirect("/") });
+router.route("/getusr")
+    .get(userController.getUsr);
+
+
+
 
 module.exports = router;
