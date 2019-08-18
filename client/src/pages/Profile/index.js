@@ -23,6 +23,11 @@ class Profile extends Component {
 
     };
 
+    componentDidMount() {
+
+
+    }
+
     render() {
         return (
             <>
@@ -100,11 +105,11 @@ class Profile extends Component {
                                             <li><a href='#'>Agora</a></li>
                                             <li><a href='#'>Lorem</a></li>
                                         </ul>
-                                        
+
                                     </CardText>
-                                    
+
                                     <Button color="primary" className="float-right">Create New</Button>
-                                    
+
                                 </CardBody>
                             </Card></Col>
 
@@ -142,7 +147,7 @@ class Profile extends Component {
                 </Container>
 
             </>
-            
+
         );
     }
 }

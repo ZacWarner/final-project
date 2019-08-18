@@ -20,8 +20,6 @@ class Landing extends Component {
                         <a href="/login" className="btn btn-primary m-3">Login</a>
                     </Container>
                 </Jumbotron>
-                <Chat projectid="1" name="zac" chatname="main chat!"></Chat>
-
             </>
         )
     }
