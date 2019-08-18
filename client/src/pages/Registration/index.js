@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
-
+import API from '../../utils/API';
 
 
 
@@ -66,9 +66,12 @@ class Signup extends Component {
         this.CheckPassword(this.state.password);
 
 
-        //API.saveUser(userDetails)
-        //    .then(alert('user info saved'))
-        //    .catch(err => console.log(err))
+
+        API.createUser(userDetails)
+            .then(function (data) {
+                window.location.replace("/profile");
+            });
+        
     }
 
     render() {
