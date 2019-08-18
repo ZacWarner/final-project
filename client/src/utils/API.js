@@ -50,6 +50,9 @@ export default {
     },
     logOut: function () {
         return axios.get("api/user/logout");
+    },
+    getUsr: function () {
+        return axios.get("/api/user/getusr");
     }
 
 };
