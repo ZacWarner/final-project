@@ -17,6 +17,7 @@ class ProjPhase extends Component {
         }
     }
     componentWillMount() {
+        let localDataRecords = [];
         API.getProject(this.props.projId)
             .then(res => {
                 if (res.data.modules) {
@@ -47,10 +48,13 @@ class ProjPhase extends Component {
                                     tmp.subcomplete = 0;
                                 }
                             }
-                            this.state.dataRecords.push(tmp)
+                            localDataRecords.push(tmp)
                         }
                     });
                 }
+                this.setState({
+                    dataRecords: localDataRecords
+                })
                 console.log(this.state.dataRecords);
             })
             .catch(err => console.log(err));
