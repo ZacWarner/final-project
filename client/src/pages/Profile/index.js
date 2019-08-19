@@ -21,8 +21,10 @@ class Profile extends Component {
         birthDate: "",
         phoneNumber: "",
         jobTitle: "",
+
         name: "",
         userName: ""
+
 
     };
 
@@ -49,6 +51,7 @@ class Profile extends Component {
 
                     <Row>
                         <Col-md-6>
+
                             <Col className="profileColumn">
                                 <Card style={{ width: '100%' }}>
                                     <Row>
@@ -157,6 +160,7 @@ class Profile extends Component {
                             </Row>
                         </Col-md-6>
                     </Row>
+
                 </Container>
 
             </>
