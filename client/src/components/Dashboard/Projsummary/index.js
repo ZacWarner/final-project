@@ -44,14 +44,13 @@ class Projsummary extends Component {
                             } else if (subcount === subcomplete) {
                                 moduleComplete++;
                             }
-
                         }
                     });
                     overallPercentage = ((moduleComplete / moduleCount) * 100).toFixed(1);
                 }
                 this.setState({
-                    proj_name: res.data.proj_name,
-                    proj_owner: res.data.proj_owner,
+                    proj_name: res.data.proj_name.toUpperCase(),
+                    proj_owner: res.data.proj_owner.toUpperCase(),
                     start_date: res.data.start_date,
                     due_date: res.data.due_date,
                     overallPercentage: overallPercentage
