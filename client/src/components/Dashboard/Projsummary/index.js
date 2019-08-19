@@ -37,7 +37,6 @@ class Projsummary extends Component {
                                     }
                                 }
                             });
-                            console.log("subcount: " + subcount + " subcomplete: " + subcomplete);
                             if (subcount === 0) {
                                 if (i.complete) {
                                     moduleComplete++;

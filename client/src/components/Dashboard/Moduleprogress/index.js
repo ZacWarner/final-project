@@ -61,7 +61,6 @@ class ProjPhase extends Component {
     }
 
     renderTableData() {
-        console.log("rendering table data");
         return this.state.dataRecords.map((data, index) => {
             const { id, name, owner, due, subcount, subcomplete } = data
             return (
