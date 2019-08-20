@@ -14,13 +14,12 @@ class Profile extends Component {
     state = {
         email: "",
         role: "",
-        dateReg: "",
-        country: "",
         city: "",
         state: "",
-        birthDate: "",
         phoneNumber: "",
-        jobTitle: "",
+        linkedin: "",
+        projects: [],
+        skills: [],
 
         name: "",
         userName: ""
@@ -38,13 +37,17 @@ class Profile extends Component {
                 userName: user.userName,
                 name: fullName,
                 state: user.stateProvince,
-            })
+            });
         });
         API.getProfileData(this.props.match.params.usrname)
-            .then(function (data) {
+            .then(function (res) {
                 console.log("data from prof collection");
-                console.log(data);
-            })
+                console.log(res);
+                this.setState({
+                    projects: res.data.projects
+                });
+            });
+
 
     }
 
@@ -73,28 +76,20 @@ class Profile extends Component {
 
 
 
-                                    <CardBody>
+                                    <CardBody style={{ paddingTop: '2rem' }}>
 
-                                        <CardText style={{ paddingTop: '2rem' }}>
-
-                                            <p>Email: {this.state.email} </p>
-                                            <p>Role: {this.state.role} </p>
-                                        </CardText>
+                                        <p>Email: {this.state.email} </p>
+                                        <p>Role: {this.state.role} </p>
                                     </CardBody>
                                     <CardTitle><h5 id="profileHeader">Location</h5></CardTitle>
                                     <CardBody>
-                                        <CardText>
-                                            <p>City: {this.state.city} </p>
-                                            <p>State: {this.state.state} </p>
-                                        </CardText>
+                                        <p>City: {this.state.city} </p>
+                                        <p>State: {this.state.state} </p>
                                     </CardBody>
                                     <CardTitle><h5 id="profileHeader">Personal Information</h5></CardTitle>
                                     <CardBody>
-                                        <CardText>
-                                            <p>Phone Number: {this.state.phoneNumber} </p>
-                                            <p>LinkedIn Profile: </p>
-
-                                        </CardText>
+                                        <p>Phone Number: {this.state.phoneNumber} </p>
+                                        <p>LinkedIn Profile: </p>
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -106,25 +101,32 @@ class Profile extends Component {
                                     <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Projects</h4><hr /></CardTitle>
-                                            <CardText>
-                                                <h6>Current Projects:</h6>
-                                                <ul style={{ 'list-style-type': 'square' }}>
-                                                    <li><a href='#'>Regulate</a></li>
-                                                </ul>
+                                            {/* <h6>Current Projects:</h6>
+                                            <ul style={{ 'list-style-type': 'square' }}>
+                                                <li><a href='#'>Regulate</a></li>
+                                            </ul>
 
-                                                <h6>Pending Projects:</h6>
-                                                <ul style={{ 'list-style-type': 'square' }}>
-                                                    <li><a href='#'>Debugging</a></li>
-                                                    <li><a href='#'>Internet Explorer Crashed</a></li>
-                                                </ul>
+                                            <h6>Pending Projects:</h6>
+                                            <ul style={{ 'list-style-type': 'square' }}>
+                                                <li><a href='#'>Debugging</a></li>
+                                                <li><a href='#'>Internet Explorer Crashed</a></li>
+                                            </ul>
 
-                                                <h6>Finsished Project:</h6>
-                                                <ul style={{ 'list-style-type': 'square' }}>
-                                                    <li><a href='#'>Agora</a></li>
-                                                    <li><a href='#'>Lorem</a></li>
-                                                </ul>
-
-                                            </CardText>
+                                            <h6>Finsished Project:</h6>
+                                            <ul style={{ 'list-style-type': 'square' }}>
+                                                <li><a href='#'>Agora</a></li>
+                                                <li><a href='#'>Lorem</a></li>
+                                            </ul> */}
+                                            <ul style={{ 'list-style-type': 'square' }}>
+                                                {this.state.projects.map(proj => {
+                                                    return (
+                                                        <li>
+                                                            proj
+                                                        </li>
+                                                    );
+                                                })
+                                                }
+                                            </ul>
 
                                             <Button color="primary" className="float-right">Create New</Button>
 
@@ -135,11 +137,9 @@ class Profile extends Component {
                                     <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Notes</h4><hr /></CardTitle>
-                                            <CardText>
-                                                <p>Work on building a navbar for my project.</p>
-                                                <p>Work on building a universal sidebar.</p>
-                                                <p>Debug Agora</p>
-                                            </CardText>
+                                            <p>Work on building a navbar for my project.</p>
+                                            <p>Work on building a universal sidebar.</p>
+                                            <p>Debug Agora</p>
                                             <Form />
                                         </CardBody>
                                     </Card></Col>
@@ -150,12 +150,10 @@ class Profile extends Component {
                                     <Card style={{ width: '100%' }} className="card-props">
                                         <CardBody>
                                             <CardTitle><h4>Skills</h4><hr /></CardTitle>
-                                            <CardText>
-                                                <p>HTML 5</p>
-                                                <p>CSS 3</p>
-                                                <p>JavaScript</p>
-                                                <p>React</p>
-                                            </CardText>
+                                            <p>HTML 5</p>
+                                            <p>CSS 3</p>
+                                            <p>JavaScript</p>
+                                            <p>React</p>
                                             <Button color="primary" className="float-right">Edit</Button>
                                         </CardBody>
                                     </Card></Col>
