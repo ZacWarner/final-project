@@ -24,8 +24,12 @@ function Patrick() {
                         <li>Skill</li>
                     </ul>
                     
-                    <a href='https://www.linkedin.com/in/patrick-owens-9a99b7163/'>LinkedIn Profile
+
+                    <a href='https://www.linkedin.com/in/patrick-owens-9a99b7163/'>
+                    LinkedIn Profile
                     </a>
+                    
+                    
                         
                 </div>
             </div>
