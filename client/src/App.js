@@ -59,13 +59,25 @@ class App extends Component {
       } />
     );
 
+    const AlreadyLoggedInRoute = ({ component: Component, wasRedirected, page, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        !sessionStorage.getItem("signedIn")
+          ? <Component {...props} />
+          : <Redirect to="/profile" wasRedirected={wasRedirected} page={page} />
+      )
+      } />
+    );
+
+
     return (
       <Router>
         <div>
           <Route exact path="/" component={Landing} />
           <PrivateRoute path='/profile' component={Profile} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={Signup} />
+          <AlreadyLoggedInRoute path='/login' component={Login} />
+          <AlreadyLoggedInRoute path='/signup' component={Signup} />
+          {/* <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} /> */}
           <PrivateRoute path='/dashboard/:id' component={Dashboard}
             wasRedirected={true}
             page="Profile"
