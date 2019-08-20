@@ -31,6 +31,16 @@ class Project extends Component {
         navigateTo: ""
     };
 
+    componentDidMount() {
+
+        API.getUsr().then(res => {
+            if (res.data.user) {
+                this.setState({ projOwner: res.data.user.userName })
+            }
+
+        });
+
+    }
 
     handleCheckBox = () => {
         this.setState({ level1: !this.state.level1 });
@@ -49,7 +59,7 @@ class Project extends Component {
             console.log("Calling createProject");
             API.addProject({
                 proj_name: this.state.projName,
-                proj_owner: "filler",
+                proj_owner: this.state.projOwner,
                 proj_description: this.state.projDesc,
                 start_date: this.state.startDate,
                 due_date: this.state.dueDate
@@ -143,7 +153,7 @@ class Project extends Component {
                         (<Card className="my-3 card-props">
                             <CardBody>
                                 <CardTitle><h5>Create New Project</h5><hr /></CardTitle>
-                                <CardSubtitle><h6>Project owner: <i>LoggedIn User Name</i></h6></CardSubtitle>
+                                <CardSubtitle><h6>Project owner: <i>{this.state.projOwner.toUpperCase()}</i></h6></CardSubtitle>
                                 <ProjectForm data={this.state} handleInputChange={this.handleInputChange} createProject={this.createProject} />
                             </CardBody>
                         </Card>) :
