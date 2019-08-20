@@ -73,8 +73,8 @@ class Signup extends Component {
         API.createUser(userDetails)
             .then(function (data) {
                 API.createDevProfile(profileData)
-                    .then(function (data) {
-                        window.location.replace("/profile");
+                    .then(function (res) {
+                        window.location.replace("/profile/" + res.data._id);
                     });
             });
 

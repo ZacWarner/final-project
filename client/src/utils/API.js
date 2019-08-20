@@ -42,11 +42,6 @@ export default {
         console.log(user);
         return axios.post("api/user/signup", user);
     },
-    createDevProfile: function (usrName) {
-        console.log("create dev prof");
-        console.log(usrName);
-        return axios.post("/api/profile", usrName);
-    },
     login: function (user) {
         return axios.post("api/user/login", user);
     },
@@ -58,6 +53,14 @@ export default {
     },
     getUsr: function () {
         return axios.get("/api/user/getusr");
+    },
+    createDevProfile: function (usrName) {
+        console.log("create dev prof");
+        console.log(usrName);
+        return axios.post("/api/profile", usrName);
+    },
+    getProfileData: function (usrName) {
+        return axios.get("/api/profile/" + usrName);
     }
 
 };
