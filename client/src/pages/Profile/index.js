@@ -39,7 +39,12 @@ class Profile extends Component {
                 name: fullName,
                 state: user.stateProvince,
             })
-        })
+        });
+        API.getProfileData(this.props.match.params.usrname)
+            .then(function (data) {
+                console.log("data from prof collection");
+                console.log(data);
+            })
 
     }
 
