@@ -39,16 +39,16 @@ export default class RegForm extends React.Component {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    
+
                     <AvField name="email" label="Email Address" placeholder="Email Address" onChange={this.props.handleInputChange} value={this.props.details.email} type="email" required />
-                    
+
                   </FormGroup>
                 </Col>
                 <Col md={3}>
                   <FormGroup>
                     <Label for="examplePassword">Password</Label>
 
-                    <AvField type="password" name="password" onChange={this.props.handleInputChange} placeholder="*******" value={this.props.details.password} required/>
+                    <AvField type="password" name="password" onChange={this.props.handleInputChange} placeholder="*******" value={this.props.details.password} required />
 
                     {/* <Input type="password" name="password" id="examplePassword" onChange={this.props.handleInputChange} placeholder="password placeholder" value={this.props.details.password} /> */}
 
