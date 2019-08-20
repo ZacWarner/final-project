@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardText, CardBody, CardTitle, CardSubtitle, Button, CardImg } from 'reactstrap';
+import { Container, Row, Col, Card, CardText, CardBody, CardTitle, Button, CardImg } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import logo from '../../images/orangelady.jpeg';
 import './profile.css';
-import Form from './Form';
+import Form from '../../components/profileForm';
 import API from '../../utils/API';
 
 
@@ -53,15 +53,15 @@ class Profile extends Component {
                         <Col-md-6>
 
                             <Col className="profileColumn">
-                                <Card style={{ width: '100%' }}>
+                                <Card className="card-props" style={{ width: '100%' }}>
                                     <Row>
                                         <Col id="columnDetail">
                                             <CardImg className="profileImage" variant="top" src={logo} />
                                         </Col>
                                         <Col id="columnDetail" className="topTitle">
 
-                                            <CardTitle><h3>{this.state.userName}</h3></CardTitle>
-                                            <CardTitle><h3>{this.state.name}</h3></CardTitle>
+                                            <CardTitle><h3 className="mr-2">{this.state.userName}</h3></CardTitle>
+                                            <CardTitle><h3 className="mr-2">{this.state.name}</h3></CardTitle>
                                         </Col>
 
                                     </Row><hr />
@@ -101,7 +101,7 @@ class Profile extends Component {
                         <Col-md-6>
                             <Row>
                                 <Col className="profileColumn">
-                                    <Card className="m-0" style={{ width: '100%' }}>
+                                    <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Projects</h4><hr /></CardTitle>
                                             <CardText>
@@ -130,7 +130,7 @@ class Profile extends Component {
                                     </Card></Col>
 
                                 <Col className="profileColumn">
-                                    <Card className="m-0" style={{ width: '100%' }}>
+                                    <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Notes</h4><hr /></CardTitle>
                                             <CardText>
@@ -145,7 +145,7 @@ class Profile extends Component {
 
                             <Row>
                                 <Col className="profileColumn">
-                                    <Card style={{ width: '100%' }}>
+                                    <Card style={{ width: '100%' }} className="card-props">
                                         <CardBody>
                                             <CardTitle><h4>Skills</h4><hr /></CardTitle>
                                             <CardText>
