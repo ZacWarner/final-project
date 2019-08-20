@@ -74,13 +74,11 @@ class Profile extends Component {
 
                                             <p>Email: {this.state.email} </p>
                                             <p>Role: {this.state.role} </p>
-                                            <p>Date Registered: {this.state.dateReg} </p>
                                         </CardText>
                                     </CardBody>
                                     <CardTitle><h5 id="profileHeader">Location</h5></CardTitle>
                                     <CardBody>
                                         <CardText>
-                                            <p>Country: {this.state.country} </p>
                                             <p>City: {this.state.city} </p>
                                             <p>State: {this.state.state} </p>
                                         </CardText>
@@ -88,9 +86,8 @@ class Profile extends Component {
                                     <CardTitle><h5 id="profileHeader">Personal Information</h5></CardTitle>
                                     <CardBody>
                                         <CardText>
-                                            <p>Birth Date: {this.state.birthDate} </p>
                                             <p>Phone Number: {this.state.phoneNumber} </p>
-                                            <p>Job Title: {this.state.jobTitle} </p>
+                                            <p>LinkedIn Profile: </p>
 
                                         </CardText>
                                     </CardBody>

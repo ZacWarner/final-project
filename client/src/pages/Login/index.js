@@ -25,7 +25,7 @@ class Login extends Component {
             password: this.state.password
         }
         API.login(usr).then(function (data) {
-            window.location.replace("/profile");
+            window.location.replace("/profile/" + usr.userName);
         })
     }
 
