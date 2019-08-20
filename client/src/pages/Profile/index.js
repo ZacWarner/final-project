@@ -22,8 +22,8 @@ class Profile extends Component {
         phoneNumber: "",
         jobTitle: "",
         name: "",
-        userName: ""
-
+        userName: "",
+        loggedIn: false,
     };
 
     componentDidMount() {
@@ -36,12 +36,14 @@ class Profile extends Component {
                 userName: user.userName,
                 name: fullName,
                 state: user.stateProvince,
+                loggedIn: true,
             })
         })
 
     }
 
     render() {
+
         return (
             <>
                 <Navbar />

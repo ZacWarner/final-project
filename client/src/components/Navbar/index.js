@@ -37,6 +37,8 @@ export default class Header extends React.Component {
     }
     handleLogOut(event) {
         API.logOut().then((res) => {
+
+            sessionStorage.clear();
             window.location.replace("/");
         });
     }

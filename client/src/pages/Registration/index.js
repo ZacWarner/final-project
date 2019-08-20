@@ -69,9 +69,12 @@ class Signup extends Component {
 
         API.createUser(userDetails)
             .then(function (data) {
+                if (data.data) {
+                    sessionStorage.setItem("signedIn", true);
+                }
                 window.location.replace("/profile");
             });
-        
+
     }
 
     render() {
