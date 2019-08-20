@@ -18,7 +18,7 @@ class Profile extends Component {
         state: "",
         phoneNumber: "",
         linkedin: "",
-        projects: [],
+        projects: ["as", "af"],
         skills: [],
 
         name: "",
@@ -31,23 +31,27 @@ class Profile extends Component {
         API.getUsr().then((res) => {
             const user = res.data.user;
             const fullName = user.firstName + " " + user.lastName;
+            console.log("this");
+            console.log(this);
             this.setState({
                 email: user.email,
                 city: user.city,
                 userName: user.userName,
                 name: fullName,
                 state: user.stateProvince,
-            });
+            })
         });
         API.getProfileData(this.props.match.params.usrname)
-            .then(function (res) {
+            .then((res) => {
                 console.log("data from prof collection");
                 console.log(res);
+                console.log(this);
+                // const profdata = res.data.pr;
                 this.setState({
-                    projects: res.data.projects
+                    projects: res.data.projects,
+                    skills: res.data.dev_skills
                 });
-            });
-
+            })
 
     }
 
@@ -101,34 +105,19 @@ class Profile extends Component {
                                     <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Projects</h4><hr /></CardTitle>
-                                            {/* <h6>Current Projects:</h6>
-                                            <ul style={{ 'list-style-type': 'square' }}>
-                                                <li><a href='#'>Regulate</a></li>
-                                            </ul>
-
-                                            <h6>Pending Projects:</h6>
-                                            <ul style={{ 'list-style-type': 'square' }}>
-                                                <li><a href='#'>Debugging</a></li>
-                                                <li><a href='#'>Internet Explorer Crashed</a></li>
-                                            </ul>
-
-                                            <h6>Finsished Project:</h6>
-                                            <ul style={{ 'list-style-type': 'square' }}>
-                                                <li><a href='#'>Agora</a></li>
-                                                <li><a href='#'>Lorem</a></li>
-                                            </ul> */}
                                             <ul style={{ 'list-style-type': 'square' }}>
                                                 {this.state.projects.map(proj => {
                                                     return (
                                                         <li>
-                                                            proj
+                                                            {proj}
                                                         </li>
                                                     );
                                                 })
                                                 }
                                             </ul>
-
-                                            <Button color="primary" className="float-right">Create New</Button>
+                                            <a href="/createProject">
+                                                <Button color="primary" className="float-right">Create New</Button>
+                                            </a>
 
                                         </CardBody>
                                     </Card></Col>
@@ -150,10 +139,16 @@ class Profile extends Component {
                                     <Card style={{ width: '100%' }} className="card-props">
                                         <CardBody>
                                             <CardTitle><h4>Skills</h4><hr /></CardTitle>
-                                            <p>HTML 5</p>
-                                            <p>CSS 3</p>
-                                            <p>JavaScript</p>
-                                            <p>React</p>
+                                            <ul style={{ 'list-style-type': 'square' }}>
+                                                {this.state.skills.map(skill => {
+                                                    return (
+                                                        <li>
+                                                            {skill}
+                                                        </li>
+                                                    );
+                                                })
+                                                }
+                                            </ul>
                                             <Button color="primary" className="float-right">Edit</Button>
                                         </CardBody>
                                     </Card></Col>
