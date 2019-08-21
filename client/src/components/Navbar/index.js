@@ -9,6 +9,7 @@ import {
     NavLink
 } from 'reactstrap';
 import API from '../../utils/API';
+import './style.css';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -35,8 +36,11 @@ export default class Header extends React.Component {
             isOpen: !this.state.isOpen
         });
     }
-    handleLogOut(event) {
+    handleLogOut = (event) => {
+
         API.logOut().then((res) => {
+
+            sessionStorage.clear();
             window.location.replace("/");
         });
     }
@@ -54,7 +58,7 @@ export default class Header extends React.Component {
                                     <NavLink href="/profile">Profile</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onClick={this.handleLogOut} href="/api/user/logout">logout</NavLink>
+                                    <NavLink className="logOutButton" onClick={this.handleLogOut}>logout</NavLink>
                                 </NavItem>
                             </Nav>
                         ) : (

@@ -38,12 +38,14 @@ class Profile extends Component {
                 userName: user.userName,
                 name: fullName,
                 state: user.stateProvince,
+                loggedIn: true,
             })
         })
 
     }
 
     render() {
+
         return (
             <>
                 <Navbar />
