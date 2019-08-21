@@ -59,6 +59,11 @@ export default {
         console.log(usrName);
         return axios.post("/api/profile", usrName);
     },
+    updateDevProfile: function (id, data) {
+        console.log("create dev prof");
+        console.log(id, data);
+        return axios.put("/api/profile/" + id, data);
+    },
     getProfileData: function (usrName) {
         return axios.get("/api/profile/" + usrName);
     }

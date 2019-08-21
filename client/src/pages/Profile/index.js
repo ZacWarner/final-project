@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardBody, CardTitle, Button, CardImg } from 'reactstrap';
+import {
+    Container, Row, Col, Card,
+    CardBody, CardTitle, Button,
+    CardImg, Form, Input, InputGroup,
+    InputGroupAddon
+} from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import logo from '../../images/orangelady.jpeg';
 import './profile.css';
@@ -20,9 +25,11 @@ class Profile extends Component {
         linkedin: "",
         projects: [],
         skills: [],
+        newSkill: "",
 
         name: "",
-        userName: ""
+        userName: "",
+        profId: ""
 
 
     };
@@ -48,10 +55,34 @@ class Profile extends Component {
                 console.log(this);
                 this.setState({
                     projects: res.data.projects,
-                    skills: res.data.dev_skills
+                    skills: res.data.dev_skills,
+                    profId: res.data._id
                 });
             })
 
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+        console.log(this.state);
+    };
+
+    addskill = event => {
+        event.preventDefault();
+        let skills = this.state.skills;
+        skills.push(this.state.newSkill);
+        this.setState({
+            skills: skills,
+            newSkill: ""
+        });
+        API.updateDevProfile(this.state.profId, { dev_skills: this.state.skills })
+            .then(function (res) {
+                console.log(res);
+            });
+        console.log(this.state);
     }
 
     render() {
@@ -143,12 +174,32 @@ class Profile extends Component {
                                                     return (
                                                         <li>
                                                             {skill}
+                                                            {/* <Button className="float-right">X</Button> */}
                                                         </li>
                                                     );
                                                 })
                                                 }
                                             </ul>
-                                            <Button color="primary" className="float-right">Edit</Button>
+                                            {/* <Button color="primary" className="float-right">Edit</Button> */}
+                                            <Form>
+                                                <InputGroup>
+                                                    <Input
+                                                        placeholder="Add new skill"
+                                                        name="newSkill"
+                                                        value={this.state.newSkill}
+                                                        onChange={this.handleInputChange}
+                                                    />
+                                                    <InputGroupAddon addonType="append">
+                                                        <Button
+                                                            type="submit"
+                                                            color="primary"
+                                                            onClick={this.addskill}
+                                                        >
+                                                            Enter
+                                </Button>
+                                                    </InputGroupAddon>
+                                                </InputGroup>
+                                            </Form>
                                         </CardBody>
                                     </Card></Col>
                             </Row>
