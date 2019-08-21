@@ -54,6 +54,16 @@ class Project extends Component {
         console.log(this.state);
     };
 
+    handleSubmit = () => {
+        let data = { developers: this.state.developersInvolved };
+        API.updateProject(this.state.projId, data)
+            .then(res => {
+                console.log(res);
+                window.location.replace(this.state.navigateTo);
+            })
+            .catch(err => console.log(err));
+    }
+
     createProject = () => {
         if (this.state.projId === "") {
             console.log("Calling createProject");
@@ -203,9 +213,7 @@ class Project extends Component {
                             <ModuleCard key={module._id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
-                    <a href={this.state.navigateTo}>
-                        <Button color="success" size="lg" block>Done</Button>
-                    </a>
+                    <Button color="success" size="lg" block onClick={this.handleSubmit}>Done</Button>
                 </Container>
             </div>
         )
