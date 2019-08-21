@@ -7,7 +7,7 @@ const updateProfile = (props) => {
     return (
         <>
             <Container className="form-holder">
-                <Form>
+                <Form className="pb-2">
                     <FormGroup>
                         <Label for="projName">Job Title: </Label>
                         <Input type="text" id="jobtitle" name="role" value={props.data.role} placeholder="Job Title"

@@ -135,24 +135,9 @@ class Profile extends Component {
                                         </Col>
 
                                     </Row><hr />
-
-                                    <Button color="primary" onClick={this.toggle}>Edit</Button>
-                                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                                        <ModalBody>
-                                            <UpdateForm data={this.state} handleInputChange={this.handleInputChange} />
-                                        </ModalBody>
-                                        <ModalFooter>
-                                            <Button color="primary" onClick={() => {
-                                                this.toggle();
-                                                this.updateProfile(this.props.id);
-                                            }}>Update</Button>{' '}
-                                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                                        </ModalFooter>
-                                    </Modal>
+                                    <Button className="float-right" onClick={this.toggle}>Update</Button>
 
                                     <CardBody style={{ paddingTop: '2rem' }}>
-
                                         <p>Email: {this.state.email} </p>
                                         <p>Role: {this.state.role} </p>
                                     </CardBody>
@@ -236,7 +221,7 @@ class Profile extends Component {
                                                             color="primary"
                                                             onClick={this.addskill}
                                                         >
-                                                            Enter
+                                                            Add
                                 </Button>
                                                     </InputGroupAddon>
                                                 </InputGroup>
@@ -246,7 +231,19 @@ class Profile extends Component {
                             </Row>
                         </Col-md-6>
                     </Row>
-
+                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                        <ModalBody>
+                            <UpdateForm data={this.state} handleInputChange={this.handleInputChange} />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={() => {
+                                this.toggle();
+                                this.updateProfile(this.props.id);
+                            }}>Update</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
                 </Container>
 
             </>
