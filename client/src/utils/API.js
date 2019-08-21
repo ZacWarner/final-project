@@ -40,16 +40,16 @@ export default {
     },
     createUser: function (user) {
         console.log(user);
-        return axios.post("api/user/signup", user);
+        return axios.post("/api/user/signup", user);
     },
     login: function (user) {
-        return axios.post("api/user/login", user);
+        return axios.post("/api/user/login", user);
     },
     findUsr: function (id) {
-        return axios.get("api/user/login/" + id);
+        return axios.get("/api/user/login/" + id);
     },
     logOut: function () {
-        return axios.get("api/user/logout");
+        return axios.get("/api/user/logout");
     },
     getUsr: function () {
         return axios.get("/api/user/getusr");

@@ -51,6 +51,7 @@ class Profile extends Component {
                 userName: user.userName,
                 name: fullName,
                 state: user.stateProvince,
+                loggedIn: true,
             })
         });
         API.getProfileData(this.props.match.params.usrname)
@@ -113,6 +114,7 @@ class Profile extends Component {
     }
 
     render() {
+
         return (
             <>
                 <Navbar />
