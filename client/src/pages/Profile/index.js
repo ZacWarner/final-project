@@ -165,7 +165,9 @@ class Profile extends Component {
                                                 {this.state.projects.map(proj => {
                                                     return (
                                                         <li>
-                                                            {proj}
+                                                            <a style={{ color: "white" }} href={"/project/" + proj.proj_id}>
+                                                                {proj.proj_name}
+                                                            </a>
                                                         </li>
                                                     );
                                                 })

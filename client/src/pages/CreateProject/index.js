@@ -24,6 +24,7 @@ class Project extends Component {
         modDueDate: "",
         modParent: "",
         level1: true,
+        developersInvolved: [],
 
         projCreated: "no",
         projId: "",
@@ -39,7 +40,6 @@ class Project extends Component {
             }
 
         });
-
     }
 
     handleCheckBox = () => {
@@ -70,8 +70,19 @@ class Project extends Component {
                         projCreated: "yes",
                         projId: res.data._id,
                         navigateTo: "/project/" + res.data._id
-                    })
+                    });
                     console.log(this.state);
+                    let data = {
+                        proj_name: this.state.projName,
+                        proj_id: this.state.projId
+                    };
+                    console.log("new proj data");
+                    console.log(data);
+                    API.updateNewProj(this.state.projOwner, data)
+                        .then(function (res) {
+                            console.log("new proj");
+                            console.log(res);
+                        });
                 })
                 .catch(err => console.log(err));
         } else {
@@ -113,6 +124,17 @@ class Project extends Component {
         })
             .then(res => {
                 console.log(res);
+                let data = {
+                    proj_name: this.state.projName,
+                    proj_id: this.state.projId
+                };
+                console.log("new proj data");
+                console.log(data);
+                API.updateNewProj(this.state.modDev, data)
+                    .then(function (res) {
+                        console.log("new proj");
+                        console.log(res);
+                    });
                 this.setState({
                     modules: res.data.modules,
                     modName: "",
@@ -121,7 +143,7 @@ class Project extends Component {
                     modDueDate: "",
                     modParent: "",
                     level1: true
-                })
+                });
                 console.log(this.state);
             })
             .catch(err => console.log(err));
@@ -168,7 +190,7 @@ class Project extends Component {
                     </Card>
                     <div className="modules">
                         {this.state.modules.map(module => (
-                            <ModuleCard key={module.id} data={module} delModule={this.delModule} />
+                            <ModuleCard key={module._id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
                     <a href={this.state.navigateTo}>

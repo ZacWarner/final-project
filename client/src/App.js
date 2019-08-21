@@ -74,10 +74,10 @@ class App extends Component {
         <div>
           <Route exact path="/" component={Landing} />
           <PrivateRoute path='/profile/:usrname' component={Profile} />
-          <AlreadyLoggedInRoute path='/login' component={Login} />
-          <AlreadyLoggedInRoute path='/signup' component={Signup} />
-          {/* <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} /> */}
+          {/* <AlreadyLoggedInRoute path='/login' component={Login} />
+          <AlreadyLoggedInRoute path='/signup' component={Signup} /> */}
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
           <PrivateRoute path='/dashboard/:id' component={Dashboard}
             wasRedirected={true}
             page="Profile"
