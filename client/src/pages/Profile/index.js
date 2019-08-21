@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardText, CardBody, CardTitle, Button, CardImg } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardTitle, Button, CardImg } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import logo from '../../images/orangelady.jpeg';
 import './profile.css';
-import Form from '../../components/profileForm';
+import NotesForm from '../../components/profile/profileForm';
 import API from '../../utils/API';
 
 
@@ -18,7 +18,7 @@ class Profile extends Component {
         state: "",
         phoneNumber: "",
         linkedin: "",
-        projects: ["as", "af"],
+        projects: [],
         skills: [],
 
         name: "",
@@ -46,7 +46,6 @@ class Profile extends Component {
                 console.log("data from prof collection");
                 console.log(res);
                 console.log(this);
-                // const profdata = res.data.pr;
                 this.setState({
                     projects: res.data.projects,
                     skills: res.data.dev_skills
@@ -129,7 +128,7 @@ class Profile extends Component {
                                             <p>Work on building a navbar for my project.</p>
                                             <p>Work on building a universal sidebar.</p>
                                             <p>Debug Agora</p>
-                                            <Form />
+                                            <NotesForm />
                                         </CardBody>
                                     </Card></Col>
                             </Row>
