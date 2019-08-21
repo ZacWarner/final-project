@@ -41,18 +41,18 @@ class Profile extends Component {
 
     componentDidMount() {
         API.getUsr().then((res) => {
-            const user = res.data.user;
-            const fullName = user.firstName + " " + user.lastName;
-            console.log("this");
-            console.log(this);
-            this.setState({
-                email: user.email,
-                city: user.city,
-                userName: user.userName,
-                name: fullName,
-                state: user.stateProvince,
-                loggedIn: true,
-            })
+            if (res.data.user) {
+                const user = res.data.user;
+                const fullName = user.firstName + " " + user.lastName;
+                this.setState({
+                    email: user.email,
+                    city: user.city,
+                    userName: user.userName,
+                    name: fullName,
+                    state: user.stateProvince,
+                    loggedIn: true,
+                })
+            }
         });
         API.getProfileData(this.props.match.params.usrname)
             .then((res) => {
@@ -182,9 +182,8 @@ class Profile extends Component {
                                     <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Notes</h4><hr /></CardTitle>
-                                            <p>Work on building a navbar for my project.</p>
-                                            <p>Work on building a universal sidebar.</p>
-                                            <p>Debug Agora</p>
+                                            <Container className="notesWindow">
+                                            </Container>
                                             <NotesForm />
                                         </CardBody>
                                     </Card></Col>
