@@ -3,12 +3,14 @@ import {
     Container, Row, Col, Card,
     CardBody, CardTitle, Button,
     CardImg, Form, Input, InputGroup,
-    InputGroupAddon
+    InputGroupAddon, ModalHeader, ModalBody,
+    Modal, ModalFooter
 } from 'reactstrap';
 import Navbar from '../../components/Navbar';
 import logo from '../../images/orangelady.jpeg';
 import './profile.css';
 import NotesForm from '../../components/profile/profileForm';
+import UpdateForm from '../../components/profile/updateProfile';
 import API from '../../utils/API';
 
 
@@ -16,23 +18,26 @@ import API from '../../utils/API';
 
 class Profile extends Component {
 
-    state = {
-        email: "",
-        role: "",
-        city: "",
-        state: "",
-        phoneNumber: "",
-        linkedin: "",
-        projects: [],
-        skills: [],
-        newSkill: "",
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            role: "",
+            city: "",
+            state: "",
+            phoneNumber: "",
+            linkedin: "",
+            projects: [],
+            skills: [],
+            newSkill: "",
+            modal: false,
 
-        name: "",
-        userName: "",
-        profId: ""
-
-
-    };
+            name: "",
+            userName: "",
+            profId: ""
+        };
+        this.toggle = this.toggle.bind(this);
+    }
 
     componentDidMount() {
         API.getUsr().then((res) => {
@@ -56,10 +61,20 @@ class Profile extends Component {
                 this.setState({
                     projects: res.data.projects,
                     skills: res.data.dev_skills,
-                    profId: res.data._id
+                    profId: res.data._id,
+                    role: res.data.role,
+                    phoneNumber: res.data.ph,
+                    linkedin: res.data.linkedin
                 });
             })
 
+    }
+
+    toggle() {
+        console.log("In toggle");
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
     }
 
     handleInputChange = event => {
@@ -85,6 +100,18 @@ class Profile extends Component {
         console.log(this.state);
     }
 
+    updateProfile = () => {
+        console.log("updating profile");
+        let data = {};
+        data.role = this.state.role;
+        data.ph = this.state.phoneNumber;
+        data.linkedin = this.state.linkedin;
+        API.updateDevProfile(this.state.profId, data)
+            .then(function (res) {
+                console.log(res);
+            });
+    }
+
     render() {
         return (
             <>
@@ -101,14 +128,26 @@ class Profile extends Component {
                                             <CardImg className="profileImage" variant="top" src={logo} />
                                         </Col>
                                         <Col id="columnDetail" className="topTitle">
-
                                             <CardTitle><h3 className="mr-2">{this.state.userName}</h3></CardTitle>
                                             <CardTitle><h3 className="mr-2">{this.state.name}</h3></CardTitle>
                                         </Col>
 
                                     </Row><hr />
 
-
+                                    <Button color="primary" onClick={this.toggle}>Edit</Button>
+                                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                                        <ModalBody>
+                                            <UpdateForm data={this.state} handleInputChange={this.handleInputChange} />
+                                        </ModalBody>
+                                        <ModalFooter>
+                                            <Button color="primary" onClick={() => {
+                                                this.toggle();
+                                                this.updateProfile(this.props.id);
+                                            }}>Update</Button>{' '}
+                                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                                        </ModalFooter>
+                                    </Modal>
 
                                     <CardBody style={{ paddingTop: '2rem' }}>
 
@@ -123,7 +162,7 @@ class Profile extends Component {
                                     <CardTitle><h5 id="profileHeader">Personal Information</h5></CardTitle>
                                     <CardBody>
                                         <p>Phone Number: {this.state.phoneNumber} </p>
-                                        <p>LinkedIn Profile: </p>
+                                        <p>LinkedIn Profile: <a href={this.state.linkedin} style={{ color: "yellow" }}>LinkedIn Url</a> </p>
                                     </CardBody>
                                 </Card>
                             </Col>
