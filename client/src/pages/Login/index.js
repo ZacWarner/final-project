@@ -51,7 +51,7 @@ class Login extends Component {
                 sessionStorage.setItem("signedIn", true);
             }
 
-            window.location.replace("/profile");
+            window.location.replace("/profile/" + usr.userName);
         })
 
     }

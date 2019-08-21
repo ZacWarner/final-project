@@ -73,7 +73,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Landing} />
-          <PrivateRoute path='/profile' component={Profile} />
+          <PrivateRoute path='/profile/:usrname' component={Profile} />
           <AlreadyLoggedInRoute path='/login' component={Login} />
           <AlreadyLoggedInRoute path='/signup' component={Signup} />
           {/* <Route exact path="/login" component={Login} />

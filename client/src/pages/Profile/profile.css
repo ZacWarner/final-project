@@ -1,3 +1,4 @@
+@import '../../components/styles/variables.scss';
 
 .profileImage{
   width: 10rem;
@@ -24,4 +25,5 @@
 #profileHeader{
   text-align: center;
   background-color: rgb(240, 238, 238);
+  color: black;
 } 
