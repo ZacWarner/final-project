@@ -66,10 +66,13 @@ class Project extends Component {
             })
                 .then(res => {
                     console.log(res);
+                    let devsInvolved = this.state.developersInvolved;
+                    devsInvolved.push(this.state.projOwner);
                     this.setState({
                         projCreated: "yes",
                         projId: res.data._id,
-                        navigateTo: "/project/" + res.data._id
+                        navigateTo: "/project/" + res.data._id,
+                        developersInvolved: devsInvolved
                     });
                     console.log(this.state);
                     let data = {
@@ -124,17 +127,22 @@ class Project extends Component {
         })
             .then(res => {
                 console.log(res);
-                let data = {
-                    proj_name: this.state.projName,
-                    proj_id: this.state.projId
-                };
-                console.log("new proj data");
-                console.log(data);
-                API.updateNewProj(this.state.modDev, data)
-                    .then(function (res) {
-                        console.log("new proj");
-                        console.log(res);
-                    });
+                let devsInvolved = this.state.developersInvolved;
+                if (devsInvolved.indexOf(this.state.modDev) === -1) {
+                    devsInvolved.push(this.state.modDev);
+                    let data = {
+                        proj_name: this.state.projName,
+                        proj_id: this.state.projId
+                    };
+                    console.log("new proj data");
+                    console.log(data);
+                    API.updateNewProj(this.state.modDev, data)
+                        .then(function (res) {
+                            console.log("new proj");
+                            console.log(res);
+                        })
+                        .catch(err => console.log(err));
+                }
                 this.setState({
                     modules: res.data.modules,
                     modName: "",
@@ -142,9 +150,11 @@ class Project extends Component {
                     modDev: "",
                     modDueDate: "",
                     modParent: "",
-                    level1: true
+                    level1: true,
+                    developersInvolved: devsInvolved
                 });
                 console.log(this.state);
+
             })
             .catch(err => console.log(err));
     }
