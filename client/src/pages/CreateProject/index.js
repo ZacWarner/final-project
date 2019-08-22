@@ -186,6 +186,25 @@ class Project extends Component {
             .catch(err => console.log(err));
     }
 
+    markComplete = (modId) => {
+        API.updateModule(this.state.projId, modId, {
+            complete: true
+        })
+            .then(res => {
+                console.log(res);
+                // To update this.state.modules
+                API.getProject(this.state.projId)
+                    .then(res => {
+                        console.log(res);
+                        this.setState({
+                            modules: res.data.modules
+                        })
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <div className="page-body">
@@ -210,7 +229,7 @@ class Project extends Component {
                     </Card>
                     <div className="modules">
                         {this.state.modules.map(module => (
-                            <ModuleCard key={module._id} data={module} delModule={this.delModule} />
+                            <ModuleCard key={module._id} data={module} delModule={this.delModule} markComplete={this.markComplete} />
                         ))}
                     </div>
                     <Button color="success" size="lg" block onClick={this.handleSubmit}>Done</Button>

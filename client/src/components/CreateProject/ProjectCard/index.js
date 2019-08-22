@@ -3,27 +3,35 @@ import {
     Card, CardBody,
     CardTitle, CardSubtitle, Button, Row, Col
 } from 'reactstrap';
+import Moment from 'moment';
 
 const addModule = (props) => {
+    let devs = "";
+    if (props.data.developers) {
+        props.data.developers.forEach(dev => {
+            devs += dev + ", ";
+        });
+    }
+
     return (
         <Card className="m-1 card-props">
             <CardBody>
-                <CardTitle><h5>Project Name: {props.data.projName}</h5><hr /></CardTitle>
-                <CardSubtitle><h6>Project Owner: {props.data.projOwner}</h6></CardSubtitle>
+                <CardTitle><h5>{props.data.projName}</h5><hr /></CardTitle>
+                <CardSubtitle><h6>Owner: {props.data.projOwner}</h6></CardSubtitle>
                 <Row>
                     <Col>
-                        <p>Description: {props.data.projDesc}</p>
+                        <p><b>Description: </b>{props.data.projDesc}</p>
                     </Col>
                     <Col>
-                        <p>Developers: {props.data.developers}</p>
+                        <p>Developers: {devs}</p>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <p>Start Date: {props.data.startDate}</p>
+                        <p>Start Date: {Moment(props.data.startDate).format('YYYY-MM-DD')}</p>
                     </Col>
                     <Col>
-                        <p>Due Date: {props.data.dueDate}</p>
+                        <p>Due Date: {Moment(props.data.dueDate).format('YYYY-MM-DD')}</p>
                     </Col>
                 </Row>
                 <Row>
