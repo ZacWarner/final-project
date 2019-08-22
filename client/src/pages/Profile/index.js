@@ -34,7 +34,8 @@ class Profile extends Component {
             notes: [],
             name: "",
             userName: "",
-            profId: ""
+            profId: "",
+            notesValue: "",
         };
         this.toggle = this.toggle.bind(this);
     }
@@ -101,6 +102,20 @@ class Profile extends Component {
             });
         console.log(this.state);
     }
+    handleNotesSubmit = (event) => {
+        event.preventDefault();
+        const note = { notes: this.state.notesValue };
+        const userName = this.state.userName;
+
+        API.saveProfileNote(userName, note).then((res) => {
+
+            this.setState({
+                notesValue: "",
+                notes: res.data.notes,
+            })
+        })
+    }
+
 
     updateProfile = () => {
         console.log("updating profile");
@@ -197,7 +212,13 @@ class Profile extends Component {
                                                     }
                                                 </ul>
                                             </Container>
-                                            <NotesForm userName={this.state.userName} />
+                                            <form >
+                                                <label>
+                                                    <textarea value={this.state.notesValue} onChange={this.handleInputChange} name="notesValue" placeholder="Add Notes:" className='form-control' />
+                                                </label>
+                                                <br />
+                                                <input type="submit" onClick={this.handleNotesSubmit} value="Add" className="btn btn-primary" />
+                                            </form>
                                         </CardBody>
                                     </Card></Col>
                             </Row>

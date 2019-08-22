@@ -9,9 +9,6 @@ class EssayForm extends React.Component {
       value: '',
       userName: "",
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     const userName = this.props.userName;
@@ -19,29 +16,16 @@ class EssayForm extends React.Component {
 
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert(' ' + this.state.value);
-    event.preventDefault();
-    const note = this.state.value;
-    const userName = this.state.userName;
-    API.saveProfileNote(userName, note).then((res) => {
-      this.setState({ value: "" });
-    })
-  }
 
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form >
         <label>
-          <textarea value={this.state.value} onChange={this.handleChange} placeholder="Add Notes:" className='form-control' />
+          <textarea value={this.props.notesValue} onChange={this.props.onChange} name="notesValue" placeholder="Add Notes:" className='form-control' />
         </label>
         <br />
-        <input type="submit" value="Add" className="btn btn-primary" />
+        <input type="submit" onClick={this.props.onClick} value="Add" className="btn btn-primary" />
       </form>
     );
   }
