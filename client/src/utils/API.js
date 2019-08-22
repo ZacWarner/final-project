@@ -40,16 +40,39 @@ export default {
     },
     createUser: function (user) {
         console.log(user);
-        return axios.post("api/user/signup", user);
+        return axios.post("/api/user/signup", user);
     },
     login: function (user) {
-        return axios.post("api/user/login", user);
+        return axios.post("/api/user/login", user);
     },
     findUsr: function (id) {
-        return axios.get("api/user/login/" + id);
+        return axios.get("/api/user/login/" + id);
     },
     logOut: function () {
-        return axios.get("api/user/logout");
+        return axios.get("/api/user/logout");
+    },
+    getUsr: function () {
+        return axios.get("/api/user/getusr");
+    },
+    createDevProfile: function (usrName) {
+        console.log("create dev prof");
+        console.log(usrName);
+        return axios.post("/api/profile", usrName);
+    },
+    updateDevProfile: function (id, data) {
+        console.log("create dev prof");
+        console.log(id, data);
+        return axios.put("/api/profile/" + id, data);
+    },
+    updateNewProj: function (username, projData) {
+        console.log("Util module");
+        return axios.put("/api/profile/newproj/" + username, projData);
+    },
+    getProfileData: function (usrName) {
+        return axios.get("/api/profile/" + usrName);
+    },
+    getProfileUsers: function () {
+        return axios.get("/api/profile");
     }
 
 };
