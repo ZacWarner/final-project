@@ -24,6 +24,7 @@ class Project extends Component {
         modDueDate: "",
         modParent: "",
         level1: true,
+        developersInvolved: [],
 
         projCreated: "no",
         projId: "",
@@ -39,7 +40,6 @@ class Project extends Component {
             }
 
         });
-
     }
 
     handleCheckBox = () => {
@@ -54,6 +54,16 @@ class Project extends Component {
         console.log(this.state);
     };
 
+    handleSubmit = () => {
+        let data = { developers: this.state.developersInvolved };
+        API.updateProject(this.state.projId, data)
+            .then(res => {
+                console.log(res);
+                window.location.replace(this.state.navigateTo);
+            })
+            .catch(err => console.log(err));
+    }
+
     createProject = () => {
         if (this.state.projId === "") {
             console.log("Calling createProject");
@@ -66,12 +76,26 @@ class Project extends Component {
             })
                 .then(res => {
                     console.log(res);
+                    let devsInvolved = this.state.developersInvolved;
+                    devsInvolved.push(this.state.projOwner);
                     this.setState({
                         projCreated: "yes",
                         projId: res.data._id,
-                        navigateTo: "/project/" + res.data._id
-                    })
+                        navigateTo: "/project/" + res.data._id,
+                        developersInvolved: devsInvolved
+                    });
                     console.log(this.state);
+                    let data = {
+                        proj_name: this.state.projName,
+                        proj_id: this.state.projId
+                    };
+                    console.log("new proj data");
+                    console.log(data);
+                    API.updateNewProj(this.state.projOwner, data)
+                        .then(function (res) {
+                            console.log("new proj");
+                            console.log(res);
+                        });
                 })
                 .catch(err => console.log(err));
         } else {
@@ -113,6 +137,22 @@ class Project extends Component {
         })
             .then(res => {
                 console.log(res);
+                let devsInvolved = this.state.developersInvolved;
+                if (devsInvolved.indexOf(this.state.modDev) === -1) {
+                    devsInvolved.push(this.state.modDev);
+                    let data = {
+                        proj_name: this.state.projName,
+                        proj_id: this.state.projId
+                    };
+                    console.log("new proj data");
+                    console.log(data);
+                    API.updateNewProj(this.state.modDev, data)
+                        .then(function (res) {
+                            console.log("new proj");
+                            console.log(res);
+                        })
+                        .catch(err => console.log(err));
+                }
                 this.setState({
                     modules: res.data.modules,
                     modName: "",
@@ -120,9 +160,11 @@ class Project extends Component {
                     modDev: "",
                     modDueDate: "",
                     modParent: "",
-                    level1: true
-                })
+                    level1: true,
+                    developersInvolved: devsInvolved
+                });
                 console.log(this.state);
+
             })
             .catch(err => console.log(err));
     }
@@ -168,12 +210,10 @@ class Project extends Component {
                     </Card>
                     <div className="modules">
                         {this.state.modules.map(module => (
-                            <ModuleCard key={module.id} data={module} delModule={this.delModule} />
+                            <ModuleCard key={module._id} data={module} delModule={this.delModule} />
                         ))}
                     </div>
-                    <a href={this.state.navigateTo}>
-                        <Button color="success" size="lg" block>Done</Button>
-                    </a>
+                    <Button color="success" size="lg" block onClick={this.handleSubmit}>Done</Button>
                 </Container>
             </div>
         )

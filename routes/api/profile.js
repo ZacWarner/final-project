@@ -11,4 +11,8 @@ router
     .put(profileController.update)
     .delete(profileController.remove);
 
+router
+    .route("/newproj/:username")
+    .put(profileController.addProj);
+
 module.exports = router;
