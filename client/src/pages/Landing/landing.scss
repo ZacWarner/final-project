@@ -1,5 +1,5 @@
 .landingJumbo{
-    background: url("https://images.pexels.com/photos/698808/pexels-photo-698808.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background: url("../../images/keyboard.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -13,11 +13,10 @@
 .profileCont{
     width: 100%;
     max-width: 100%;
-    position: absolute;
-    top: 40%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
+    margin-top: 10%;
 }
 
 .profileHeader{

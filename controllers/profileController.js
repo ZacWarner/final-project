@@ -35,6 +35,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    addNote: function (req, res) {
+        console.log(req.body);
+        db.Profile
+            .findOneAndUpdate({ dev_name: req.params.username }, { $push: req.body }, { new: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(dbModel => res.json(dbModel));
+    },
     remove: function (req, res) {
         db.Profile
             .findById({ _id: req.params.id })

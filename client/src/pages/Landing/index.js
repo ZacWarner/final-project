@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
 import Chat from '../../components/Chat';
 import { Jumbotron, Container } from 'reactstrap';
-import './landing.scss';
+import './landing.css';
+import Footer from '../../components/Footer';
 
 
 class Landing extends Component {
@@ -13,10 +14,10 @@ class Landing extends Component {
                 <Jumbotron className="landingJumbo">
                     <Container className="text-center profileCont">
                         <h1 className="display-3 profileHeader">Regulate</h1>
-                        <a href="/signup" className="btn btn-outline-light m-3 profileBtn">Sign Up</a>
-                        
+                        <a href="/signup" className="btn btn-outline-light m-3 profileBtn">Beam me up!</a>
                     </Container>
                 </Jumbotron>
+                <Footer />
             </>
         )
     }
