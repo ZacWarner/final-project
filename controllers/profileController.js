@@ -26,6 +26,15 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    addProj: function (req, res) {
+        console.log(req.params.username);
+        console.log(req.body);
+        db.Profile
+            .findOneAndUpdate({ dev_name: req.params.username }, { $push: { projects: req.body } }, { new: true })
+            // .findOneAndUpdate({ _id: "5d5b5ed07cb09c23486459de" }, { $push: { projects: req.body } }, { new: true })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     remove: function (req, res) {
         db.Profile
             .findById({ _id: req.params.id })
