@@ -7,7 +7,7 @@ import Patrick from '../../components/DevCards/Patrick';
 import Zac from '../../components/DevCards/Zac';
 import Navbar from '../../components/Navbar';
 import "../../components/styles/variables.scss";
-import "../../components/styles/AboutUs/jumbotron.scss"
+import "../../components/styles/AboutUs/jumbotron.scss";
 
 
 class AboutUs extends Component {
