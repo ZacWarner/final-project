@@ -8,6 +8,7 @@ const profileSchema = new Schema({
     ph: String,
     linkedin: String,
     image: String,
+    notes: [],
     projects: [{
         proj_name: String,
         proj_id: String

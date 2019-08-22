@@ -59,6 +59,9 @@ export default {
     getProfileData: function (usrName) {
         return axios.get("/api/profile/" + usrName);
     },
+    saveProfileNote: function (usrName, note) {
+        return axios.put("/api/profile/note/" + usrName, note)
+    },
     getProfileUsers: function () {
         return axios.get("/api/profile");
     }
