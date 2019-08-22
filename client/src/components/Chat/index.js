@@ -1,7 +1,8 @@
 import React from 'react';
 import socketIOClient from "socket.io-client";
 import API from "../../utils/API";
-import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon, Form, FormGroup } from 'reactstrap';
+import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon, Form } from 'reactstrap';
+import './style.css';
 
 
 
@@ -47,6 +48,7 @@ export default class Chat extends React.Component {
         API.getChat(id)
             .then(res => {
                 this.setState({ chatHistory: res.data });
+                this.scrollChatToBottom();
                 console.log(res);
             });
 
@@ -82,13 +84,17 @@ export default class Chat extends React.Component {
         this.getChatHistory(id);
     }
 
+    scrollChatToBottom = () => {
+        this.panel.scrollTo(0, this.panel.scrollHeight)
+    }
+
 
 
     render() {
         return (
-            <Card projectid={this.props.projectid}>
+            <Card projectid={this.props.projectid} className="chat">
                 <CardHeader>{this.props.chatname}</CardHeader>
-                <CardBody>
+                <CardBody className="chatWindow" innerRef={(panel) => { this.panel = panel; }}>
                     <ListGroup>
                         {this.state.chatHistory.map(msg => (
                             <ListGroupItem className="border-0" key={msg._id}>{msg.name}: {msg.message}</ListGroupItem>

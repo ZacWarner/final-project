@@ -61,6 +61,9 @@ class Signup extends Component {
             stateProvince: this.state.stateProvince,
             zip: this.state.zip,
         }
+        let profileData = {
+            dev_name: this.state.userName
+        }
         console.log(userDetails);
 
         this.CheckPassword(this.state.password);
@@ -69,9 +72,15 @@ class Signup extends Component {
 
         API.createUser(userDetails)
             .then(function (data) {
-                window.location.replace("/profile");
+                if (data.data) {
+                    sessionStorage.setItem("signedIn", true);
+                }
+                API.createDevProfile(profileData)
+                    .then(function (res) {
+                        window.location.replace("/profile/" + profileData.dev_name);
+                    });
             });
-        
+
     }
 
     render() {

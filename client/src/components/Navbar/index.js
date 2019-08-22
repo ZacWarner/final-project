@@ -9,6 +9,7 @@ import {
     NavLink
 } from 'reactstrap';
 import API from '../../utils/API';
+import './style.css';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Header extends React.Component {
 
         this.state = {
             user: {},
+            profileLink: ""
         }
 
         this.toggle = this.toggle.bind(this);
@@ -25,8 +27,15 @@ export default class Header extends React.Component {
     }
     componentDidMount() {
         API.getUsr().then((res) => {
-            const user = res.data.user;
-            this.setState({ user: user });
+            if (res.data.user) {
+                const user = res.data.user;
+                this.setState({ user: user });
+                const profileLink = "/profile/" + user.userName;
+                this.setState({
+                    user: user,
+                    profileLink: profileLink
+                });
+            }
         })
 
     }
@@ -35,8 +44,11 @@ export default class Header extends React.Component {
             isOpen: !this.state.isOpen
         });
     }
-    handleLogOut(event) {
+    handleLogOut = (event) => {
+
         API.logOut().then((res) => {
+
+            sessionStorage.clear();
             window.location.replace("/");
         });
     }
@@ -51,10 +63,10 @@ export default class Header extends React.Component {
                         {isLoggedIn ? (
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink href="/profile">Profile</NavLink>
+                                    <NavLink href={this.state.profileLink}>Profile</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink onClick={this.handleLogOut} href="/api/user/logout">logout</NavLink>
+                                    <NavLink className="logOutButton" onClick={this.handleLogOut}>logout</NavLink>
                                 </NavItem>
                             </Nav>
                         ) : (
