@@ -8,7 +8,8 @@ const profileSchema = new Schema({
     ph: String,
     linkedin: String,
     image: String,
-    projects: [{ type: String }]
+    projects: [{ type: String }],
+    notes: [{ type: String }]
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
