@@ -64,11 +64,18 @@ export default {
         console.log(id, data);
         return axios.put("/api/profile/" + id, data);
     },
+    updateNewProj: function (username, projData) {
+        console.log("Util module");
+        return axios.put("/api/profile/newproj/" + username, projData);
+    },
     getProfileData: function (usrName) {
         return axios.get("/api/profile/" + usrName);
     },
     saveProfileNote: function (usrName, note) {
         return axios.put("/api/profile/note/" + usrName, note)
+    },
+    getProfileUsers: function () {
+        return axios.get("/api/profile");
     }
 
 };
