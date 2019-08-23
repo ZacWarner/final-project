@@ -38,7 +38,10 @@ const addModule = (props) => {
                         )}
                 </Row>
 
-                <Button color="primary" id={props.data._id} onClick={() => props.delModule(props.data._id)}>Delete</Button>
+                <Button color="danger" id={props.data._id} onClick={() => props.delModule(props.data._id)}>Delete</Button>
+                {props.data.complete ? (<></>) :
+                    <Button color="primary" className="ml-3" id={props.data._id} onClick={() => props.markComplete(props.data._id)}>Mark Complete</Button>
+                }
             </CardBody>
         </Card>
     );

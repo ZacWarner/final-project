@@ -7,7 +7,7 @@ import {
     Modal, ModalFooter
 } from 'reactstrap';
 import Navbar from '../../components/Navbar';
-import logo from '../../images/orangelady.jpeg';
+import logo from '../../images/1.png';
 import './profile.css';
 import NotesForm from '../../components/profile/profileForm';
 import UpdateForm from '../../components/profile/updateProfile';
@@ -39,6 +39,8 @@ class Profile extends Component {
         };
         this.toggle = this.toggle.bind(this);
     }
+
+    profPic = Math.floor(Math.random() * 10);
 
     componentDidMount() {
         API.getUsr().then((res) => {
