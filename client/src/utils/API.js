@@ -60,7 +60,10 @@ export default {
         return axios.get("/api/profile/" + usrName);
     },
     saveProfileNote: function (usrName, note) {
-        return axios.put("/api/profile/note/" + usrName, note)
+        return axios.put("/api/profile/note/" + usrName, note);
+    },
+    setProfileNote: function (usrName, notes) {
+        return axios.put("/api/profile/setnotes/" + usrName, notes);
     },
     getProfileUsers: function () {
         return axios.get("/api/profile");

@@ -17,5 +17,8 @@ router
 router
     .route("/note/:username")
     .put(profileController.addNote);
+router
+    .route("/setnotes/:username")
+    .put(profileController.setNotes);
 
 module.exports = router;
