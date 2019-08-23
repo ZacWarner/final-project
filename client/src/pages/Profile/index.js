@@ -7,7 +7,7 @@ import {
     Modal, ModalFooter
 } from 'reactstrap';
 import Navbar from '../../components/Navbar';
-import logo from '../../images/orangelady.jpeg';
+import logo from '../../images/1.png';
 import './profile.css';
 import NotesForm from '../../components/profile/profileForm';
 import UpdateForm from '../../components/profile/updateProfile';
@@ -39,6 +39,8 @@ class Profile extends Component {
         };
         this.toggle = this.toggle.bind(this);
     }
+
+    profPic = Math.floor(Math.random() * 10);
 
     componentDidMount() {
         API.getUsr().then((res) => {
@@ -85,7 +87,7 @@ class Profile extends Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state);
+
     };
 
     addskill = event => {
@@ -108,12 +110,37 @@ class Profile extends Component {
         const userName = this.state.userName;
 
         API.saveProfileNote(userName, note).then((res) => {
-
             this.setState({
                 notesValue: "",
                 notes: res.data.notes,
             })
         })
+    }
+    handleNotesDeleteBtn = (index) => {
+        const notesArr = this.state.notes;
+        const userName = this.state.userName;
+        notesArr.splice(index, 1);
+        console.log(notesArr);
+        const notes = { notes: notesArr };
+        API.setProfileNote(userName, notes).then((res) => {
+            console.log(res.data.notes)
+            this.setState({
+                notes: notesArr,
+            })
+        });
+    }
+    handleSkillsDeleteBtn = (index) => {
+        const skillsArr = this.state.skills;
+        skillsArr.splice(index, 1);
+        console.log(skillsArr);
+        API.updateDevProfile(this.state.profId, { dev_skills: skillsArr })
+            .then((res) => {
+                console.log(res);
+                this.setState({
+                    skills: skillsArr,
+                })
+            });
+        console.log(this.state);
     }
 
 
@@ -200,12 +227,13 @@ class Profile extends Component {
                                     <Card className="m-0 card-props" style={{ width: '100%' }}>
                                         <CardBody>
                                             <CardTitle><h4>Notes</h4><hr /></CardTitle>
-                                            <Container className="notesWindow">
+                                            <Container className="notesWindow p-0">
                                                 <ul style={{ 'list-style-type': 'square' }}>
-                                                    {this.state.notes.map(note => {
+                                                    {this.state.notes.map((note, index) => {
                                                         return (
-                                                            <li>
+                                                            <li key={index} >
                                                                 {note}
+                                                                <Button onClick={() => this.handleNotesDeleteBtn(index)} className="delete-btn btn p-0 m-1" color="danger">✗</Button>
                                                             </li>
                                                         );
                                                     })
@@ -229,11 +257,11 @@ class Profile extends Component {
                                         <CardBody>
                                             <CardTitle><h4>Skills</h4><hr /></CardTitle>
                                             <ul style={{ 'list-style-type': 'square' }}>
-                                                {this.state.skills.map(skill => {
+                                                {this.state.skills.map((skill, index) => {
                                                     return (
-                                                        <li>
+                                                        <li key={index}>
                                                             {skill}
-                                                            {/* <Button className="float-right">X</Button> */}
+                                                            <Button onClick={() => this.handleSkillsDeleteBtn(index)} className="delete-btn btn p-0 m-1" color="danger">✗</Button>
                                                         </li>
                                                     );
                                                 })
