@@ -28,7 +28,6 @@ class Dashboard extends Component {
         modParent: "",
         developers: [],
         level1: true,
-        pieData: {},
         projCreated: "yes",
         projId: "1",
         modules: [],
@@ -38,9 +37,6 @@ class Dashboard extends Component {
     };
 
     componentDidMount = () => {
-        // const url = "/dashboard/" + this.props.match.params.id;
-        // this.setState({ dashBoardLink: url });
-        // console.log(this.state);
         console.log("ProjId: " + this.props.match.params.id);
         API.getProject(this.props.match.params.id)
             .then(res => {
@@ -201,14 +197,16 @@ class Dashboard extends Component {
                     <Jumbotron className="bg-transparent text-center border-dark">
                         <Row>
                             <Col md="4">
-                                <Pie data={this.state.pieData}
+                                <Pie
+                                    projId={this.props.match.params.id}
                                     width={140}
                                     height={140}
                                     innerRadius={35}
-                                    outerRadius={70}> </Pie>
+                                    outerRadius={70}
+                                />
                             </Col>
                             <Col md="8">
-                                <StepProgress></StepProgress>
+                                <StepProgress projId={this.props.match.params.id} />
                             </Col>
                         </Row>
                         <a href={this.state.dashBoardLink}>
