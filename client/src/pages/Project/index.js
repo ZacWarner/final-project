@@ -202,8 +202,7 @@ class Dashboard extends Component {
                                     width={140}
                                     height={140}
                                     innerRadius={35}
-                                    outerRadius={70}
-                                />
+                                    outerRadius={70} />
                             </Col>
                             <Col md="8">
                                 <StepProgress projId={this.props.match.params.id} />
