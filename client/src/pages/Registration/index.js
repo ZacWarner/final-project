@@ -4,9 +4,6 @@ import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
 import API from '../../utils/API';
 
-
-
-
 class Signup extends Component {
     state = {
         email: "",
@@ -22,6 +19,8 @@ class Signup extends Component {
 
 
     };
+
+
 
     CheckPassword(inputtxt) {
         var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
@@ -89,7 +88,7 @@ class Signup extends Component {
                 <Navbar />
                 <RegForm user={this.saveUser} handleInputChange={this.handleInputChange} details={this.state} />
             </div>
-        )
+        );
     }
 };
 
