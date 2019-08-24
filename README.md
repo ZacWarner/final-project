@@ -1,6 +1,9 @@
 # Regulate
 A project management tool using familiar technologies to enable managers and developers to collaborate comfortbly and effectively, from concept to completion.
 
+## Deployed Link:
+https://regulate.herokuapp.com/
+
 ## Tehcnologies:
 * Express
 * ReactJS
