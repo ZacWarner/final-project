@@ -7,6 +7,7 @@ https://regulate.herokuapp.com/
 ## Tehcnologies:
 * Express
 * ReactJS
+* Node
 * Passport
 * React-Router
 * MongoDB
@@ -16,8 +17,17 @@ https://regulate.herokuapp.com/
 * D3
 * Sass
 * Socket.io
-* (database-watcher)
-* (undefined)
+* Material-ui
+* Moment
+* JavaScript
+* CSS
 
 ### Users
 Make a profile, and indicate your field of expertise/skillset, and whether you are a project manager and developer, or just a developer.
+
+### Created by:
+* Adam Tran
+* Patrick Owens
+* Lucious Jackson
+* Meena Sivakumar
+* Zac Warner
