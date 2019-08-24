@@ -16,11 +16,11 @@ import AddModule from '../../components/CreateProject/AddModuleForm';
 class Dashboard extends Component {
 
     state = {
-        projName: "project 1",
-        projOwner: "Zac",
-        startDate: "8/17/2019",
-        dueDate: "8/28/2019",
-        projDesc: "It's this website",
+        projName: "",
+        projOwner: "",
+        startDate: "",
+        dueDate: "",
+        projDesc: "",
         modName: "",
         modDesc: "",
         modDev: "",
@@ -29,10 +29,10 @@ class Dashboard extends Component {
         developers: [],
         level1: true,
         projCreated: "yes",
-        projId: "1",
+        projId: "",
         modules: [],
         navigateTo: "",
-        usrName: "Zac",
+        usrName: "",
         dashBoardLink: "",
     };
 
@@ -215,14 +215,12 @@ class Dashboard extends Component {
 
                     <Chat projectid={this.state.projId} name={this.state.usrName} chatname={this.state.projName}></Chat>
 
-                    <Row>
-                        <div className="modules">
-                            {this.state.modules.map(module => (
-                                <ModuleCard key={module.id} data={module} delModule={this.delModule} markComplete={this.markComplete} />
-                            ))}
-                        </div>
+                    <div className="modules">
+                        {this.state.modules.map(module => (
+                            <ModuleCard key={module.id} data={module} delModule={this.delModule} markComplete={this.markComplete} />
+                        ))}
+                    </div>
 
-                    </Row>
                     <Card className="my-3 card-props">
                         <CardBody>
                             <CardTitle><h5>Add Module</h5><hr /></CardTitle>

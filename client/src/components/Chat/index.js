@@ -12,7 +12,7 @@ export default class Chat extends React.Component {
         this.state = {
             message: "",
             response: 0,
-            endpoint: "http://127.0.0.1:3001",
+            endpoint: "https://regulate.herokuapp.com/",
             chatHistory: [],
             projectId: 0,
             name: "",
@@ -29,9 +29,9 @@ export default class Chat extends React.Component {
         const socket = socketIOClient(endpoint);
         socket.on('chat message', data => this.onMessageReceived(data));
 
-        const projectId = parseInt(this.props.projectid);
+        const projectId = this.props.projectid;
 
-        const name = this.props.name;
+
         this.setState({ projectId: projectId });
 
         API.getUsr().then(res => {

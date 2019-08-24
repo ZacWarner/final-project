@@ -116,7 +116,7 @@ class Signup extends Component {
                 <RegForm user={this.saveUser} handleInputChange={this.handleInputChange} details={this.state} />
 
             </div>
-        )
+        );
     }
 };
 
