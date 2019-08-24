@@ -14,7 +14,7 @@ export default class Chat extends React.Component {
             response: 0,
             endpoint: "https://regulate.herokuapp.com/",
             chatHistory: [],
-            projectId: 0,
+            projectId: "",
             name: "",
         };
 

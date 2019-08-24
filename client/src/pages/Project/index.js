@@ -213,7 +213,7 @@ class Dashboard extends Component {
                         </a>
                     </Jumbotron>
 
-                    <Chat projectid={this.state.projId} name={this.state.usrName} chatname={this.state.projName}></Chat>
+                    <Chat projectid={this.props.match.params.id} name={this.state.usrName} chatname={this.state.projName}></Chat>
 
                     <div className="modules">
                         {this.state.modules.map(module => (
