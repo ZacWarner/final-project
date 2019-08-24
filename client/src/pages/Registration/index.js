@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import ErrModal from '../../components/Modal';
 import Navbar from '../../components/Navbar';
 import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
 import API from '../../utils/API';
+
 
 
 
@@ -19,18 +21,39 @@ class Signup extends Component {
         city: "",
         stateProvince: "",
         zip: "",
+        show: false
 
 
     };
 
+    showModal = e => {
+        this.setState({
+          show: !this.state.show
+        });
+      };
+    
+    
+
+
+
+
     CheckPassword(inputtxt) {
         var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+
+        var showModal = () => {
+            this.setState({
+                show: !this.state.show
+            });
+        
+        };
+
         if (inputtxt.match(paswd)) {
 
             return true;
         }
         else {
-            alert('passwords must be between 7 and 15 characters, containing at least one numeric digit & one special character')
+            showModal();
+            // alert('passwords must be between 7 and 15 characters, containing at least one numeric digit & one special character')
             return false;
         }
     }
@@ -81,15 +104,19 @@ class Signup extends Component {
                     });
             });
 
+
+
     }
 
     render() {
         return (
             <div className="page-body">
                 <Navbar />
+                <ErrModal onClose={this.showModal} show={this.state.show} />
                 <RegForm user={this.saveUser} handleInputChange={this.handleInputChange} details={this.state} />
+
             </div>
-        )
+        );
     }
 };
 

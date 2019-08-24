@@ -21,7 +21,7 @@ class AboutUs extends Component {
                 <Jumbotron id="aboutUsJumbo">
                     <h3>The Dev Team</h3>
                 </Jumbotron>
-                <Container>
+                <Container className="container">
                 <Row>
                     <Col md={4}>
                         <Adam />

@@ -63,16 +63,22 @@ export default class Header extends React.Component {
                         {isLoggedIn ? (
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
+                                    <NavLink href="/AboutUs">About Us</NavLink>
+                                </NavItem>
+                                <NavItem>
                                     <NavLink href={this.state.profileLink}>Profile</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="logOutButton" onClick={this.handleLogOut}>logout</NavLink>
+                                    <NavLink className="logOutButton" onClick={this.handleLogOut}>Log Out</NavLink>
                                 </NavItem>
                             </Nav>
                         ) : (
                                 <Nav className="ml-auto" navbar>
                                     <NavItem>
-                                        <NavLink href="/signup">signup</NavLink>
+                                    <NavLink href="/AboutUs">About Us</NavLink>
+                                </NavItem>
+                                    <NavItem>
+                                        <NavLink href="/signup">Signup</NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink href="/login">Log In</NavLink>
