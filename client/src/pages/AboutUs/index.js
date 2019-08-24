@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from 'reactstrap';
-import Card from '../../components/Card';
+import { Col, Row, Container, Jumbotron } from 'reactstrap';
+import Adam from '../../components/DevCards/Adam';
+import Lucious from '../../components/DevCards/Lucious';
+import Meena from '../../components/DevCards/Meena';
+import Patrick from '../../components/DevCards/Patrick';
+import Zac from '../../components/DevCards/Zac';
 import Navbar from '../../components/Navbar';
 import "../../components/styles/variables.scss";
+import "../../components/styles/AboutUs/jumbotron.scss";
 
 
 class AboutUs extends Component {
@@ -13,27 +18,40 @@ class AboutUs extends Component {
             <div className="page-body">
                 <Navbar />
                 <br></br>
-                <Container>
+                <Jumbotron id="aboutUsJumbo">
+                    <h3>The Dev Team</h3>
+                </Jumbotron>
+                <Container className="container">
                 <Row>
                     <Col md={4}>
-                        <Card />
+                        <Adam />
+                
+                        
                     </Col>
                     <Col md={4}>
-                        <Card />
+                        <Lucious />
+
+                        
                     </Col>
                     <Col md={4}>
-                        <Card />
+                        <Meena />
+
+                        
                     </Col>
                 </Row>
                 <br></br>
                 <Row>
                     <Col md={1}/>
                     <Col md={4}>
-                        <Card />
+                        <Patrick />
+
+                        
                     </Col>
                     <Col md={1}/>
                     <Col md={4}>
-                        <Card />
+                        <Zac />
+
+                        
                     </Col>
                 </Row>
                 </Container>

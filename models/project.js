@@ -12,11 +12,12 @@ const projectSchema = new Schema({
         type: String, required: true
     },
     proj_description: { type: String, default: "Project" },
+    start_date: Date,
     due_date: Date,
     proj_complete: { type: Boolean, default: false },
+    developers: [String],
     modules: [
         {
-            mod_id: String,
             mod_name: {
                 type: String,
                 lowercase: true,
@@ -24,7 +25,7 @@ const projectSchema = new Schema({
             },
             mod_description: String,
             mod_due: Date,
-            developer: [String],
+            developer: String,
             parent: { type: String },
             complete: { type: Boolean, default: false },
             level1module: { type: Boolean, default: true }

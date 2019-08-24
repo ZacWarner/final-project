@@ -1,7 +1,8 @@
 import React from 'react';
 import socketIOClient from "socket.io-client";
 import API from "../../utils/API";
-import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon } from 'reactstrap';
+import { Card, CardHeader, CardBody, CardFooter, Input, InputGroup, Button, ListGroup, ListGroupItem, InputGroupAddon, Form } from 'reactstrap';
+import './style.css';
 
 
 
@@ -11,9 +12,9 @@ export default class Chat extends React.Component {
         this.state = {
             message: "",
             response: 0,
-            endpoint: "http://127.0.0.1:3001",
+            endpoint: "https://regulate.herokuapp.com/",
             chatHistory: [],
-            projectId: 0,
+            projectId: "",
             name: "",
         };
 
@@ -28,12 +29,17 @@ export default class Chat extends React.Component {
         const socket = socketIOClient(endpoint);
         socket.on('chat message', data => this.onMessageReceived(data));
 
-        const projectId = parseInt(this.props.projectid);
+        const projectId = this.props.projectid;
 
-        const name = this.props.name;
+
         this.setState({ projectId: projectId });
-        this.setState({ name: name });
 
+        API.getUsr().then(res => {
+            if (res.data.user) {
+                this.setState({ name: res.data.user.userName })
+            }
+
+        });
         this.getChatHistory(projectId);
 
     }
@@ -42,7 +48,8 @@ export default class Chat extends React.Component {
         API.getChat(id)
             .then(res => {
                 this.setState({ chatHistory: res.data });
-                console.log(res.data);
+                this.scrollChatToBottom();
+                console.log(res);
             });
 
     };
@@ -68,29 +75,26 @@ export default class Chat extends React.Component {
         const socket = socketIOClient(endpoint);
         socket.emit('chat message', this.state.message);
         this.addChatHistory();
-
+        this.setState({ message: "" });
     };
 
-    onMessageReceived(msg) {
-        const chatHistory = this.state.chatHistory;
-        const projectId = this.state.projectId;
-        const name = this.state.name;
-        const chat = {
-            projectId: projectId,
-            message: msg,
-            name: name
-        }
-        chatHistory.push(chat);
-        this.setState(chatHistory);
+    onMessageReceived() {
+        const id = this.state.projectId;
+
+        this.getChatHistory(id);
+    }
+
+    scrollChatToBottom = () => {
+        this.panel.scrollTo(0, this.panel.scrollHeight)
     }
 
 
 
     render() {
         return (
-            <Card projectid={this.props.projectid}>
+            <Card projectid={this.props.projectid} className="chat">
                 <CardHeader>{this.props.chatname}</CardHeader>
-                <CardBody>
+                <CardBody className="chatWindow" innerRef={(panel) => { this.panel = panel; }}>
                     <ListGroup>
                         {this.state.chatHistory.map(msg => (
                             <ListGroupItem className="border-0" key={msg._id}>{msg.name}: {msg.message}</ListGroupItem>
@@ -100,21 +104,24 @@ export default class Chat extends React.Component {
                     </ListGroup>
                 </CardBody>
                 <CardFooter>
-                    <InputGroup>
-                        <Input
-                            placeholder="Type to chat!"
-                            value={this.message}
-                            onChange={this.handleInputChange}
-                        />
-                        <InputGroupAddon addonType="append">
-                            <Button
-                                color="success"
-                                onClick={this.handleFormSubmit}
-                            >
-                                Enter
+                    <Form>
+                        <InputGroup>
+                            <Input
+                                placeholder="Type to chat!"
+                                value={this.state.message}
+                                onChange={this.handleInputChange}
+                            />
+                            <InputGroupAddon addonType="append">
+                                <Button
+                                    type="submit"
+                                    color="success"
+                                    onClick={this.handleFormSubmit}
+                                >
+                                    Enter
                                 </Button>
-                        </InputGroupAddon>
-                    </InputGroup>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </Form>
                 </CardFooter>
             </Card>
 

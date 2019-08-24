@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
 import Chat from '../../components/Chat';
-import {
-    Jumbotron,
-    Container,
-
-} from 'reactstrap';
+import { Jumbotron, Container } from 'reactstrap';
+import './landing.scss';
+import Footer from '../../components/Footer';
 
 
 class Landing extends Component {
@@ -13,15 +11,13 @@ class Landing extends Component {
         return (
             <>
                 <Navbar />
-                <Jumbotron>
-                    <Container className="text-center">
-                        <h1 className="display-3">Regulate</h1>
-                        <a href="/signup" className="btn btn-primary m-3">Sign Up</a>
-                        <a href="/login" className="btn btn-primary m-3">Login</a>
+                <Jumbotron className="landingJumbo">
+                    <Container className="text-center profileCont">
+                        <h1 className="display-3 profileHeader">Regulate</h1>
+                        <a href="/signup" className="btn btn-outline-light m-3 profileBtn">Beam me up!</a>
                     </Container>
                 </Jumbotron>
-                <Chat projectid="1" name="zac" chatname="main chat!"></Chat>
-
+                <Footer />
             </>
         )
     }

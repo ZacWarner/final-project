@@ -9,15 +9,6 @@ import Moduleprogress from '../../components/Dashboard/Moduleprogress';
 
 class Dashboard extends Component {
 
-    state = {
-        pieData: {},
-        treeData: {}
-    };
-
-    componentDidMount = () => {
-        //Manipulate Data
-    }
-
     render() {
         return (
             <>
@@ -25,14 +16,14 @@ class Dashboard extends Component {
                 <Container>
                     <Row className="mt-3">
                         <Col md="3">
-                            <Projsummary />
+                            <Projsummary projId={this.props.match.params.id} />
                         </Col>
                         <Col className="text-center">
-                            <Projphase />
+                            <Projphase projId={this.props.match.params.id} />
                         </Col>
                         <Col md="3" className="text-center">
                             <Pie
-                                data={this.state.pieData}
+                                projId={this.props.match.params.id}
                                 width={140}
                                 height={140}
                                 innerRadius={35}
@@ -42,10 +33,10 @@ class Dashboard extends Component {
                     </Row>
                     <Row>
                         <Col md="6" className="text-center">
-                            <Tree data={this.state.treeData} />
+                            <Tree projId={this.props.match.params.id} />
                         </Col>
                         <Col className="text-center">
-                            <Moduleprogress />
+                            <Moduleprogress projId={this.props.match.params.id} />
                         </Col>
                     </Row>
                 </Container>
