@@ -36,7 +36,8 @@ module.exports = {
     },
     updateModule: function (req, res) {
         db.Project
-            .find({ _id: req.params.id }, { modules: { $elemMatch: { _id: req.params.modid } } })
+            // .find({ _id: req.params.id }, { modules: { $elemMatch: { _id: req.params.modid } } })
+            .update({ _id: req.params.id, 'modules._id': req.params.modid }, { $set: { 'modules.$.complete': true } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

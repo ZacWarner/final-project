@@ -10,6 +10,7 @@ function Patrick() {
     return (
         <div>
             <div className="card dev-card">
+            
                 <img src="https://avatars2.githubusercontent.com/u/48222005?s=460&v=4" className="card-img-top"></img>
                     <div className="card-body">
                     <h3>Patrick Owens</h3>
@@ -22,7 +23,14 @@ function Patrick() {
                         <li>Skill</li>
                         <li>Skill</li>
                     </ul>
-                    <a href="https://www.linkedin.com/in/patrick-owens-9a99b7163/">LinkedIn Profile</a>
+                    
+
+                    <a href='https://www.linkedin.com/in/patrick-owens-9a99b7163/'>
+                    LinkedIn Profile
+                    </a>
+                    
+                    
+                        
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
 import Chat from '../../components/Chat';
 import { Jumbotron, Container } from 'reactstrap';
-import './landing.css';
+import './landing.scss';
 import Footer from '../../components/Footer';
 
 

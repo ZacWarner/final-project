@@ -14,5 +14,11 @@ router
 router
     .route("/newproj/:username")
     .put(profileController.addProj);
+router
+    .route("/note/:username")
+    .put(profileController.addNote);
+router
+    .route("/setnotes/:username")
+    .put(profileController.setNotes);
 
 module.exports = router;

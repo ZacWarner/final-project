@@ -26,8 +26,8 @@ class Dashboard extends Component {
         modDev: "",
         modDueDate: "",
         modParent: "",
+        developers: [],
         level1: true,
-        pieData: {},
         projCreated: "yes",
         projId: "1",
         modules: [],
@@ -37,9 +37,37 @@ class Dashboard extends Component {
     };
 
     componentDidMount = () => {
-        const url = "/dashboard/" + this.state.projId;
-        this.setState({ dashBoardLink: url });
+        console.log("ProjId: " + this.props.match.params.id);
+        API.getProject(this.props.match.params.id)
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    projName: res.data.proj_name,
+                    projOwner: res.data.proj_owner,
+                    startDate: res.data.start_date,
+                    dueDate: res.data.due_date,
+                    projDesc: res.data.proj_description,
+                    projId: res.data._id,
+                    modules: res.data.modules,
+                    developers: res.data.developers,
+                    dashBoardLink: "/dashboard/" + res.data._id
+                });
+            });
+        console.log("new state:");
+        console.log(this.state);
     }
+
+    handleCheckBox = () => {
+        this.setState({ level1: !this.state.level1 });
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+        console.log(this.state);
+    };
 
     createProject = () => {
         if (this.state.projId === "") {
@@ -131,6 +159,24 @@ class Dashboard extends Component {
             .catch(err => console.log(err));
     }
 
+    markComplete = (modId) => {
+        API.updateModule(this.state.projId, modId, {
+            complete: true
+        })
+            .then(res => {
+                console.log(res);
+                // To update this.state.modules
+                API.getProject(this.state.projId)
+                    .then(res => {
+                        console.log(res);
+                        this.setState({
+                            modules: res.data.modules
+                        })
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    }
 
 
     render() {
@@ -151,14 +197,15 @@ class Dashboard extends Component {
                     <Jumbotron className="bg-transparent text-center border-dark">
                         <Row>
                             <Col md="4">
-                                <Pie data={this.state.pieData}
+                                <Pie
+                                    projId={this.props.match.params.id}
                                     width={140}
                                     height={140}
                                     innerRadius={35}
-                                    outerRadius={70}> </Pie>
+                                    outerRadius={70} />
                             </Col>
                             <Col md="8">
-                                <StepProgress></StepProgress>
+                                <StepProgress projId={this.props.match.params.id} />
                             </Col>
                         </Row>
                         <a href={this.state.dashBoardLink}>
@@ -171,7 +218,7 @@ class Dashboard extends Component {
                     <Row>
                         <div className="modules">
                             {this.state.modules.map(module => (
-                                <ModuleCard key={module.id} data={module} delModule={this.delModule} />
+                                <ModuleCard key={module.id} data={module} delModule={this.delModule} markComplete={this.markComplete} />
                             ))}
                         </div>
 
