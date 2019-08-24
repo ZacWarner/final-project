@@ -12,7 +12,6 @@ import API from './utils/API';
 import './App.scss';
 
 
-
 class App extends Component {
   constructor(props) {
     super(props)

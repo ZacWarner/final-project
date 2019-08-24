@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/AboutUs/devcard.scss'
-
 import '../../styles/variables.scss';
+import { FaLinkedin } from 'react-icons/fa';
 
 
 
@@ -14,7 +14,8 @@ function Zac() {
                 <div className="card-body">
                     
                     <h3>Zac Warner</h3>
-                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className="card-text">I’m a highly motivated Full Stack Web developer with a deep understanding of Java, HTML, and CSS.
+                    I enjoy using cutting edge technology to tackle challenges and create efficient solutions to problems. I’m a quick learner and strive to quickly become an asset to whoever I work with quickly becoming the go-to guy for problems or important tasks. After taking a coding class in college, I fell in love with it and decided to skip the traditional learning environment for something more cutting edge. </p>
                     <h4>Skillset:</h4>
                     <ul>
                         <li>Skill</li>
@@ -23,7 +24,7 @@ function Zac() {
                         <li>Skill</li>
                         <li>Skill</li>
                     </ul>
-                    <a href="https://www.linkedin.com/in/zac-warner-5a8079122/">LinkedIn Profile</a>
+                    <a href="https://www.linkedin.com/in/zac-warner-5a8079122/"><FaLinkedin className="aboutIcon" /></a>
 
 
                 </div>

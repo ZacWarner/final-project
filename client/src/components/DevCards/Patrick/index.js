@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/AboutUs/devcard.scss'
-
 import '../../styles/variables.scss';
+import { FaLinkedin } from 'react-icons/fa';
 
 
 
@@ -25,9 +25,7 @@ function Patrick() {
                     </ul>
                     
 
-                    <a href='https://www.linkedin.com/in/patrick-owens-9a99b7163/'>
-                    LinkedIn Profile
-                    </a>
+                    <a href='https://www.linkedin.com/in/patrick-owens-9a99b7163/'><FaLinkedin className="aboutIcon" /></a>
                     
                     
                         
