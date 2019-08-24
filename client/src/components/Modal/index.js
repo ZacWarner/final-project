@@ -1,18 +1,34 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import Modal from 'react-bootstrap/Modal';
 
-const JSX_MODAL = (
-  <div className="ui dimmer modals visible active">  
-    <div className="ui standard modal visible active">
-    passwords must be between 7 and 15 characters, containing at least one numeric digit & one special character
+
+// import '../styles/modal.scss';
+
+
+
+
+
+class ErrModal extends React.Component {
+  render() {
+    if (!this.props.show) {
+      return null;
+    }
+    else return <div>
+    <div className="err-modal">
+      <p>passwords must be between 7 and 15 characters, containing at least one numeric digit & one special character</p>
+    </div>
+    <div>
+      <button
+        onClose={e => {
+          this.onClose(e);
+        }}
+      >
+        Close
+      </button>
+      
     </div>
   </div>
-);
-
-
-function Modal(props) {
-  return ReactDOM.createPortal(JSX_MODAL, document.querySelector("#modal"));
+  }
 }
 
-
-export default Modal;
+export default ErrModal
