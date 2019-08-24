@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Nav from '../../components/Navbar';
-import { Jumbotron, Form, FormGroup, Input, Label, Button, Col, Row, Container } from 'reactstrap';
+import {
+    Jumbotron, Form, FormGroup, Input, Label, Button, Col,
+    Row, Container, Modal, ModalBody, ModalHeader, ModalFooter
+} from 'reactstrap';
 import API from '../../utils/API'
 
 
@@ -15,6 +18,7 @@ class Login extends Component {
             page: "",
 
         };
+        this.toggle = this.toggle.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +34,12 @@ class Login extends Component {
     }
 
 
-
+    toggle() {
+        console.log("In toggle");
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
 
 
     handleInputChange = event => {
@@ -52,7 +61,9 @@ class Login extends Component {
             }
 
             window.location.replace("/profile/" + usr.userName);
-        })
+        }).catch(err => {
+            this.toggle();
+        });
 
     }
 
@@ -109,6 +120,15 @@ class Login extends Component {
                                 </Form>
                             )}
                     </Jumbotron>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                        <ModalHeader toggle={this.toggle}>Incorrect Login</ModalHeader>
+                        <ModalBody>
+                            <p>Invalid username / password</p>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggle}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
                 </Container>
             </>
         )

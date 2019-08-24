@@ -293,7 +293,7 @@ class Profile extends Component {
                         </Col-md-6>
                     </Row>
                     <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>Update profile</ModalHeader>
                         <ModalBody>
                             <UpdateForm data={this.state} handleInputChange={this.handleInputChange} />
                         </ModalBody>

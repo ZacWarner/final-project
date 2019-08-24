@@ -23,6 +23,8 @@ class Signup extends Component {
 
     };
 
+
+
     CheckPassword(inputtxt) {
         var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
         if (inputtxt.match(paswd)) {
@@ -89,7 +91,7 @@ class Signup extends Component {
                 <Navbar />
                 <RegForm user={this.saveUser} handleInputChange={this.handleInputChange} details={this.state} />
             </div>
-        )
+        );
     }
 };
 
