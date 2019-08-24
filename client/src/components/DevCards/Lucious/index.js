@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/AboutUs/devcard.scss'
 import '../../styles/variables.scss';
-
+import { FaLinkedin } from 'react-icons/fa';
 
 
 function Lucious() {
@@ -21,7 +21,7 @@ function Lucious() {
                         <li>Skill</li>
                         <li>Skill</li>
                     </ul>
-                    <a href="http://www.linkedin.com/in/lucious-x-jackson-9a4807155">LinkedIn Profile</a>
+                    <a href="http://www.linkedin.com/in/lucious-x-jackson-9a4807155"><FaLinkedin className="aboutIcon" /></a>
                 </div>
             </div>
         </div>
