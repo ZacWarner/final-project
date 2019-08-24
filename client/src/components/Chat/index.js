@@ -31,7 +31,7 @@ export default class Chat extends React.Component {
 
         const projectId = this.props.projectid;
 
-        const name = this.props.name;
+
         this.setState({ projectId: projectId });
 
         API.getUsr().then(res => {
