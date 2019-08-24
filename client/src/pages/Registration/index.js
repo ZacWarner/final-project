@@ -4,9 +4,6 @@ import RegForm from '../../components/NewUserForm';
 import '../../components/styles/registrationPage.scss';
 import API from '../../utils/API';
 
-
-
-
 class Signup extends Component {
     state = {
         email: "",
