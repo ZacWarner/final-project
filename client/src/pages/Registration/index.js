@@ -26,26 +26,13 @@ class Signup extends Component {
 
     };
 
-    // showModal = e => {
-    //     this.setState({
-    //       show: !this.state.show
-    //     });
-    //   };
-    // onClose = e => {
-    //     window.location.reload();
-    // };
-    // onClose = e => {
-    //     this.props.show = false;
-    //   };
-
-    onClose = e => {
-        this.props.onClose && this.props.onClose(e);
-    };
     showModal = e => {
         this.setState({
           show: !this.state.show
         });
       };
+    
+    
 
 
 
@@ -53,13 +40,11 @@ class Signup extends Component {
     CheckPassword(inputtxt) {
         var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
 
-        var showModal = e => {
+        var showModal = () => {
             this.setState({
                 show: !this.state.show
             });
-            // onClick = e => {
-            //     this.props.onClose && this.props.onClose(e);
-            // };
+        
         };
 
         if (inputtxt.match(paswd)) {
@@ -127,9 +112,7 @@ class Signup extends Component {
         return (
             <div className="page-body">
                 <Navbar />
-                <ErrModal onClose={this.showModal} show={this.state.show}>
-                
-                    </ErrModal>
+                <ErrModal onClose={this.showModal} show={this.state.show} />
                 <RegForm user={this.saveUser} handleInputChange={this.handleInputChange} details={this.state} />
 
             </div>
