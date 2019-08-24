@@ -14,14 +14,14 @@ function Patrick() {
                 <img src="https://avatars2.githubusercontent.com/u/48222005?s=460&v=4" className="card-img-top"></img>
                     <div className="card-body">
                     <h3>Patrick Owens</h3>
-                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className="card-text">Co-Owner of Osom Creative Studio, contract analyst for the State of California, and Full-Stack Web Developer. Specializes in analysis of tedious government codes & regulations, creation of written content for social media marketing campaigns. Looking to put newly acquired web development skills to good use in support of my business.</p>
                     <h4>Skillset:</h4>
                     <ul>
-                        <li>Skill</li>
-                        <li>Skill</li>
-                        <li>Skill</li>
-                        <li>Skill</li>
-                        <li>Skill</li>
+                        <li>HTML5/CSS/JS</li>
+                        <li>ReactJS/JSX</li>
+                        <li>MongoDB</li>
+                        <li>MySQL</li>
+                        <li>NodeJS</li>
                     </ul>
                     
 
